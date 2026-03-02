@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo tableName="biz_doc" class="ssp.lib.docEntity.entity.BizDoc">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docType" column="DOC_TYPE" jdbcType="VARCHAR" />
+        <property name="bizType" column="BIZ_TYPE" jdbcType="VARCHAR" />
+        <property name="docSpecies" column="DOC_SPECIES" jdbcType="VARCHAR" />
+        <property name="docNo" column="DOC_NO" jdbcType="VARCHAR" />
+        <property name="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+        <property name="title" column="TITLE" jdbcType="VARCHAR" />
+        <property name="entityId" column="ENTITY_ID" jdbcType="VARCHAR" />
+        <property name="entitySid" column="ENTITY_SID" jdbcType="VARCHAR" />
+        <property name="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+        <property name="userDeptId" column="USER_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="adminDeptId" column="ADMIN_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+        <property name="userId" column="USER_ID" jdbcType="VARCHAR" />
+        <property name="isEditable" column="IS_EDITABLE" jdbcType="CHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="isArchived" column="IS_ARCHIVED" jdbcType="CHAR" />
+        <lookup name="entityName" lookupKey="entitySid" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="entityName"
+                bean="sspBaseDocService" method="getEntityNameBySid"/>
+        <lookup name="userDeptName" lookupKey="userDeptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+    </vo>
+
+    <vo tableName="flow_doc" class="ssp.lib.docEntity.entity.FlowDoc">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docType" column="DOC_TYPE" jdbcType="VARCHAR" />
+        <property name="bizType" column="BIZ_TYPE" jdbcType="VARCHAR" />
+        <property name="docSpecies" column="DOC_SPECIES" jdbcType="VARCHAR" />
+        <property name="docNo" column="DOC_NO" jdbcType="VARCHAR" />
+        <property name="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+        <property name="title" column="TITLE" jdbcType="VARCHAR" />
+        <property name="entityId" column="ENTITY_ID" jdbcType="VARCHAR" />
+        <property name="entitySid" column="ENTITY_SID" jdbcType="VARCHAR" />
+        <property name="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+        <property name="userDeptId" column="USER_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="adminDeptId" column="ADMIN_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+        <property name="userId" column="USER_ID" jdbcType="VARCHAR" />
+        <property name="checkerId" column="CHECKER_ID" jdbcType="VARCHAR" />
+        <property name="approverId" column="APPROVER_ID" jdbcType="VARCHAR" />
+        <property name="executerId" column="EXECUTER_ID" jdbcType="VARCHAR" />
+        <property name="applyDate" column="APPLY_DATE" jdbcType="TIMESTAMP" />
+        <property name="checkDate" column="CHECK_DATE" jdbcType="TIMESTAMP" />
+        <property name="approveDate" column="APPROVE_DATE" jdbcType="TIMESTAMP" />
+        <property name="executeDate" column="EXECUTE_DATE" jdbcType="TIMESTAMP" />
+        <property name="isArchived" column="IS_ARCHIVED" jdbcType="CHAR" />
+        <property name="approveDesc" column="APPROVE_DESC" jdbcType="VARCHAR" />
+        <property name="examinaResult" column="EXAMINA_RESULT" jdbcType="VARCHAR" />
+        <property name="isEditable" column="IS_EDITABLE" jdbcType="CHAR" />
+        <property name="flowStatus" column="FLOW_STATUS" jdbcType="VARCHAR" />
+        <property name="execStatus" column="EXEC_STATUS" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <lookup name="entityName" lookupKey="entitySid-entitySid" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="entityName"
+                bean="sspBaseDocService" method="getEntityNameBySid"/>
+        <lookup name="userDeptName" lookupKey="userDeptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <lookup name="deptName" lookupKey="deptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+    </vo>
+
+    <vo tableName="flow_doc_ref" class="ssp.lib.docEntity.entity.FlowDocRef">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID" jdbcType="VARCHAR" />
+        <property name="docField" column="DOC_FIELD" jdbcType="VARCHAR" />
+        <property name="refDocType" column="REF_DOC_TYPE" jdbcType="VARCHAR" />
+        <property name="refDocId" column="REF_DOC_ID" jdbcType="VARCHAR" />
+        <property name="refDocNo" column="REF_DOC_NO" jdbcType="VARCHAR" />
+        <property name="refDocSrc" column="REF_DOC_SRC" jdbcType="VARCHAR" />
+        <property name="refDocOption" column="REF_DOC_OPTION" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo tableName="flow_doc_activity" class="ssp.lib.docEntity.entity.FlowDocActivity">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID" jdbcType="VARCHAR" />
+        <property name="actionTitle" column="ACTION_TITLE" jdbcType="VARCHAR" />
+        <property name="actionTime" column="ACTION_TIME" jdbcType="TIMESTAMP" />
+        <property name="operator" column="OPERATOR" jdbcType="VARCHAR" />
+        <property name="refId" column="REF_ID" jdbcType="VARCHAR" />
+        <property name="refUrl" column="REF_URL" jdbcType="VARCHAR" />
+        <property name="isDone" column="IS_DONE" jdbcType="CHAR" />
+        <property name="browseLevel" column="BROWSE_LEVEL" jdbcType="CHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+    </vo>
+
+    <vo tableName="doc_attachreq_files" class="ssp.lib.docEntity.entity.DocAttachreqFile">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="pid" column="PID"/>
+        <property name="attachmentId" column="ATTACHMENT_ID"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="docNo" column="DOC_NO"/>
+        <property name="docType" column="DOC_TYPE"/>
+        <property name="docTypeName" column="DOC_TYPE_NAME"/>
+        <property name="bizDocId" column="BIZ_DOC_ID"/>
+        <property name="attachFlag" column="ATTACH_FLAG"/>
+        <property name="sortNo" column="SORT_NO"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="attachreqId" column="ATTACHREQ_ID"/>
+    </vo>
+
+    <vo class="ssp.lib.docEntity.entity.DocAttachreq" tableName="DOC_ATTACHREQ">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="attachText" column="ATTACH_TEXT"/>
+        <property name="attachHint" column="ATTACH_HINT"/>
+        <property name="fileLimit" column="FILE_LIMIT"/>
+        <property name="sortNo" column="SORT_NO"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <order name="sortNo" value="SORT_NO" enabled="true" />
+    </vo>
+
+    <vo tableName="app_form_attachreq" class="ssp.lib.docEntity.entity.FormAttachreq">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="formCode" column="FORM_CODE" jdbcType="VARCHAR" />
+        <property name="attachText" column="ATTACH_TEXT" jdbcType="VARCHAR" />
+        <property name="attachHint" column="ATTACH_HINT" jdbcType="VARCHAR" />
+        <property name="fileLimit" column="FILE_LIMIT" jdbcType="VARCHAR" />
+        <property name="sortNo" column="SORT_NO" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="optionData" column="OPTION_DATA" jdbcType="VARCHAR" />
+        <property name="attachFlag" column="ATTACH_FLAG" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo class="ssp.lib.docEntity.entity.FlowDocApprWfSets" tableName="FLOW_DOC_APPRWFSETS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="workflowEntryId" column="WORKFLOW_ENTRY_ID"/>
+        <property name="workflowLevel" column="WORKFLOW_LEVEL"/>
+        <property name="trunkId" column="TRUNK_ID"/>
+        <property name="state" column="STATE"/>
+        <property name="workflowDefId" column="WORKFLOW_DEF_ID"/>
+        <property name="params" column="PARAMS"/>
+        <property name="workflowCode" column="WORKFLOW_CODE"/>
+    </vo>
+
+    <vo class="ssp.lib.docEntity.entity.BiEntity" tableName="BI_ENTITY">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="sid" column="SID"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="isPreset" column="IS_PRESET"/>
+        <property name="isVirtual" column="IS_VIRTUAL"/>
+        <property name="isValid" column="IS_VALID"/>
+        <property name="entityType" column="ENTITY_TYPE"/>
+        <property name="mapOrgId" column="MAP_ORG_ID"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="syncTime" column="SYNC_TIME"/>
+        <property name="keyId" column="KEY_ID"/>
+        <property name="seqNo" column="SEQNO" select="true" insert="true" update="true" delete="true"/>
+        <property name="status" column="STATUS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+</vobjs>

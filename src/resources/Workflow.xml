@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo tableName="app_form_apprassign" class="ssp.lib.workflow.entity.FormApprAssign">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="formCode" column="FORM_CODE" jdbcType="VARCHAR" />
+        <property name="wfStepId" column="WF_STEP_ID" jdbcType="VARCHAR" />
+        <property name="stepText" column="STEP_TEXT" jdbcType="VARCHAR" />
+        <property name="stepHint" column="STEP_HINT" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="optionData" column="OPTION_DATA" jdbcType="VARCHAR" />
+        <property name="routerId" column="ROUTER_ID" jdbcType="VARCHAR" />
+        <property name="allowSkip" column="ALLOW_SKIP" jdbcType="VARCHAR" />
+        <property name="workflowCode" column="WORKFLOW_CODE" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.FlowDocApprAssign" tableName="FLOW_DOC_APPRASSIGN">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="wfStepId" column="WF_STEP_ID"/>
+        <property name="stepText" column="STEP_TEXT"/>
+        <property name="stepHint" column="STEP_HINT"/>
+        <property name="approverUid" column="APPROVER_UID"/>
+        <property name="approverName" column="APPROVER_NAME"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="stepTypeData" column="STEP_TYPE_DATA"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="routerId" column="ROUTER_ID"/>
+        <property name="isEnable" column="IS_ENABLE"/>
+        <property name="allowSkip" column="ALLOW_SKIP"/>
+        <property name="isValid" column="IS_VALID"/>
+        <property name="workflowCode" column="WORKFLOW_CODE"/>
+    </vo>
+
+    <vo tableName="app_flow_steps" class="ssp.lib.workflow.entity.FlowSteps">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="stepId" column="STEP_ID" jdbcType="VARCHAR" />
+        <property name="stepName" column="STEP_NAME" jdbcType="VARCHAR" />
+        <property name="workflowDefId" column="WORKFLOW_DEF_ID" jdbcType="VARCHAR" />
+        <property name="routerNo" column="ROUTER_NO" jdbcType="VARCHAR" />
+        <property name="stepType" column="STEP_TYPE" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo tableName="app_flow_steptype" class="ssp.lib.workflow.entity.FlowStepType">
+        <property name="stepType" column="STEP_TYPE" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="stepTypeName" column="STEP_TYPE_NAME" jdbcType="VARCHAR" />
+        <property name="stepUserType" column="STEP_USER_TYPE" jdbcType="VARCHAR" />
+        <property name="stepUsers" column="STEP_USERS" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo tableName="app_flow_routers" class="ssp.lib.workflow.entity.AppsysFlowRouters">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="workflowDefId" column="WORKFLOW_DEF_ID" jdbcType="VARCHAR" />
+        <property name="routerId" column="ROUTER_ID" jdbcType="VARCHAR" />
+        <property name="routerName" column="ROUTER_NAME" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="optionData" column="OPTION_DATA" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo tableName="flow_doc_apprroutermap" class="ssp.lib.workflow.entity.FlowDocApprRouterMap">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="workflowDefId" column="WORKFLOW_DEF_ID" jdbcType="VARCHAR" />
+        <property name="routerId" column="ROUTER_ID" jdbcType="VARCHAR" />
+        <property name="routerDefId" column="ROUTER_DEF_ID" jdbcType="VARCHAR" />
+        <property name="docId" column="DOC_ID" jdbcType="VARCHAR" />
+        <property name="pass" column="PASS" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.AppFlowRouterRules" tableName="APP_FLOW_ROUTER_RULES">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="bizRulesCode" column="BIZ_RULES_CODE"/>
+        <property name="ruleName" column="RULE_NAME"/>
+        <property name="key1" column="KEY_1"/>
+        <property name="key2" column="KEY_2"/>
+        <property name="key3" column="KEY_3"/>
+        <property name="key4" column="KEY_4"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="ruleData" column="RULE_DATA"/>
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.AppFlowApprovalSchema" tableName="APP_FLOW_APPROVAL_SCHEMA">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="bizRulesCode" column="BIZ_RULES_CODE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <join name="appFlowBizrulesmap" joinKey="bizRulesCode-id" joinType="manyToOne" isAggregation="true" class="ssp.lib.workflow.entity.AppFlowBizrulesmap"></join>
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.AppFlowBizrulesmap" tableName="APP_FLOW_BIZRULESMAP">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="bizRulesName" column="BIZ_RULES_NAME"/>
+        <property name="key3Enable" column="KEY3_ENABLE"/>
+        <property name="key3Name" column="KEY3_NAME"/>
+        <property name="key3DataFrom" column="KEY3_DATA_FROM"/>
+        <property name="key4Enable" column="KEY4_ENABLE"/>
+        <property name="key4Name" column="KEY4_NAME"/>
+        <property name="key4DataFrom" column="KEY4_DATA_FROM"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="mapVer" column="MAP_VER"/>
+        <join name="bizrulesmapColList" joinKey="id-bizRulesCode" joinType="oneToMany" isAggregation="true" class="ssp.lib.workflow.entity.AppFlowBizrulesmapCol"></join>
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.AppFlowBizrulesmapCol" tableName="APP_FLOW_BIZRULESMAP_COL">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="bizRulesCode" column="BIZ_RULES_CODE"/>
+        <property name="colId" column="COL_ID"/>
+        <property name="colName" column="COL_NAME"/>
+        <property name="colType" column="COL_TYPE"/>
+        <property name="colValue" column="COL_VALUE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+    </vo>
+
+    <vo class="ssp.lib.workflow.entity.AppFlowApprovalRules" tableName="APP_FLOW_APPROVAL_RULES">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="approvalType" column="APPROVAL_TYPE"/>
+        <property name="ruleType" column="RULE_TYPE"/>
+        <property name="check1" column="CHECK_1"/>
+        <property name="check2" column="CHECK_2"/>
+        <property name="check3" column="CHECK_3"/>
+        <property name="check4" column="CHECK_4"/>
+        <property name="ruleValue" column="RULE_VALUE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="ruleData" column="RULE_DATA"/>
+    </vo>
+</vobjs>

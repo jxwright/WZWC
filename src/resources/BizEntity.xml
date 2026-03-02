@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.base.domain.bizEntity.entity.BizEntity" tableName="appbase.BI_ENTITY">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="sid" column="SID"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="isPreset" column="IS_PRESET"/>
+        <property name="isVirtual" column="IS_VIRTUAL"/>
+        <property name="isValid" column="IS_VALID"/>
+        <property name="entityType" column="ENTITY_TYPE"/>
+        <property name="mapOrgId" column="MAP_ORG_ID"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="syncTime" column="SYNC_TIME"/>
+        <property name="keyId" column="KEY_ID"/>
+        <property name="seqno" column="SEQNO" select="true" insert="true" update="true" delete="true"/>
+        <property name="status" column="STATUS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+</vobjs>

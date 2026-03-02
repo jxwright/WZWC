@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="ssp.lib.bizMsg.entity.BizdataPublish" tableName="APP_BIZDATA_PUBLISH">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="noticeType" column="NOTICE_TYPE"/>
+        <property name="title" column="TITLE"/>
+        <property name="bizdataId" column="BIZDATA_ID"/>
+        <property name="bizdataUrl" column="BIZDATA_URL"/>
+        <property name="formCode" column="FORM_CODE"/>
+        <property name="bizType" column="BIZ_TYPE"/>
+        <property name="publishDate" column="PUBLISH_DATE"/>
+        <property name="receiptDate" column="RECEIPT_DATE"/>
+        <property name="senderDeptId" column="SENDER_DEPT_ID"/>
+        <property name="senderId" column="SENDER_ID"/>
+        <property name="sender" column="SENDER"/>
+        <property name="senderTel" column="SENDER_TEL"/>
+        <property name="recvDeptId" column="RECV_DEPT_ID"/>
+        <property name="receiverId" column="RECEIVER_ID"/>
+        <property name="needSign" column="NEED_SIGN"/>
+        <property name="needSignReturn" column="NEED_SIGN_RETURN"/>
+        <property name="needReturnReceipt" column="NEED_RETURN_RECEIPT"/>
+        <property name="status" column="STATUS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="ssp.lib.bizMsg.entity.AppEarlywarning" tableName="APP_EARLYWARNING">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="warnType" column="WARN_TYPE"/>
+        <property name="title" column="TITLE"/>
+        <property name="bizdataId" column="BIZDATA_ID"/>
+        <property name="bizdataUrl" column="BIZDATA_URL"/>
+        <property name="formCode" column="FORM_CODE"/>
+        <property name="bizType" column="BIZ_TYPE"/>
+        <property name="dueDate" column="DUE_DATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <join name="AppEarlywarningRecv" joinKey="id-warninfoId" joinType="oneToMany" isAggregation="true" class="ssp.lib.bizMsg.entity.AppEarlywarningRecv"></join>
+    </vo>
+
+    <vo class="ssp.lib.bizMsg.entity.AppEarlywarningRecv" tableName="APP_EARLYWARNING_RECV">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="warninfoId" column="WARNINFO_ID"/>
+        <property name="recvDeptId" column="RECV_DEPT_ID"/>
+        <property name="receiverId" column="RECEIVER_ID"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+    </vo>
+</vobjs>

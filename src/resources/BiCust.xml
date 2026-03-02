@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.cust.domain.customer.entity.Cust" tableName="appbase.bi_cust">
+        <property  name="id" column="ID" isPrimaryKey="true" />
+        <property  name="categoryId" column="CATEGORY_ID" jdbcType="VARCHAR" />
+        <property  name="code" column="CODE" jdbcType="VARCHAR" />
+        <property  name="name" column="NAME" jdbcType="VARCHAR" />
+        <property  name="shortName" column="SHORT_NAME" jdbcType="VARCHAR" />
+        <property  name="isVendor" column="IS_VENDOR" jdbcType="CHAR" />
+        <property  name="isCustomer" column="IS_CUSTOMER" jdbcType="CHAR" />
+        <property  name="custType" column="CUST_TYPE" jdbcType="VARCHAR" />
+        <property  name="custClass" column="CUST_CLASS" jdbcType="VARCHAR" />
+        <property  name="isGroup" column="IS_GROUP" jdbcType="CHAR" />
+        <property  name="parentId" column="PARENT_ID" jdbcType="VARCHAR" />
+        <property  name="trade" column="TRADE" jdbcType="VARCHAR" />
+        <property  name="country" column="COUNTRY" jdbcType="VARCHAR" />
+        <property  name="province" column="PROVINCE" jdbcType="VARCHAR" />
+        <property  name="city" column="CITY" jdbcType="VARCHAR" />
+        <property  name="address" column="ADDRESS" jdbcType="VARCHAR" />
+        <property  name="postcode" column="POSTCODE" jdbcType="VARCHAR" />
+        <property  name="phone" column="PHONE" jdbcType="VARCHAR" />
+        <property  name="fax" column="FAX" jdbcType="VARCHAR" />
+        <property  name="email" column="EMAIL" jdbcType="VARCHAR" />
+        <property  name="website" column="WEBSITE" jdbcType="VARCHAR" />
+        <property  name="contactName1" column="CONTACT_NAME1" jdbcType="VARCHAR" />
+        <property  name="contactTel1" column="CONTACT_TEL1" jdbcType="VARCHAR" />
+        <property  name="contactName2" column="CONTACT_NAME2" jdbcType="VARCHAR" />
+        <property  name="contactTel2" column="CONTACT_TEL2" jdbcType="VARCHAR" />
+        <property  name="licenseId" column="LICENSE_ID" jdbcType="VARCHAR" />
+        <property  name="taxType" column="TAX_TYPE" jdbcType="VARCHAR" />
+        <property  name="taxCode1" column="TAX_CODE1" jdbcType="VARCHAR" />
+        <property  name="taxCode2" column="TAX_CODE2" jdbcType="VARCHAR" />
+        <property  name="dataSource" column="DATA_SOURCE" jdbcType="VARCHAR" />
+        <property  name="sourceSys" column="SOURCE_SYS" jdbcType="VARCHAR" />
+        <property  name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property  name="corpRep" 		column="CORP_REP" jdbcType="VARCHAR" />
+        <property  name="regAddress" column="REG_ADDRESS" jdbcType="VARCHAR" />
+        <property  name="regCapital" column="REG_CAPITAL" jdbcType="VARCHAR" />
+        <property  name="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+        <property  name="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+        <property  name="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+        <property  name="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+        <property  name="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+        <property  name="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+        <property  name="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+        <property  name="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+        <property  name="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+        <property  name="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+        <property  name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property  name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property  name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property  name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property  name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property  name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property  name="custCateId" column="CUST_CATE_ID" jdbcType="VARCHAR" />
+        <property name="recRemove" column="REC_REMOVE"></property>
+        <join name="biCustBankacctList" joinKey="id-custId" joinType="oneToMany" isAggregation="true" class="avicit.cust.domain.customer.entity.CustBankacct"></join>
+        <join name="biCustCategory" joinKey="categoryId" joinType="manyToOne" isAggregation="false" class="avicit.cust.domain.customer.entity.CustCategory"></join>
+        <join name="custCate" joinKey="custCateId" joinType="manyToOne" isAggregation="false" class="avicit.cust.domain.customer.entity.CustCategory"></join>
+    </vo>
+
+    <vo class="avicit.cust.domain.customer.entity.CustBankacct" tableName="appbase.bi_cust_bankacct">
+        <property name="id" column="ID" isPrimaryKey="true" />
+        <property name="custId" column="CUST_ID" jdbcType="VARCHAR" />
+        <property name="bankName" column="BANK_NAME" jdbcType="VARCHAR" />
+        <property name="city" column="CITY" jdbcType="VARCHAR" />
+        <property name="isUnionpay" column="IS_UNIONPAY" jdbcType="CHAR" />
+        <property name="account" column="ACCOUNT" jdbcType="VARCHAR" />
+        <property name="currencyCode" column="CURRENCY_CODE" jdbcType="VARCHAR" />
+        <property name="isDefault" column="IS_DEFAULT" jdbcType="CHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="bankBranchName" column="BANK_BRANCH_NAME" jdbcType="VARCHAR" />
+        <property  name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property  name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property  name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property  name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property  name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property  name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="recRemove" column="REC_REMOVE"></property>
+    </vo>
+
+    <vo class="avicit.cust.domain.customer.entity.CustCategory" tableName="appbase.bi_cust_category">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="parentId" column="PARENT_ID" jdbcType="VARCHAR" />
+        <property name="name" column="NAME" jdbcType="VARCHAR" />
+        <property name="code" column="CODE" jdbcType="VARCHAR" />
+        <property name="isVendor" column="IS_VENDOR" jdbcType="VARCHAR" />
+        <property name="isCustomer" column="IS_CUSTOMER" jdbcType="VARCHAR" />
+    </vo>
+</vobjs>

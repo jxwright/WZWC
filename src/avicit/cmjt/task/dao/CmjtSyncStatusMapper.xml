@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="avicit.cmjt.task.dao.CmjtSyncStatusDAO">
+    <resultMap id="BaseResultMap" type="avicit.cmjt.task.dto.CmjtSyncStatusDTO">
+        <id column="system_name" property="systemName" jdbcType="VARCHAR"/>
+        <result column="last_sync_time" property="lastSyncTime" jdbcType="TIMESTAMP"/>
+        <result column="last_success_time" property="lastSuccessTime" jdbcType="TIMESTAMP"/>
+        <result column="retry_count" property="retryCount" jdbcType="INTEGER"/>
+        <result column="last_error" property="lastError" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="findBySystemName" resultMap="BaseResultMap">
+        SELECT * FROM cmjt_sync_status WHERE system_name = #{systemName}
+    </select>
+
+    <!--<insert id="insert" parameterType="avicit.cmjt.task.dto.CmjtSyncStatusDTO">-->
+        <!--INSERT INTO cmjt_sync_status (-->
+            <!--system_name, last_sync_time, last_success_time,-->
+            <!--retry_count, last_error, create_time, modify_time-->
+        <!--) VALUES (-->
+                     <!--#{systemName}, #{lastSyncTime}, #{lastSuccessTime},-->
+                     <!--#{retryCount}, #{lastError}, #{createTime}, #{modifyTime}-->
+                 <!--)-->
+    <!--</insert>-->
+    <!-- 新增对象 CMJT_PAY_RECE_INFO -->
+    <insert id="insert" parameterType="avicit.cmjt.task.dto.CmjtSyncStatusDTO">
+        insert into cmjt_sync_status
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="systemName != null">
+                system_name,
+            </if>
+            <if test="lastSyncTime != null">
+                last_sync_time,
+            </if>
+            <if test="lastSuccessTime != null">
+                last_success_time,
+            </if>
+            <if test="retryCount != null">
+                retry_count,
+            </if>
+            <if test="lastError != null">
+                last_error,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="systemName != null">
+                #{systemName,jdbcType = VARCHAR},
+            </if>
+            <if test="lastSyncTime != null">
+                #{lastSyncTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="lastSuccessTime != null">
+                #{lastSuccessTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="retryCount != null">
+                #{retryCount,jdbcType = DECIMAL},
+            </if>
+            <if test="lastError != null">
+                #{lastError,jdbcType = VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType = TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType = TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!--<update id="update" parameterType="avicit.cmjt.task.dto.CmjtSyncStatusDTO">-->
+        <!--UPDATE cmjt_sync_status-->
+        <!--SET last_sync_time = #{lastSyncTime},-->
+            <!--last_success_time = #{lastSuccessTime},-->
+            <!--retry_count = #{retryCount},-->
+            <!--last_error = #{lastError},-->
+            <!--modify_time = #{modifyTime}-->
+        <!--WHERE system_name = #{systemName}-->
+    <!--</update>-->
+
+    <!-- 更新对象 cmjt_sync_status -->
+    <update id="update" parameterType="avicit.cmjt.task.dto.CmjtSyncStatusDTO">
+        update cmjt_sync_status
+        <set>
+            <if test="lastSyncTime != null">
+                last_sync_time = #{lastSyncTime,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="lastSuccessTime != null">
+                last_success_time = #{lastSuccessTime,jdbcType = TIMESTAMP} ,
+            </if>
+            <if test="retryCount != null">
+                retry_count = #{retryCount,jdbcType = DECIMAL} ,
+            </if>
+                last_error = #{lastError,jdbcType = VARCHAR} ,
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType = TIMESTAMP}
+            </if>
+        </set>
+        where system_name = #{systemName,jdbcType = VARCHAR}
+    </update>
+
+    <update id="updateCustMerge" parameterType="avicit.cust.domain.customer.entity.Cust">
+        MERGE INTO BI_CUST t1
+        USING dual
+        ON(t1.CODE = #{code,jdbcType=VARCHAR})
+        WHEN NOT MATCHED THEN
+        INSERT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="isVendor != null">
+                IS_VENDOR,
+            </if>
+            <if test="isCustomer != null">
+                IS_CUSTOMER,
+            </if>
+
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+
+            <if test="creationDate != null">
+                CREATION_DATE,
+            </if>
+            <if test="lastUpdatedBy != null">
+                LAST_UPDATED_BY,
+            </if>
+            <if test="lastUpdateDate != null">
+                LAST_UPDATE_DATE,
+            </if>
+            <if test="lastUpdateIp != null">
+                LAST_UPDATE_IP,
+            </if>
+
+            <if test="version != null">
+                VERSION,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType = VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType = VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType = VARCHAR},
+            </if>
+            <if test="isVendor != null">
+                #{isVendor,jdbcType = VARCHAR},
+            </if>
+            <if test="isCustomer != null">
+                #{isCustomer,jdbcType = VARCHAR},
+            </if>
+
+            <if test="createdBy != null">
+                #{createdBy,jdbcType = VARCHAR},
+            </if>
+            <if test="creationDate != null">
+                #{creationDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="lastUpdatedBy != null">
+                #{lastUpdatedBy,jdbcType = VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null">
+                #{lastUpdateDate,jdbcType = TIMESTAMP},
+            </if>
+            <if test="lastUpdateIp != null">
+                #{lastUpdateIp,jdbcType = VARCHAR},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType = DECIMAL},
+            </if>
+        </trim>
+    </update>
+
+
+</mapper>

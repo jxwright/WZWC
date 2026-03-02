@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="ssp.lib.printqueue.entity.AppdataPrintQueue" tableName="APPDATA_PRINT_QUEUE">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="taskId" column="TASK_ID"/>
+        <property name="dataId" column="DATA_ID"/>
+        <property name="printerId" column="PRINTER_ID"/>
+        <property name="isValid" column="IS_VALID"/>
+        <property name="state" column="STATE"/>
+        <property name="printedCount" column="PRINTED_COUNT"/>
+    </vo>
+
+    <vo class="ssp.lib.printqueue.entity.AppdataPrintLog" tableName="APPDATA_PRINT_LOG">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="taskId" column="TASK_ID"/>
+        <property name="queueId" column="QUEUE_ID"/>
+        <property name="printerId" column="PRINTER_ID"/>
+        <property name="printer" column="PRINTER"/>
+        <property name="printNum" column="PRINT_NUM"/>
+        <property name="printDate" column="PRINT_DATE"/>
+        <property name="isSuccess" column="IS_SUCCESS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="ssp.lib.printqueue.entity.AppdataPrintTasks" tableName="APPDATA_PRINT_TASKS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="dataId" column="DATA_ID"/>
+        <property name="dataSrc" column="DATA_SRC"/>
+        <property name="taskSrc" column="TASK_SRC"/>
+        <property name="printTmplate" column="PRINT_TMPLATE"/>
+        <property name="groupId" column="GROUP_ID"/>
+        <property name="planNum" column="PLAN_NUM"/>
+        <property name="printedCount" column="PRINTED_COUNT"/>
+        <property name="state" column="STATE"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <join name="printQueueList" joinKey="id-taskId" joinType="oneToMany" isAggregation="true" class="ssp.lib.printqueue.entity.AppdataPrintQueue"></join>
+    </vo>
+
+    <vo class="ssp.lib.printqueue.entity.AppPrintSets" tableName="APP_PRINT_SETS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="templateName" column="TEMPLATE_NAME"/>
+        <property name="printType" column="PRINT_TYPE"/>
+        <property name="printChannel" column="PRINT_CHANNEL"/>
+        <property name="templateFile" column="TEMPLATE_FILE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="templateVer" column="TEMPLATE_VER"/>
+        <property name="templateTitle" column="TEMPLATE_TITLE"/>
+    </vo>
+</vobjs>

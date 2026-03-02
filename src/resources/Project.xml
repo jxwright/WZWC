@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.pm.domain.project.entity.Project" tableName="appbase.BI_PROJECT">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="projType" column="PROJ_TYPE"/>
+        <property name="categoryId" column="CATEGORY_ID"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <lookup name="parentName" lookupKey="parentId-id" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="parentName"
+                bean="projectDomainServiceImpl" method="getParentNameById"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="entityId" column="ENTITY_ID"/>
+        <property name="entitySid" column="ENTITY_SID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <lookup name="deptName" lookupKey="deptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="adminDeptId" column="ADMIN_DEPT_ID"/>
+        <lookup name="adminDeptName" lookupKey="adminDeptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="isSecret" column="IS_SECRET"/>
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property name="isValid" column="IS_VALID"/>
+        <property name="usedBy" column="USED_BY"/>
+        <property name="fundSource" column="FUND_SOURCE"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="isForeign" column="IS_FOREIGN"/>
+        <property name="currencyCodeFc" column="CURRENCY_CODE_FC"/>
+        <property name="exchangeRate" column="EXCHANGE_RATE"/>
+        <property name="amount" column="AMOUNT"/>
+        <property name="amountFc" column="AMOUNT_FC"/>
+        <property name="projCycle" column="PROJ_CYCLE"/>
+        <property name="createDate" column="CREATE_DATE"/>
+        <property name="endDate" column="END_DATE"/>
+        <property name="status" column="STATUS"/>
+        <property name="personId" column="PERSON_ID"/>
+        <lookup name="personName" lookupKey="personId-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="supervisorId" column="SUPERVISOR_ID"/>
+        <lookup name="supervisorName" lookupKey="supervisorId-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="keyId" column="KEY_ID"/>
+        <property name="seqno" column="SEQNO" select="true" insert="true" update="true" delete="true"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="sourceSys" column="SOURCE_SYS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="attribute01" column="ATTRIBUTE_01"/>
+        <property name="attribute02" column="ATTRIBUTE_02"/>
+        <property name="attribute03" column="ATTRIBUTE_03"/>
+        <property name="attribute04" column="ATTRIBUTE_04"/>
+        <property name="attribute05" column="ATTRIBUTE_05"/>
+        <property name="attribute06" column="ATTRIBUTE_06"/>
+        <property name="attribute07" column="ATTRIBUTE_07"/>
+        <property name="attribute08" column="ATTRIBUTE_08"/>
+        <property name="attribute09" column="ATTRIBUTE_09"/>
+        <property name="attribute10" column="ATTRIBUTE_10"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <join name="biProjectProcessList" joinKey="projId" joinType="oneToMany" isAggregation="false" class="avicit.pm.domain.project.entity.ProjectProcess"></join>
+    </vo>
+
+    <vo class="avicit.pm.domain.project.entity.ProjectCategory" tableName="appbase.BI_PROJ_CATEGORY">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <lookup name="parentName" lookupKey="parentId-id" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="parentName"
+                bean="projectCategoryDomainServiceImpl" method="getParentNameById"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="projType" column="PROJ_TYPE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="keyId" column="KEY_ID"/>
+        <property name="seqno" column="SEQNO" select="true" insert="true" update="true" delete="true"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="avicit.pm.domain.project.entity.ProjectProcess" tableName="appbase.BI_PROJ_PROCESS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="projId" column="PROJ_ID"/>
+        <property name="processEvent" column="PROCESS_EVENT"/>
+        <property name="eventDate" column="EVENT_DATE"/>
+        <property name="eventUrl" column="EVENT_URL"/>
+        <property name="attachUrl" column="ATTACH_URL"/>
+        <property name="status" column="STATUS"/>
+        <property name="deptName" column="DEPT_NAME"/>
+        <property name="person" column="PERSON"/>
+        <lookup name="personName" lookupKey="person-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="sourceSys" column="SOURCE_SYS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="attribute01" column="ATTRIBUTE_01"/>
+        <property name="attribute02" column="ATTRIBUTE_02"/>
+        <property name="attribute03" column="ATTRIBUTE_03"/>
+        <property name="attribute04" column="ATTRIBUTE_04"/>
+        <property name="attribute05" column="ATTRIBUTE_05"/>
+        <property name="attribute06" column="ATTRIBUTE_06"/>
+        <property name="attribute07" column="ATTRIBUTE_07"/>
+        <property name="attribute08" column="ATTRIBUTE_08"/>
+        <property name="attribute09" column="ATTRIBUTE_09"/>
+        <property name="attribute10" column="ATTRIBUTE_10"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+</vobjs>

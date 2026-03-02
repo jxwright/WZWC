@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.cm.domain.negotiate.entity.Negotiate" tableName="CM_NEGOTIATE">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="groupId" column="GROUP_ID"/>
+        <property name="entityId" column="ENTITY_ID"/>
+        <property name="entitySid" column="ENTITY_SID"/>
+        <property name="title" column="TITLE"/>
+        <property name="forCase" column="FOR_CASE"/>
+        <property name="numberOf" column="NUMBER_OF"/>
+        <property name="priorId" column="PRIOR_ID"/>
+        <property name="projectId" column="PROJECT_ID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="negotiatorsUid" column="NEGOTIATORS_UID"/>
+        <property name="recorderUid" column="RECORDER_UID"/>
+        <property name="negotiateSite" column="NEGOTIATE_SITE"/>
+        <property name="negotiateDate" column="NEGOTIATE_DATE"/>
+        <property name="startTime" column="START_TIME"/>
+        <property name="endTime" column="END_TIME"/>
+        <property name="opposite" column="OPPOSITE"/>
+        <property name="oppCount" column="OPP_COUNT"/>
+        <property name="ourCount" column="OUR_COUNT"/>
+        <property name="content" column="CONTENT"/>
+        <property name="negotiateResult" column="NEGOTIATE_RESULT"/>
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property name="state" column="STATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="quote" column="QUOTE"/>
+        <property name="baseAmount" column="BASE_AMOUNT"/>
+        <property name="amount" column="AMOUNT"/>
+        <property name="paymentDesc" column="PAYMENT_DESC"/>
+        <join name="negotiatorsList" joinDelete="true" page="false" pageSiz="2" joinKey="id-negotiateId" joinType="oneToMany" isAggregation="true" class="avicit.cm.domain.negotiate.entity.Negotiators"/>
+        <lookup name="contractInfo" lookupKey="id" lookupType="oneToMany"
+                paramType="none" params=""
+                returnType="vo" returnKey=""
+                bean="Contract" method="queryContractInfoList"/>
+    </vo>
+</vobjs>

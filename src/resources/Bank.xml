@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.base.domain.bank.entity.Bank" tableName="BI_BANK">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="code" column="CODE"/>
+        <property name="shortCode" column="SHORT_CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="shortName" column="SHORT_NAME"/>
+        <property name="bankType" column="BANK_TYPE"/>
+        <property name="isPrimary" column="IS_PRIMARY"/>
+        <property name="webUrl" column="WEB_URL"/>
+        <property name="servicePhone" column="SERVICE_PHONE"/>
+        <property name="serviceEmail" column="SERVICE_EMAIL"/>
+        <property name="sortCode" column="SORT_CODE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="avicit.base.domain.bank.entity.BankBranch" tableName="BI_BANKBRANCH">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="shortName" column="SHORT_NAME"/>
+        <property name="bankId" column="BANK_ID"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <property name="branchType" column="BRANCH_TYPE"/>
+        <property name="area" column="AREA"/>
+        <property name="address" column="ADDRESS"/>
+        <property name="postCode" column="POST_CODE"/>
+        <property name="phone1" column="PHONE1"/>
+        <property name="phone2" column="PHONE2"/>
+        <property name="servicePhone" column="SERVICE_PHONE"/>
+        <property name="fax" column="FAX"/>
+        <property name="email" column="EMAIL"/>
+        <property name="manager" column="MANAGER"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <lookup name="bankName" lookupKey="bankId-id" lookupType="manyToOne" paramType="none" params="{}" returnType="value" returnKey="name"
+                bean="bankDomainServiceImpl" method="queryBankNameById"/>
+        <lookup name="parentName" lookupKey="parentId-id" lookupType="manyToOne" paramType="none" params="{}" returnType="value" returnKey="name"
+                bean="bankDomainServiceImpl" method="queryBankBranchNameById"/>
+    </vo>
+</vobjs>

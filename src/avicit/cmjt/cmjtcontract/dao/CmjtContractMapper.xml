@@ -1,0 +1,2623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cmjt.cmjtcontract.dao.CmjtContractDAO">
+	<resultMap id="CmjtContractDTOMap" type="avicit.cmjt.cmjtcontract.dto.CmjtContractDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="contractNo" column="CONTRACT_NO" jdbcType="VARCHAR" />
+		<result property="contractName" column="CONTRACT_NAME" jdbcType="VARCHAR" />
+		<result property="contractState" column="CONTRACT_STATE" jdbcType="VARCHAR" />
+		<result property="contractMoney" column="CONTRACT_MONEY" jdbcType="DECIMAL" />
+		<result property="contractMoneyUpper" column="CONTRACT_MONEY_UPPER" jdbcType="VARCHAR" />
+		<result property="contractWbMoney" column="CONTRACT_WB_MONEY" jdbcType="DECIMAL" />
+		<result property="contractClassifyName" column="CONTRACT_CLASSIFY_NAME" jdbcType="VARCHAR" />
+		<result property="contractClasstypeName" column="CONTRACT_CLASSTYPE_NAME" jdbcType="VARCHAR" />
+		<result property="contractEstimateBegin" column="CONTRACT_ESTIMATE_BEGIN" jdbcType="VARCHAR" />
+		<result property="contractEstimateEnd" column="CONTRACT_ESTIMATE_END" jdbcType="VARCHAR" />
+		<result property="contractingParties" column="CONTRACTING_PARTIES" jdbcType="VARCHAR" />
+		<result property="cmdOrder" column="CMD_ORDER" jdbcType="VARCHAR" />
+		<result property="businessArea" column="BUSINESS_AREA" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE02" jdbcType="VARCHAR" />
+		<result property="militaryCmType" column="MILITARY_CM_TYPE" jdbcType="VARCHAR" />
+		<result property="scientificCmType" column="SCIENTIFIC_CM_TYPE" jdbcType="VARCHAR" />
+		<result property="itemSecret" column="ITEM_SECRET" jdbcType="VARCHAR" />
+		<result property="projectCode" column="PROJECT_CODE" jdbcType="VARCHAR" />
+		<result property="projectAbbreviation" column="PROJECT_ABBREVIATION" jdbcType="VARCHAR" />
+		<result property="projectType" column="PROJECT_TYPE" jdbcType="VARCHAR" />
+		<result property="currency" column="CURRENCY" jdbcType="VARCHAR" />
+		<result property="currencyZhmc" column="CURRENCY_ZHMC" jdbcType="VARCHAR" />
+		<result property="exchangeRate" column="EXCHANGE_RATE" jdbcType="DECIMAL" />
+		<result property="multiContract" column="MULTI_CONTRACT" jdbcType="VARCHAR" />
+		<result property="signOrg" column="SIGN_ORG" jdbcType="VARCHAR" />
+		<result property="signOrgName" column="SIGN_ORG_NAME" jdbcType="VARCHAR" />
+		<result property="unifiedSocialCreditCode" column="UNIFIED_SOCIAL_CREDIT_CODE" jdbcType="VARCHAR" />
+		<result property="supplierName" column="SUPPLIER_NAME" jdbcType="VARCHAR" />
+		<result property="supplierContactNo" column="SUPPLIER_CONTACT_NO" jdbcType="VARCHAR" />
+		<result property="purchaseMode" column="PURCHASE_MODE" jdbcType="VARCHAR" />
+		<result property="sealType" column="SEAL_TYPE" jdbcType="VARCHAR" />
+		<result property="sealTypeName" column="SEAL_TYPE_NAME" jdbcType="VARCHAR" />
+		<result property="ynSeal" column="YN_SEAL" jdbcType="VARCHAR" />
+		<result property="ynSealZhmc" column="YN_SEAL_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynFramework" column="YN_FRAMEWORK" jdbcType="VARCHAR" />
+		<result property="ynFrameworkZhmc" column="YN_FRAMEWORK_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynAgreedCycle" column="YN_AGREED_CYCLE" jdbcType="VARCHAR" />
+		<result property="ynAgreedCycleZhmc" column="YN_AGREED_CYCLE_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynMilitaryDirectsigning" column="YN_MILITARY_DIRECTSIGNING" jdbcType="VARCHAR" />
+		<result property="ynMilitaryDirectsigningZhmc" column="YN_MILITARY_DIRECTSIGNING_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynMilitarySupervise" column="YN_MILITARY_SUPERVISE" jdbcType="VARCHAR" />
+		<result property="ynMilitarySuperviseCompany" column="YN_MILITARY_SUPERVISE_COMPANY" jdbcType="VARCHAR" />
+		<result property="ynPldgCm" column="YN_PLDG_CM" jdbcType="VARCHAR" />
+		<result property="ynPldgCmZhmc" column="YN_PLDG_CM_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynZdPrice" column="YN_ZD_PRICE" jdbcType="VARCHAR" />
+		<result property="ynZdPriceZhmc" column="YN_ZD_PRICE_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynSignOrder" column="YN_SIGN_ORDER" jdbcType="VARCHAR" />
+		<result property="cmZdPrice" column="CM_ZD_PRICE" jdbcType="DECIMAL" />
+		<result property="settlementMethod" column="SETTLEMENT_METHOD" jdbcType="VARCHAR" />
+		<result property="settlementZjBl" column="SETTLEMENT_ZJ_BL" jdbcType="DECIMAL" />
+		<result property="settlementZjMoney" column="SETTLEMENT_ZJ_MONEY" jdbcType="DECIMAL" />
+		<result property="electronicPlatform" column="ELECTRONIC_PLATFORM" jdbcType="VARCHAR" />
+		<result property="internetRemark" column="INTERNET_REMARK" jdbcType="VARCHAR" />
+		<result property="otherFeeRemark" column="OTHER_FEE_REMARK" jdbcType="VARCHAR" />
+		<result property="groupBusputunderDept" column="GROUP_BUSPUTUNDER_DEPT" jdbcType="VARCHAR" />
+		<result property="weContractSrType" column="WE_CONTRACT_SR_TYPE" jdbcType="VARCHAR" />
+		<result property="textNum" column="TEXT_NUM" jdbcType="VARCHAR" />
+		<result property="textSecret" column="TEXT_SECRET" jdbcType="VARCHAR" />
+		<result property="textSecretZhmc" column="TEXT_SECRET_ZHMC" jdbcType="VARCHAR" />
+		<result property="cmUserCode" column="CM_USER_CODE" jdbcType="VARCHAR" />
+		<result property="applyDate" column="APPLY_DATE" jdbcType="VARCHAR" />
+		<result property="applyDept" column="APPLY_DEPT" jdbcType="VARCHAR" />
+		<result property="applyId" column="APPLY_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+		<result property="sysApplicationId" column="SYS_APPLICATION_ID" jdbcType="VARCHAR" />
+		<result property="logAppId" column="LOG_APP_ID" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="operationType" column="OPERATION_TYPE_" jdbcType="VARCHAR" />
+		<result property="changId" column="CHANG_ID" jdbcType="VARCHAR" />
+		<result property="syncStatus" column="SYNC_STATUS" jdbcType="VARCHAR" />
+		<result property="contractTypeId" column="CONTRACT_TYPE_ID" jdbcType="VARCHAR" />
+		<result property="jsType" column="JS_TYPE" jdbcType="VARCHAR" />
+		<result property="jsTypeName" column="JS_TYPE_NAME" jdbcType="VARCHAR" />
+    </resultMap>
+	<resultMap id="CmjtContractResponseDTOMap" type="avicit.cmjt.cmjtcontract.dto.CmjtContractResposeDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="contractNo" column="CONTRACT_NO" jdbcType="VARCHAR" />
+		<result property="contractName" column="CONTRACT_NAME" jdbcType="VARCHAR" />
+		<result property="contractState" column="CONTRACT_STATE" jdbcType="VARCHAR" />
+		<result property="contractMoney" column="CONTRACT_MONEY" jdbcType="DECIMAL" />
+		<result property="contractMoneyUpper" column="CONTRACT_MONEY_UPPER" jdbcType="VARCHAR" />
+		<result property="contractWbMoney" column="CONTRACT_WB_MONEY" jdbcType="DECIMAL" />
+		<result property="contractClassifyName" column="CONTRACT_CLASSIFY_NAME" jdbcType="VARCHAR" />
+		<result property="contractClasstypeName" column="CONTRACT_CLASSTYPE_NAME" jdbcType="VARCHAR" />
+		<result property="contractEstimateBegin" column="CONTRACT_ESTIMATE_BEGIN" jdbcType="VARCHAR" />
+		<result property="contractEstimateEnd" column="CONTRACT_ESTIMATE_END" jdbcType="VARCHAR" />
+		<result property="contractingParties" column="CONTRACTING_PARTIES" jdbcType="VARCHAR" />
+		<result property="cmdOrder" column="CMD_ORDER" jdbcType="VARCHAR" />
+		<result property="businessArea" column="BUSINESS_AREA" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE02" jdbcType="VARCHAR" />
+		<result property="militaryCmType" column="MILITARY_CM_TYPE" jdbcType="VARCHAR" />
+		<result property="scientificCmType" column="SCIENTIFIC_CM_TYPE" jdbcType="VARCHAR" />
+		<result property="itemSecret" column="ITEM_SECRET" jdbcType="VARCHAR" />
+		<result property="projectCode" column="PROJECT_CODE" jdbcType="VARCHAR" />
+		<result property="projectAbbreviation" column="PROJECT_ABBREVIATION" jdbcType="VARCHAR" />
+		<result property="projectType" column="PROJECT_TYPE" jdbcType="VARCHAR" />
+		<result property="currency" column="CURRENCY" jdbcType="VARCHAR" />
+		<result property="currencyZhmc" column="CURRENCY_ZHMC" jdbcType="VARCHAR" />
+		<result property="exchangeRate" column="EXCHANGE_RATE" jdbcType="DECIMAL" />
+		<result property="multiContract" column="MULTI_CONTRACT" jdbcType="VARCHAR" />
+		<result property="signOrg" column="SIGN_ORG" jdbcType="VARCHAR" />
+		<result property="signOrgName" column="SIGN_ORG_NAME" jdbcType="VARCHAR" />
+		<result property="unifiedSocialCreditCode" column="UNIFIED_SOCIAL_CREDIT_CODE" jdbcType="VARCHAR" />
+		<result property="supplierName" column="SUPPLIER_NAME" jdbcType="VARCHAR" />
+		<result property="supplierContactNo" column="SUPPLIER_CONTACT_NO" jdbcType="VARCHAR" />
+		<result property="purchaseMode" column="PURCHASE_MODE" jdbcType="VARCHAR" />
+		<result property="sealType" column="SEAL_TYPE" jdbcType="VARCHAR" />
+		<result property="sealTypeName" column="SEAL_TYPE_NAME" jdbcType="VARCHAR" />
+		<result property="ynSeal" column="YN_SEAL" jdbcType="VARCHAR" />
+		<result property="ynSealZhmc" column="YN_SEAL_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynFramework" column="YN_FRAMEWORK" jdbcType="VARCHAR" />
+		<result property="ynFrameworkZhmc" column="YN_FRAMEWORK_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynAgreedCycle" column="YN_AGREED_CYCLE" jdbcType="VARCHAR" />
+		<result property="ynAgreedCycleZhmc" column="YN_AGREED_CYCLE_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynMilitaryDirectsigning" column="YN_MILITARY_DIRECTSIGNING" jdbcType="VARCHAR" />
+		<result property="ynMilitaryDirectsigningZhmc" column="YN_MILITARY_DIRECTSIGNING_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynMilitarySupervise" column="YN_MILITARY_SUPERVISE" jdbcType="VARCHAR" />
+		<result property="ynMilitarySuperviseCompany" column="YN_MILITARY_SUPERVISE_COMPANY" jdbcType="VARCHAR" />
+		<result property="ynPldgCm" column="YN_PLDG_CM" jdbcType="VARCHAR" />
+		<result property="ynPldgCmZhmc" column="YN_PLDG_CM_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynZdPrice" column="YN_ZD_PRICE" jdbcType="VARCHAR" />
+		<result property="ynZdPriceZhmc" column="YN_ZD_PRICE_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynSignOrder" column="YN_SIGN_ORDER" jdbcType="VARCHAR" />
+		<result property="cmZdPrice" column="CM_ZD_PRICE" jdbcType="DECIMAL" />
+		<result property="settlementMethod" column="SETTLEMENT_METHOD" jdbcType="VARCHAR" />
+		<result property="settlementZjBl" column="SETTLEMENT_ZJ_BL" jdbcType="DECIMAL" />
+		<result property="settlementZjMoney" column="SETTLEMENT_ZJ_MONEY" jdbcType="DECIMAL" />
+		<result property="electronicPlatform" column="ELECTRONIC_PLATFORM" jdbcType="VARCHAR" />
+		<result property="internetRemark" column="INTERNET_REMARK" jdbcType="VARCHAR" />
+		<result property="otherFeeRemark" column="OTHER_FEE_REMARK" jdbcType="VARCHAR" />
+		<result property="groupBusputunderDept" column="GROUP_BUSPUTUNDER_DEPT" jdbcType="VARCHAR" />
+		<result property="weContractSrType" column="WE_CONTRACT_SR_TYPE" jdbcType="VARCHAR" />
+		<result property="textNum" column="TEXT_NUM" jdbcType="VARCHAR" />
+		<result property="textSecret" column="TEXT_SECRET" jdbcType="VARCHAR" />
+		<result property="textSecretZhmc" column="TEXT_SECRET_ZHMC" jdbcType="VARCHAR" />
+		<result property="cmUserCode" column="CM_USER_CODE" jdbcType="VARCHAR" />
+		<result property="applyDate" column="APPLY_DATE" jdbcType="VARCHAR" />
+		<result property="applyDept" column="APPLY_DEPT" jdbcType="VARCHAR" />
+		<result property="applyId" column="APPLY_ID" jdbcType="VARCHAR" />
+		<result property="sysApplicationId" column="SYS_APPLICATION_ID" jdbcType="VARCHAR" />
+		<result property="logType" column="LOG_TYPE" jdbcType="VARCHAR" />
+		<result property="logFormName" column="LOG_FORM_NAME" jdbcType="VARCHAR" />
+		<result property="logTitle" column="LOG_TITLE" jdbcType="VARCHAR" />
+		<result property="logAppId" column="LOG_APP_ID" jdbcType="VARCHAR" />
+		<result property="operationType" column="OPERATION_TYPE_" jdbcType="VARCHAR" />
+		<result property="changId" column="CHANG_ID" jdbcType="VARCHAR" />
+		<result property="syncStatus" column="SYNC_STATUS" jdbcType="VARCHAR" />
+		<result property="jsTypeName" column="JS_TYPE_NAME" jdbcType="VARCHAR" />
+		<result property="jsType" column="JS_TYPE" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="commonColums">
+		<trim suffixOverrides=",">
+			t1.ID,
+			t1.CONTRACT_NO,
+			t1.CONTRACT_NAME,
+			t1.CONTRACT_STATE,
+			t1.CONTRACT_MONEY,
+			t1.CONTRACT_MONEY_UPPER,
+			t1.CONTRACT_WB_MONEY,
+			t1.CONTRACT_CLASSIFY_NAME,
+			t1.CONTRACT_CLASSTYPE_NAME,
+			t1.CONTRACT_ESTIMATE_BEGIN,
+			t1.CONTRACT_ESTIMATE_END,
+			t1.CONTRACTING_PARTIES,
+			t1.CMD_ORDER,
+			t1.BUSINESS_AREA,
+			t1.ATTRIBUTE02,
+			t1.MILITARY_CM_TYPE,
+			t1.SCIENTIFIC_CM_TYPE,
+			t1.ITEM_SECRET,
+			t1.PROJECT_CODE,
+			t1.PROJECT_ABBREVIATION,
+			t1.PROJECT_TYPE,
+			t1.CURRENCY,
+			t1.CURRENCY_ZHMC,
+			t1.EXCHANGE_RATE,
+			t1.MULTI_CONTRACT,
+			t1.SIGN_ORG,
+			t1.SIGN_ORG_NAME,
+			t1.UNIFIED_SOCIAL_CREDIT_CODE,
+			t1.SUPPLIER_NAME,
+			t1.SUPPLIER_CONTACT_NO,
+			t1.PURCHASE_MODE,
+			t1.SEAL_TYPE,
+			t1.SEAL_TYPE_NAME,
+			t1.YN_SEAL,
+			t1.YN_SEAL_ZHMC,
+			t1.YN_FRAMEWORK,
+			t1.YN_FRAMEWORK_ZHMC,
+			t1.YN_AGREED_CYCLE,
+			t1.YN_AGREED_CYCLE_ZHMC,
+			t1.YN_MILITARY_DIRECTSIGNING,
+			t1.YN_MILITARY_DIRECTSIGNING_ZHMC,
+			t1.YN_MILITARY_SUPERVISE,
+			t1.YN_MILITARY_SUPERVISE_COMPANY,
+			t1.YN_PLDG_CM,
+			t1.YN_PLDG_CM_ZHMC,
+			t1.YN_ZD_PRICE,
+			t1.YN_ZD_PRICE_ZHMC,
+			t1.YN_SIGN_ORDER,
+			t1.CM_ZD_PRICE,
+			t1.SETTLEMENT_METHOD,
+			t1.SETTLEMENT_ZJ_BL,
+			t1.SETTLEMENT_ZJ_MONEY,
+			t1.ELECTRONIC_PLATFORM,
+			t1.INTERNET_REMARK,
+			t1.OTHER_FEE_REMARK,
+			t1.GROUP_BUSPUTUNDER_DEPT,
+			t1.WE_CONTRACT_SR_TYPE,
+			t1.TEXT_NUM,
+			t1.TEXT_SECRET,
+			t1.TEXT_SECRET_ZHMC,
+			t1.CM_USER_CODE,
+			t1.APPLY_DATE,
+			t1.APPLY_DEPT,
+			t1.APPLY_ID,
+			t1.CREATED_BY,
+			t1.CREATED_DEPT,
+			t1.CREATION_DATE,
+			t1.LAST_UPDATED_BY,
+			t1.LAST_UPDATE_DATE,
+			t1.LAST_UPDATE_IP,
+			t1.ORG_IDENTITY,
+			t1.SYS_APPLICATION_ID,
+			t1.LOG_APP_ID,
+			t1.VERSION,
+			t1.OPERATION_TYPE_,
+			t1.CHANG_ID,
+		</trim>
+	</sql>
+
+	<!-- 默认查询条件 -->
+	<sql id="defaultWhereAnd">
+		<!--<if test="orgIdentity != null and orgIdentity != ''">-->
+			<!--and t1.org_identity = #{orgIdentity}-->
+		<!--</if>-->
+	</sql>
+
+	<sql id="commonWhereAnd">
+		<if test="bean.id != null and bean.id != ''">
+			and t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.contractNo != null and bean.contractNo != ''">
+			and t1.CONTRACT_NO like concat(concat('%',#{bean.contractNo}),'%')
+		</if>
+		<if test="bean.contractName != null and bean.contractName != ''">
+			and t1.CONTRACT_NAME like concat(concat('%',#{bean.contractName}),'%')
+		</if>
+		<if test="bean.contractState != null and bean.contractState != ''">
+			and t1.CONTRACT_STATE like concat(concat('%',#{bean.contractState}),'%')
+		</if>
+		<if test="bean.contractMoney != null ">
+			and t1.CONTRACT_MONEY = #{bean.contractMoney}
+		</if>
+		<if test="bean.contractMoneyUpper != null and bean.contractMoneyUpper != ''">
+			and t1.CONTRACT_MONEY_UPPER like concat(concat('%',#{bean.contractMoneyUpper}),'%')
+		</if>
+		<if test="bean.contractWbMoney != null ">
+			and t1.CONTRACT_WB_MONEY = #{bean.contractWbMoney}
+		</if>
+		<if test="bean.contractClassifyName != null and bean.contractClassifyName != ''">
+			and t1.CONTRACT_CLASSIFY_NAME like concat(concat('%',#{bean.contractClassifyName}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			and t1.ATTRIBUTE02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.contractClasstypeName != null and bean.contractClasstypeName != ''">
+			and t1.CONTRACT_CLASSTYPE_NAME like concat(concat('%',#{bean.contractClasstypeName}),'%')
+		</if>
+		<if test="bean.contractEstimateBegin != null and bean.contractEstimateBegin != ''">
+			and t1.CONTRACT_ESTIMATE_BEGIN like concat(concat('%',#{bean.contractEstimateBegin}),'%')
+		</if>
+		<if test="bean.contractEstimateEnd != null and bean.contractEstimateEnd != ''">
+			and t1.CONTRACT_ESTIMATE_END like concat(concat('%',#{bean.contractEstimateEnd}),'%')
+		</if>
+		<if test="bean.contractingParties != null and bean.contractingParties != ''">
+			and t1.CONTRACTING_PARTIES like concat(concat('%',#{bean.contractingParties}),'%')
+		</if>
+		<if test="bean.cmdOrder != null and bean.cmdOrder != ''">
+			and t1.CMD_ORDER like concat(concat('%',#{bean.cmdOrder}),'%')
+		</if>
+		<if test="bean.businessArea != null and bean.businessArea != ''">
+			and t1.BUSINESS_AREA like concat(concat('%',#{bean.businessArea}),'%')
+		</if>
+		<if test="bean.militaryCmType != null and bean.militaryCmType != ''">
+			and t1.MILITARY_CM_TYPE like concat(concat('%',#{bean.militaryCmType}),'%')
+		</if>
+		<if test="bean.scientificCmType != null and bean.scientificCmType != ''">
+			and t1.SCIENTIFIC_CM_TYPE like concat(concat('%',#{bean.scientificCmType}),'%')
+		</if>
+		<if test="bean.itemSecret != null and bean.itemSecret != ''">
+			and t1.ITEM_SECRET like concat(concat('%',#{bean.itemSecret}),'%')
+		</if>
+		<if test="bean.projectCode != null and bean.projectCode != ''">
+			and t1.PROJECT_CODE like concat(concat('%',#{bean.projectCode}),'%')
+		</if>
+		<if test="bean.projectAbbreviation != null and bean.projectAbbreviation != ''">
+			and t1.PROJECT_ABBREVIATION like concat(concat('%',#{bean.projectAbbreviation}),'%')
+		</if>
+		<if test="bean.projectType != null and bean.projectType != ''">
+			and t1.PROJECT_TYPE like concat(concat('%',#{bean.projectType}),'%')
+		</if>
+		<if test="bean.currency != null and bean.currency != ''">
+			and t1.CURRENCY like concat(concat('%',#{bean.currency}),'%')
+		</if>
+		<if test="bean.currencyZhmc != null and bean.currencyZhmc != ''">
+			and t1.CURRENCY_ZHMC like concat(concat('%',#{bean.currencyZhmc}),'%')
+		</if>
+		<if test="bean.exchangeRate != null ">
+			and t1.EXCHANGE_RATE = #{bean.exchangeRate}
+		</if>
+		<if test="bean.multiContract != null and bean.multiContract != ''">
+			and t1.MULTI_CONTRACT like concat(concat('%',#{bean.multiContract}),'%')
+		</if>
+		<if test="bean.signOrg != null and bean.signOrg != ''">
+			and t1.SIGN_ORG like concat(concat('%',#{bean.signOrg}),'%')
+		</if>
+		<if test="bean.signOrgName != null and bean.signOrgName != ''">
+			and t1.SIGN_ORG_NAME like concat(concat('%',#{bean.signOrgName}),'%')
+		</if>
+		<if test="bean.unifiedSocialCreditCode != null and bean.unifiedSocialCreditCode != ''">
+			and t1.UNIFIED_SOCIAL_CREDIT_CODE like concat(concat('%',#{bean.unifiedSocialCreditCode}),'%')
+		</if>
+		<if test="bean.supplierName != null and bean.supplierName != ''">
+			and t1.SUPPLIER_NAME like concat(concat('%',#{bean.supplierName}),'%')
+		</if>
+		<if test="bean.supplierContactNo != null and bean.supplierContactNo != ''">
+			and t1.SUPPLIER_CONTACT_NO like concat(concat('%',#{bean.supplierContactNo}),'%')
+		</if>
+		<if test="bean.purchaseMode != null and bean.purchaseMode != ''">
+			and t1.PURCHASE_MODE like concat(concat('%',#{bean.purchaseMode}),'%')
+		</if>
+		<if test="bean.sealType != null and bean.sealType != ''">
+			and t1.SEAL_TYPE like concat(concat('%',#{bean.sealType}),'%')
+		</if>
+		<if test="bean.sealTypeName != null and bean.sealTypeName != ''">
+			and t1.SEAL_TYPE_NAME like concat(concat('%',#{bean.sealTypeName}),'%')
+		</if>
+		<if test="bean.ynSeal != null and bean.ynSeal != ''">
+			and t1.YN_SEAL like concat(concat('%',#{bean.ynSeal}),'%')
+		</if>
+		<if test="bean.ynSealZhmc != null and bean.ynSealZhmc != ''">
+			and t1.YN_SEAL_ZHMC like concat(concat('%',#{bean.ynSealZhmc}),'%')
+		</if>
+		<if test="bean.ynFramework != null and bean.ynFramework != ''">
+			and t1.YN_FRAMEWORK like concat(concat('%',#{bean.ynFramework}),'%')
+		</if>
+		<if test="bean.ynFrameworkZhmc != null and bean.ynFrameworkZhmc != ''">
+			and t1.YN_FRAMEWORK_ZHMC like concat(concat('%',#{bean.ynFrameworkZhmc}),'%')
+		</if>
+		<if test="bean.ynAgreedCycle != null and bean.ynAgreedCycle != ''">
+			and t1.YN_AGREED_CYCLE like concat(concat('%',#{bean.ynAgreedCycle}),'%')
+		</if>
+		<if test="bean.ynAgreedCycleZhmc != null and bean.ynAgreedCycleZhmc != ''">
+			and t1.YN_AGREED_CYCLE_ZHMC like concat(concat('%',#{bean.ynAgreedCycleZhmc}),'%')
+		</if>
+		<if test="bean.ynMilitaryDirectsigning != null and bean.ynMilitaryDirectsigning != ''">
+			and t1.YN_MILITARY_DIRECTSIGNING like concat(concat('%',#{bean.ynMilitaryDirectsigning}),'%')
+		</if>
+		<if test="bean.ynMilitaryDirectsigningZhmc != null and bean.ynMilitaryDirectsigningZhmc != ''">
+			and t1.YN_MILITARY_DIRECTSIGNING_ZHMC like concat(concat('%',#{bean.ynMilitaryDirectsigningZhmc}),'%')
+		</if>
+		<if test="bean.ynMilitarySupervise != null and bean.ynMilitarySupervise != ''">
+			and t1.YN_MILITARY_SUPERVISE like concat(concat('%',#{bean.ynMilitarySupervise}),'%')
+		</if>
+		<if test="bean.ynMilitarySuperviseCompany != null and bean.ynMilitarySuperviseCompany != ''">
+			and t1.YN_MILITARY_SUPERVISE_COMPANY like concat(concat('%',#{bean.ynMilitarySuperviseCompany}),'%')
+		</if>
+		<if test="bean.ynPldgCm != null and bean.ynPldgCm != ''">
+			and t1.YN_PLDG_CM like concat(concat('%',#{bean.ynPldgCm}),'%')
+		</if>
+		<if test="bean.ynPldgCmZhmc != null and bean.ynPldgCmZhmc != ''">
+			and t1.YN_PLDG_CM_ZHMC like concat(concat('%',#{bean.ynPldgCmZhmc}),'%')
+		</if>
+		<if test="bean.ynZdPrice != null and bean.ynZdPrice != ''">
+			and t1.YN_ZD_PRICE like concat(concat('%',#{bean.ynZdPrice}),'%')
+		</if>
+		<if test="bean.ynZdPriceZhmc != null and bean.ynZdPriceZhmc != ''">
+			and t1.YN_ZD_PRICE_ZHMC like concat(concat('%',#{bean.ynZdPriceZhmc}),'%')
+		</if>
+		<if test="bean.ynSignOrder != null and bean.ynSignOrder != ''">
+			and t1.YN_SIGN_ORDER like concat(concat('%',#{bean.ynSignOrder}),'%')
+		</if>
+		<if test="bean.cmZdPrice != null ">
+			and t1.CM_ZD_PRICE = #{bean.cmZdPrice}
+		</if>
+		<if test="bean.settlementMethod != null and bean.settlementMethod != ''">
+			and t1.SETTLEMENT_METHOD like concat(concat('%',#{bean.settlementMethod}),'%')
+		</if>
+		<if test="bean.settlementZjBl != null ">
+			and t1.SETTLEMENT_ZJ_BL = #{bean.settlementZjBl}
+		</if>
+		<if test="bean.settlementZjMoney != null ">
+			and t1.SETTLEMENT_ZJ_MONEY = #{bean.settlementZjMoney}
+		</if>
+		<if test="bean.electronicPlatform != null and bean.electronicPlatform != ''">
+			and t1.ELECTRONIC_PLATFORM like concat(concat('%',#{bean.electronicPlatform}),'%')
+		</if>
+		<if test="bean.internetRemark != null and bean.internetRemark != ''">
+			and t1.INTERNET_REMARK like concat(concat('%',#{bean.internetRemark}),'%')
+		</if>
+		<if test="bean.otherFeeRemark != null and bean.otherFeeRemark != ''">
+			and t1.OTHER_FEE_REMARK like concat(concat('%',#{bean.otherFeeRemark}),'%')
+		</if>
+		<if test="bean.groupBusputunderDept != null and bean.groupBusputunderDept != ''">
+			and t1.GROUP_BUSPUTUNDER_DEPT like concat(concat('%',#{bean.groupBusputunderDept}),'%')
+		</if>
+		<if test="bean.weContractSrType != null and bean.weContractSrType != ''">
+			and t1.WE_CONTRACT_SR_TYPE like concat(concat('%',#{bean.weContractSrType}),'%')
+		</if>
+		<if test="bean.textNum != null and bean.textNum != ''">
+			and t1.TEXT_NUM like concat(concat('%',#{bean.textNum}),'%')
+		</if>
+		<if test="bean.textSecret != null and bean.textSecret != ''">
+			and t1.TEXT_SECRET like concat(concat('%',#{bean.textSecret}),'%')
+		</if>
+		<if test="bean.textSecretZhmc != null and bean.textSecretZhmc != ''">
+			and t1.TEXT_SECRET_ZHMC like concat(concat('%',#{bean.textSecretZhmc}),'%')
+		</if>
+		<if test="bean.cmUserCode != null and bean.cmUserCode != ''">
+			and t1.CM_USER_CODE like concat(concat('%',#{bean.cmUserCode}),'%')
+		</if>
+		<if test="bean.applyDate != null and bean.applyDate != ''">
+			and t1.APPLY_DATE like concat(concat('%',#{bean.applyDate}),'%')
+		</if>
+		<if test="bean.applyDept != null and bean.applyDept != ''">
+			and t1.APPLY_DEPT like concat(concat('%',#{bean.applyDept}),'%')
+		</if>
+		<if test="bean.applyId != null and bean.applyId != ''">
+			and t1.APPLY_ID like concat(concat('%',#{bean.applyId}),'%')
+		</if>
+		<if test="bean.changId != null and bean.changId != ''">
+			and t1.CHANG_ID like concat(concat('%',#{bean.changId}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			and t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.version != null ">
+			and t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+			and t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+		</if>
+		<if test="bean.operationType != null and bean.operationType != ''">
+			and t1.OPERATION_TYPE_ like concat(concat('%',#{bean.operationType}),'%')
+		</if>
+		<if test="bean.logAppId != null and bean.logAppId != ''">
+			and t1.LOG_APP_ID like concat(concat('%',#{bean.logAppId}),'%')
+		</if>
+	</sql>
+
+	<!-- 关键字查询条件 -->
+	<sql id="commonWhereOr">
+		<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID like concat(concat('%',#{bean.id}),'%')
+			</if>
+			<if test="bean.contractNo != null and bean.contractNo != ''">
+				or t1.CONTRACT_NO like concat(concat('%',#{bean.contractNo}),'%')
+			</if>
+			<if test="bean.contractName != null and bean.contractName != ''">
+				or t1.CONTRACT_NAME like concat(concat('%',#{bean.contractName}),'%')
+			</if>
+			<if test="bean.contractState != null and bean.contractState != ''">
+				or t1.CONTRACT_STATE like concat(concat('%',#{bean.contractState}),'%')
+			</if>
+			<if test="bean.contractMoney != null and bean.contractMoney != ''">
+				or t1.CONTRACT_MONEY = #{bean.contractMoney}
+			</if>
+			<if test="bean.contractMoneyUpper != null and bean.contractMoneyUpper != ''">
+				or t1.CONTRACT_MONEY_UPPER like concat(concat('%',#{bean.contractMoneyUpper}),'%')
+			</if>
+			<if test="bean.contractWbMoney != null and bean.contractWbMoney != ''">
+				or t1.CONTRACT_WB_MONEY = #{bean.contractWbMoney}
+			</if>
+			<if test="bean.contractClassifyName != null and bean.contractClassifyName != ''">
+				or t1.CONTRACT_CLASSIFY_NAME like concat(concat('%',#{bean.contractClassifyName}),'%')
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE02 like concat(concat('%',#{bean.attribute02}),'%')
+			</if>
+			<if test="bean.contractClasstypeName != null and bean.contractClasstypeName != ''">
+				or t1.CONTRACT_CLASSTYPE_NAME like concat(concat('%',#{bean.contractClasstypeName}),'%')
+			</if>
+			<if test="bean.contractEstimateBegin != null and bean.contractEstimateBegin != ''">
+				or t1.CONTRACT_ESTIMATE_BEGIN like concat(concat('%',#{bean.contractEstimateBegin}),'%')
+			</if>
+			<if test="bean.contractEstimateEnd != null and bean.contractEstimateEnd != ''">
+				or t1.CONTRACT_ESTIMATE_END like concat(concat('%',#{bean.contractEstimateEnd}),'%')
+			</if>
+			<if test="bean.contractingParties != null and bean.contractingParties != ''">
+				or t1.CONTRACTING_PARTIES like concat(concat('%',#{bean.contractingParties}),'%')
+			</if>
+			<if test="bean.cmdOrder != null and bean.cmdOrder != ''">
+				or t1.CMD_ORDER like concat(concat('%',#{bean.cmdOrder}),'%')
+			</if>
+			<if test="bean.businessArea != null and bean.businessArea != ''">
+				or t1.BUSINESS_AREA like concat(concat('%',#{bean.businessArea}),'%')
+			</if>
+			<if test="bean.militaryCmType != null and bean.militaryCmType != ''">
+				or t1.MILITARY_CM_TYPE like concat(concat('%',#{bean.militaryCmType}),'%')
+			</if>
+			<if test="bean.scientificCmType != null and bean.scientificCmType != ''">
+				or t1.SCIENTIFIC_CM_TYPE like concat(concat('%',#{bean.scientificCmType}),'%')
+			</if>
+			<if test="bean.itemSecret != null and bean.itemSecret != ''">
+				or t1.ITEM_SECRET like concat(concat('%',#{bean.itemSecret}),'%')
+			</if>
+			<if test="bean.projectCode != null and bean.projectCode != ''">
+				or t1.PROJECT_CODE like concat(concat('%',#{bean.projectCode}),'%')
+			</if>
+			<if test="bean.projectAbbreviation != null and bean.projectAbbreviation != ''">
+				or t1.PROJECT_ABBREVIATION like concat(concat('%',#{bean.projectAbbreviation}),'%')
+			</if>
+			<if test="bean.projectType != null and bean.projectType != ''">
+				or t1.PROJECT_TYPE like concat(concat('%',#{bean.projectType}),'%')
+			</if>
+			<if test="bean.currency != null and bean.currency != ''">
+				or t1.CURRENCY like concat(concat('%',#{bean.currency}),'%')
+			</if>
+			<if test="bean.currencyZhmc != null and bean.currencyZhmc != ''">
+				or t1.CURRENCY_ZHMC like concat(concat('%',#{bean.currencyZhmc}),'%')
+			</if>
+			<if test="bean.exchangeRate != null and bean.exchangeRate != ''">
+				or t1.EXCHANGE_RATE = #{bean.exchangeRate}
+			</if>
+			<if test="bean.multiContract != null and bean.multiContract != ''">
+				or t1.MULTI_CONTRACT like concat(concat('%',#{bean.multiContract}),'%')
+			</if>
+			<if test="bean.signOrg != null and bean.signOrg != ''">
+				or t1.SIGN_ORG like concat(concat('%',#{bean.signOrg}),'%')
+			</if>
+			<if test="bean.signOrgName != null and bean.signOrgName != ''">
+				or t1.SIGN_ORG_NAME like concat(concat('%',#{bean.signOrgName}),'%')
+			</if>
+			<if test="bean.unifiedSocialCreditCode != null and bean.unifiedSocialCreditCode != ''">
+				or t1.UNIFIED_SOCIAL_CREDIT_CODE like concat(concat('%',#{bean.unifiedSocialCreditCode}),'%')
+			</if>
+			<if test="bean.supplierName != null and bean.supplierName != ''">
+				or t1.SUPPLIER_NAME like concat(concat('%',#{bean.supplierName}),'%')
+			</if>
+			<if test="bean.supplierContactNo != null and bean.supplierContactNo != ''">
+				or t1.SUPPLIER_CONTACT_NO like concat(concat('%',#{bean.supplierContactNo}),'%')
+			</if>
+			<if test="bean.purchaseMode != null and bean.purchaseMode != ''">
+				or t1.PURCHASE_MODE like concat(concat('%',#{bean.purchaseMode}),'%')
+			</if>
+			<if test="bean.sealType != null and bean.sealType != ''">
+				or t1.SEAL_TYPE like concat(concat('%',#{bean.sealType}),'%')
+			</if>
+			<if test="bean.sealTypeName != null and bean.sealTypeName != ''">
+				or t1.SEAL_TYPE_NAME like concat(concat('%',#{bean.sealTypeName}),'%')
+			</if>
+			<if test="bean.ynSeal != null and bean.ynSeal != ''">
+				or t1.YN_SEAL like concat(concat('%',#{bean.ynSeal}),'%')
+			</if>
+			<if test="bean.ynSealZhmc != null and bean.ynSealZhmc != ''">
+				or t1.YN_SEAL_ZHMC like concat(concat('%',#{bean.ynSealZhmc}),'%')
+			</if>
+			<if test="bean.ynFramework != null and bean.ynFramework != ''">
+				or t1.YN_FRAMEWORK like concat(concat('%',#{bean.ynFramework}),'%')
+			</if>
+			<if test="bean.ynFrameworkZhmc != null and bean.ynFrameworkZhmc != ''">
+				or t1.YN_FRAMEWORK_ZHMC like concat(concat('%',#{bean.ynFrameworkZhmc}),'%')
+			</if>
+			<if test="bean.ynAgreedCycle != null and bean.ynAgreedCycle != ''">
+				or t1.YN_AGREED_CYCLE like concat(concat('%',#{bean.ynAgreedCycle}),'%')
+			</if>
+			<if test="bean.ynAgreedCycleZhmc != null and bean.ynAgreedCycleZhmc != ''">
+				or t1.YN_AGREED_CYCLE_ZHMC like concat(concat('%',#{bean.ynAgreedCycleZhmc}),'%')
+			</if>
+			<if test="bean.ynMilitaryDirectsigning != null and bean.ynMilitaryDirectsigning != ''">
+				or t1.YN_MILITARY_DIRECTSIGNING like concat(concat('%',#{bean.ynMilitaryDirectsigning}),'%')
+			</if>
+			<if test="bean.ynMilitaryDirectsigningZhmc != null and bean.ynMilitaryDirectsigningZhmc != ''">
+				or t1.YN_MILITARY_DIRECTSIGNING_ZHMC like concat(concat('%',#{bean.ynMilitaryDirectsigningZhmc}),'%')
+			</if>
+			<if test="bean.ynMilitarySupervise != null and bean.ynMilitarySupervise != ''">
+				or t1.YN_MILITARY_SUPERVISE like concat(concat('%',#{bean.ynMilitarySupervise}),'%')
+			</if>
+			<if test="bean.ynMilitarySuperviseCompany != null and bean.ynMilitarySuperviseCompany != ''">
+				or t1.YN_MILITARY_SUPERVISE_COMPANY like concat(concat('%',#{bean.ynMilitarySuperviseCompany}),'%')
+			</if>
+			<if test="bean.ynPldgCm != null and bean.ynPldgCm != ''">
+				or t1.YN_PLDG_CM like concat(concat('%',#{bean.ynPldgCm}),'%')
+			</if>
+			<if test="bean.ynPldgCmZhmc != null and bean.ynPldgCmZhmc != ''">
+				or t1.YN_PLDG_CM_ZHMC like concat(concat('%',#{bean.ynPldgCmZhmc}),'%')
+			</if>
+			<if test="bean.ynZdPrice != null and bean.ynZdPrice != ''">
+				or t1.YN_ZD_PRICE like concat(concat('%',#{bean.ynZdPrice}),'%')
+			</if>
+			<if test="bean.ynZdPriceZhmc != null and bean.ynZdPriceZhmc != ''">
+				or t1.YN_ZD_PRICE_ZHMC like concat(concat('%',#{bean.ynZdPriceZhmc}),'%')
+			</if>
+			<if test="bean.ynSignOrder != null and bean.ynSignOrder != ''">
+				or t1.YN_SIGN_ORDER like concat(concat('%',#{bean.ynSignOrder}),'%')
+			</if>
+			<if test="bean.cmZdPrice != null and bean.cmZdPrice != ''">
+				or t1.CM_ZD_PRICE = #{bean.cmZdPrice}
+			</if>
+			<if test="bean.settlementMethod != null and bean.settlementMethod != ''">
+				or t1.SETTLEMENT_METHOD like concat(concat('%',#{bean.settlementMethod}),'%')
+			</if>
+			<if test="bean.settlementZjBl != null and bean.settlementZjBl != ''">
+				or t1.SETTLEMENT_ZJ_BL = #{bean.settlementZjBl}
+			</if>
+			<if test="bean.settlementZjMoney != null and bean.settlementZjMoney != ''">
+				or t1.SETTLEMENT_ZJ_MONEY = #{bean.settlementZjMoney}
+			</if>
+			<if test="bean.electronicPlatform != null and bean.electronicPlatform != ''">
+				or t1.ELECTRONIC_PLATFORM like concat(concat('%',#{bean.electronicPlatform}),'%')
+			</if>
+			<if test="bean.internetRemark != null and bean.internetRemark != ''">
+				or t1.INTERNET_REMARK like concat(concat('%',#{bean.internetRemark}),'%')
+			</if>
+			<if test="bean.otherFeeRemark != null and bean.otherFeeRemark != ''">
+				or t1.OTHER_FEE_REMARK like concat(concat('%',#{bean.otherFeeRemark}),'%')
+			</if>
+			<if test="bean.groupBusputunderDept != null and bean.groupBusputunderDept != ''">
+				or t1.GROUP_BUSPUTUNDER_DEPT like concat(concat('%',#{bean.groupBusputunderDept}),'%')
+			</if>
+			<if test="bean.weContractSrType != null and bean.weContractSrType != ''">
+				or t1.WE_CONTRACT_SR_TYPE like concat(concat('%',#{bean.weContractSrType}),'%')
+			</if>
+			<if test="bean.textNum != null and bean.textNum != ''">
+				or t1.TEXT_NUM like concat(concat('%',#{bean.textNum}),'%')
+			</if>
+			<if test="bean.textSecret != null and bean.textSecret != ''">
+				or t1.TEXT_SECRET like concat(concat('%',#{bean.textSecret}),'%')
+			</if>
+			<if test="bean.textSecretZhmc != null and bean.textSecretZhmc != ''">
+				or t1.TEXT_SECRET_ZHMC like concat(concat('%',#{bean.textSecretZhmc}),'%')
+			</if>
+			<if test="bean.cmUserCode != null and bean.cmUserCode != ''">
+				or t1.CM_USER_CODE like concat(concat('%',#{bean.cmUserCode}),'%')
+			</if>
+			<if test="bean.applyDate != null and bean.applyDate != ''">
+				or t1.APPLY_DATE like concat(concat('%',#{bean.applyDate}),'%')
+			</if>
+			<if test="bean.applyDept != null and bean.applyDept != ''">
+				or t1.APPLY_DEPT like concat(concat('%',#{bean.applyDept}),'%')
+			</if>
+			<if test="bean.applyId != null and bean.applyId != ''">
+				or t1.APPLY_ID like concat(concat('%',#{bean.applyId}),'%')
+			</if>
+			<if test="bean.changId != null and bean.changId != ''">
+				or t1.CHANG_ID like concat(concat('%',#{bean.changId}),'%')
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+			</if>
+			<if test="bean.createdDept != null and bean.createdDept != ''">
+				or t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+			</if>
+			<if test="bean.creationDateBegin != null">
+				or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+			</if>
+			<if test="bean.creationDateEnd != null">
+				or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+			</if>
+			<if test="bean.lastUpdateDateBegin != null">
+				or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+			</if>
+			<if test="bean.lastUpdateDateEnd != null">
+				or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+			</if>
+			<if test="bean.version != null and bean.version != ''">
+				or t1.VERSION = #{bean.version}
+			</if>
+			<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+				or t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+			</if>
+			<if test="bean.operationType != null and bean.operationType != ''">
+				or t1.OPERATION_TYPE_ like concat(concat('%',#{bean.operationType}),'%')
+			</if>
+			<if test="bean.logAppId != null and bean.logAppId != ''">
+				or t1.LOG_APP_ID like concat(concat('%',#{bean.logAppId}),'%')
+			</if>
+		</trim>
+	</sql>
+
+
+	<sql id="commonOrderBy">
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!-- 分页查询 CMJT_CONTRACT -->
+	<select id="searchCmjtContractByPage" parameterType="java.util.Map" resultMap="CmjtContractDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_CONTRACT t1
+		<where>
+			<if test="bean != null">
+				<choose>
+					<when test="keyWord != null and keyWord != '' ">
+						<include refid="commonWhereOr"/>
+					</when>
+					<otherwise>
+						<include refid="commonWhereAnd"/>
+					</otherwise>
+				</choose>
+				<include refid="defaultWhereAnd"/>
+			</if>
+		</where>
+		<include refid="commonOrderBy"></include>
+	</select>
+
+	<!-- 根据合同查询 -->
+	<select id="findListByPage" resultMap="CmjtContractDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_CONTRACT t1
+		<where>
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</where>
+		order by t1.creation_date desc
+	</select>
+
+	<!-- 查询 CMJT_CONTRACT -->
+	<select id="findList" parameterType="java.util.Map" resultMap="CmjtContractDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_CONTRACT t1
+		<where>
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</where>
+		order by t1.creation_date desc
+	</select>
+
+	<!-- 主键批量查询对象 CMJT_CONTRACT -->
+	<select id="findListByIds" parameterType="java.lang.String" resultMap="CmjtContractDTOMap">
+		select
+		<include refid="commonColums"/>
+			from CMJT_CONTRACT t1
+			where t1.id  in
+		<foreach item="id" index="index" collection="idList" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+	<!-- 主键查询对象 CMJT_CONTRACT -->
+	<select id="get" parameterType="java.util.Map" resultMap="CmjtContractDTOMap">
+		select
+		<include refid="commonColums"/>
+			from CMJT_CONTRACT t1
+			where t1.id = #{id}
+	</select>
+
+	<!-- 新增对象 CMJT_CONTRACT -->
+	<insert id="insert" parameterType="avicit.cmjt.cmjtcontract.dto.CmjtContractDTO">
+		insert into CMJT_CONTRACT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="contractNo != null">
+				CONTRACT_NO,
+			</if>
+			<if test="contractName != null">
+				CONTRACT_NAME,
+			</if>
+			<if test="contractState != null">
+				CONTRACT_STATE,
+			</if>
+			<if test="contractMoney != null">
+				CONTRACT_MONEY,
+			</if>
+			<if test="contractMoneyUpper != null">
+				CONTRACT_MONEY_UPPER,
+			</if>
+			<if test="contractWbMoney != null">
+				CONTRACT_WB_MONEY,
+			</if>
+			<if test="contractClassifyName != null">
+				CONTRACT_CLASSIFY_NAME,
+			</if>
+			<if test="contractClasstypeName != null">
+				CONTRACT_CLASSTYPE_NAME,
+			</if>
+			<if test="contractEstimateBegin != null">
+				CONTRACT_ESTIMATE_BEGIN,
+			</if>
+			<if test="contractEstimateEnd != null">
+				CONTRACT_ESTIMATE_END,
+			</if>
+			<if test="contractingParties != null">
+				CONTRACTING_PARTIES,
+			</if>
+			<if test="cmdOrder != null">
+				CMD_ORDER,
+			</if>
+			<if test="businessArea != null">
+				BUSINESS_AREA,
+			</if>
+			<if test="attribute02 != null">
+				ATTRIBUTE02,
+			</if>
+			<if test="militaryCmType != null">
+				MILITARY_CM_TYPE,
+			</if>
+			<if test="scientificCmType != null">
+				SCIENTIFIC_CM_TYPE,
+			</if>
+			<if test="itemSecret != null">
+				ITEM_SECRET,
+			</if>
+			<if test="projectCode != null">
+				PROJECT_CODE,
+			</if>
+			<if test="projectAbbreviation != null">
+				PROJECT_ABBREVIATION,
+			</if>
+			<if test="projectType != null">
+				PROJECT_TYPE,
+			</if>
+			<if test="currency != null">
+				CURRENCY,
+			</if>
+			<if test="currencyZhmc != null">
+				CURRENCY_ZHMC,
+			</if>
+			<if test="exchangeRate != null">
+				EXCHANGE_RATE,
+			</if>
+			<if test="multiContract != null">
+				MULTI_CONTRACT,
+			</if>
+			<if test="signOrg != null">
+				SIGN_ORG,
+			</if>
+			<if test="signOrgName != null">
+				SIGN_ORG_NAME,
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				UNIFIED_SOCIAL_CREDIT_CODE,
+			</if>
+			<if test="supplierName != null">
+				SUPPLIER_NAME,
+			</if>
+			<if test="supplierContactNo != null">
+				SUPPLIER_CONTACT_NO,
+			</if>
+			<if test="purchaseMode != null">
+				PURCHASE_MODE,
+			</if>
+			<if test="sealType != null">
+				SEAL_TYPE,
+			</if>
+			<if test="sealTypeName != null">
+				SEAL_TYPE_NAME,
+			</if>
+			<if test="ynSeal != null">
+				YN_SEAL,
+			</if>
+			<if test="ynSealZhmc != null">
+				YN_SEAL_ZHMC,
+			</if>
+			<if test="ynFramework != null">
+				YN_FRAMEWORK,
+			</if>
+			<if test="ynFrameworkZhmc != null">
+				YN_FRAMEWORK_ZHMC,
+			</if>
+			<if test="ynAgreedCycle != null">
+				YN_AGREED_CYCLE,
+			</if>
+			<if test="ynAgreedCycleZhmc != null">
+				YN_AGREED_CYCLE_ZHMC,
+			</if>
+			<if test="ynMilitaryDirectsigning != null">
+				YN_MILITARY_DIRECTSIGNING,
+			</if>
+			<if test="ynMilitaryDirectsigningZhmc != null">
+				YN_MILITARY_DIRECTSIGNING_ZHMC,
+			</if>
+			<if test="ynMilitarySupervise != null">
+				YN_MILITARY_SUPERVISE,
+			</if>
+			<if test="ynMilitarySuperviseCompany != null">
+				YN_MILITARY_SUPERVISE_COMPANY,
+			</if>
+			<if test="ynPldgCm != null">
+				YN_PLDG_CM,
+			</if>
+			<if test="ynPldgCmZhmc != null">
+				YN_PLDG_CM_ZHMC,
+			</if>
+			<if test="ynZdPrice != null">
+				YN_ZD_PRICE,
+			</if>
+			<if test="ynZdPriceZhmc != null">
+				YN_ZD_PRICE_ZHMC,
+			</if>
+			<if test="ynSignOrder != null">
+				YN_SIGN_ORDER,
+			</if>
+			<if test="cmZdPrice != null">
+				CM_ZD_PRICE,
+			</if>
+			<if test="settlementMethod != null">
+				SETTLEMENT_METHOD,
+			</if>
+			<if test="settlementZjBl != null">
+				SETTLEMENT_ZJ_BL,
+			</if>
+			<if test="settlementZjMoney != null">
+				SETTLEMENT_ZJ_MONEY,
+			</if>
+			<if test="electronicPlatform != null">
+				ELECTRONIC_PLATFORM,
+			</if>
+			<if test="internetRemark != null">
+				INTERNET_REMARK,
+			</if>
+			<if test="otherFeeRemark != null">
+				OTHER_FEE_REMARK,
+			</if>
+			<if test="groupBusputunderDept != null">
+				GROUP_BUSPUTUNDER_DEPT,
+			</if>
+			<if test="weContractSrType != null">
+				WE_CONTRACT_SR_TYPE,
+			</if>
+			<if test="textNum != null">
+				TEXT_NUM,
+			</if>
+			<if test="textSecret != null">
+				TEXT_SECRET,
+			</if>
+			<if test="textSecretZhmc != null">
+				TEXT_SECRET_ZHMC,
+			</if>
+			<if test="cmUserCode != null">
+				CM_USER_CODE,
+			</if>
+			<if test="applyDate != null">
+				APPLY_DATE,
+			</if>
+			<if test="applyDept != null">
+				APPLY_DEPT,
+			</if>
+			<if test="applyId != null">
+				APPLY_ID,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID,
+			</if>
+			<if test="logAppId != null">
+				LOG_APP_ID,
+			</if>
+			<if test="version != null">
+				VERSION,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_,
+			</if>
+			<if test="changId != null">
+				CHANG_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType = VARCHAR},
+			</if>
+			<if test="contractNo != null">
+				#{contractNo,jdbcType = VARCHAR},
+			</if>
+			<if test="contractName != null">
+				#{contractName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractState != null">
+				#{contractState,jdbcType = VARCHAR},
+			</if>
+			<if test="contractMoney != null">
+				#{contractMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="contractMoneyUpper != null">
+				#{contractMoneyUpper,jdbcType = VARCHAR},
+			</if>
+			<if test="contractWbMoney != null">
+				#{contractWbMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="contractClassifyName != null">
+				#{contractClassifyName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractClasstypeName != null">
+				#{contractClasstypeName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractEstimateBegin != null">
+				#{contractEstimateBegin,jdbcType = VARCHAR},
+			</if>
+			<if test="contractEstimateEnd != null">
+				#{contractEstimateEnd,jdbcType = VARCHAR},
+			</if>
+			<if test="contractingParties != null">
+				#{contractingParties,jdbcType = VARCHAR},
+			</if>
+			<if test="cmdOrder != null">
+				#{cmdOrder,jdbcType = VARCHAR},
+			</if>
+			<if test="businessArea != null">
+				#{businessArea,jdbcType = VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType = VARCHAR},
+			</if>
+			<if test="militaryCmType != null">
+				#{militaryCmType,jdbcType = VARCHAR},
+			</if>
+			<if test="scientificCmType != null">
+				#{scientificCmType,jdbcType = VARCHAR},
+			</if>
+			<if test="itemSecret != null">
+				#{itemSecret,jdbcType = VARCHAR},
+			</if>
+			<if test="projectCode != null">
+				#{projectCode,jdbcType = VARCHAR},
+			</if>
+			<if test="projectAbbreviation != null">
+				#{projectAbbreviation,jdbcType = VARCHAR},
+			</if>
+			<if test="projectType != null">
+				#{projectType,jdbcType = VARCHAR},
+			</if>
+			<if test="currency != null">
+				#{currency,jdbcType = VARCHAR},
+			</if>
+			<if test="currencyZhmc != null">
+				#{currencyZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="exchangeRate != null">
+				#{exchangeRate,jdbcType = DECIMAL},
+			</if>
+			<if test="multiContract != null">
+				#{multiContract,jdbcType = VARCHAR},
+			</if>
+			<if test="signOrg != null">
+				#{signOrg,jdbcType = VARCHAR},
+			</if>
+			<if test="signOrgName != null">
+				#{signOrgName,jdbcType = VARCHAR},
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				#{unifiedSocialCreditCode,jdbcType = VARCHAR},
+			</if>
+			<if test="supplierName != null">
+				#{supplierName,jdbcType = VARCHAR},
+			</if>
+			<if test="supplierContactNo != null">
+				#{supplierContactNo,jdbcType = VARCHAR},
+			</if>
+			<if test="purchaseMode != null">
+				#{purchaseMode,jdbcType = VARCHAR},
+			</if>
+			<if test="sealType != null">
+				#{sealType,jdbcType = VARCHAR},
+			</if>
+			<if test="sealTypeName != null">
+				#{sealTypeName,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSeal != null">
+				#{ynSeal,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSealZhmc != null">
+				#{ynSealZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynFramework != null">
+				#{ynFramework,jdbcType = VARCHAR},
+			</if>
+			<if test="ynFrameworkZhmc != null">
+				#{ynFrameworkZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynAgreedCycle != null">
+				#{ynAgreedCycle,jdbcType = VARCHAR},
+			</if>
+			<if test="ynAgreedCycleZhmc != null">
+				#{ynAgreedCycleZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitaryDirectsigning != null">
+				#{ynMilitaryDirectsigning,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitaryDirectsigningZhmc != null">
+				#{ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitarySupervise != null">
+				#{ynMilitarySupervise,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitarySuperviseCompany != null">
+				#{ynMilitarySuperviseCompany,jdbcType = VARCHAR},
+			</if>
+			<if test="ynPldgCm != null">
+				#{ynPldgCm,jdbcType = VARCHAR},
+			</if>
+			<if test="ynPldgCmZhmc != null">
+				#{ynPldgCmZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynZdPrice != null">
+				#{ynZdPrice,jdbcType = VARCHAR},
+			</if>
+			<if test="ynZdPriceZhmc != null">
+				#{ynZdPriceZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSignOrder != null">
+				#{ynSignOrder,jdbcType = VARCHAR},
+			</if>
+			<if test="cmZdPrice != null">
+				#{cmZdPrice,jdbcType = DECIMAL},
+			</if>
+			<if test="settlementMethod != null">
+				#{settlementMethod,jdbcType = VARCHAR},
+			</if>
+			<if test="settlementZjBl != null">
+				#{settlementZjBl,jdbcType = DECIMAL},
+			</if>
+			<if test="settlementZjMoney != null">
+				#{settlementZjMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="electronicPlatform != null">
+				#{electronicPlatform,jdbcType = VARCHAR},
+			</if>
+			<if test="internetRemark != null">
+				#{internetRemark,jdbcType = VARCHAR},
+			</if>
+			<if test="otherFeeRemark != null">
+				#{otherFeeRemark,jdbcType = VARCHAR},
+			</if>
+			<if test="groupBusputunderDept != null">
+				#{groupBusputunderDept,jdbcType = VARCHAR},
+			</if>
+			<if test="weContractSrType != null">
+				#{weContractSrType,jdbcType = VARCHAR},
+			</if>
+			<if test="textNum != null">
+				#{textNum,jdbcType = VARCHAR},
+			</if>
+			<if test="textSecret != null">
+				#{textSecret,jdbcType = VARCHAR},
+			</if>
+			<if test="textSecretZhmc != null">
+				#{textSecretZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="cmUserCode != null">
+				#{cmUserCode,jdbcType = VARCHAR},
+			</if>
+			<if test="applyDate != null">
+				#{applyDate,jdbcType = VARCHAR},
+			</if>
+			<if test="applyDept != null">
+				#{applyDept,jdbcType = VARCHAR},
+			</if>
+			<if test="applyId != null">
+				#{applyId,jdbcType = VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType = VARCHAR},
+			</if>
+			<if test="createdDept != null">
+				#{createdDept,jdbcType = VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType = VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType = VARCHAR},
+			</if>
+			<if test="sysApplicationId != null">
+				#{sysApplicationId,jdbcType = VARCHAR},
+			</if>
+			<if test="logAppId != null">
+				#{logAppId,jdbcType = VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType = DECIMAL},
+			</if>
+			<if test="operationType != null">
+				#{operationType,jdbcType = VARCHAR},
+			</if>
+			<if test="changId != null">
+				#{changId,jdbcType = VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量新增对象 CMJT_CONTRACT -->
+	<insert id="insertBatch" parameterType="java.util.List" >
+		insert into CMJT_CONTRACT(
+			ID ,
+			CONTRACT_NO ,
+			CONTRACT_NAME ,
+			CONTRACT_STATE ,
+			CONTRACT_MONEY ,
+			CONTRACT_MONEY_UPPER ,
+			CONTRACT_WB_MONEY ,
+			CONTRACT_CLASSIFY_NAME ,
+			CONTRACT_CLASSTYPE_NAME ,
+			CONTRACT_ESTIMATE_BEGIN ,
+			CONTRACT_ESTIMATE_END ,
+			CONTRACTING_PARTIES ,
+			CMD_ORDER ,
+			BUSINESS_AREA ,
+			ATTRIBUTE02 ,
+			MILITARY_CM_TYPE ,
+			SCIENTIFIC_CM_TYPE ,
+			ITEM_SECRET ,
+			PROJECT_CODE ,
+			PROJECT_ABBREVIATION ,
+			PROJECT_TYPE ,
+			CURRENCY ,
+			CURRENCY_ZHMC ,
+			EXCHANGE_RATE ,
+			MULTI_CONTRACT ,
+			SIGN_ORG ,
+			SIGN_ORG_NAME ,
+			UNIFIED_SOCIAL_CREDIT_CODE ,
+			SUPPLIER_NAME ,
+			SUPPLIER_CONTACT_NO ,
+			PURCHASE_MODE ,
+			SEAL_TYPE ,
+			SEAL_TYPE_NAME ,
+			YN_SEAL ,
+			YN_SEAL_ZHMC ,
+			YN_FRAMEWORK ,
+			YN_FRAMEWORK_ZHMC ,
+			YN_AGREED_CYCLE ,
+			YN_AGREED_CYCLE_ZHMC ,
+			YN_MILITARY_DIRECTSIGNING ,
+			YN_MILITARY_DIRECTSIGNING_ZHMC ,
+			YN_MILITARY_SUPERVISE ,
+			YN_MILITARY_SUPERVISE_COMPANY ,
+			YN_PLDG_CM ,
+			YN_PLDG_CM_ZHMC ,
+			YN_ZD_PRICE ,
+			YN_ZD_PRICE_ZHMC ,
+			YN_SIGN_ORDER ,
+			CM_ZD_PRICE ,
+			SETTLEMENT_METHOD ,
+			SETTLEMENT_ZJ_BL ,
+			SETTLEMENT_ZJ_MONEY ,
+			ELECTRONIC_PLATFORM ,
+			INTERNET_REMARK ,
+			OTHER_FEE_REMARK ,
+			GROUP_BUSPUTUNDER_DEPT ,
+			WE_CONTRACT_SR_TYPE ,
+			TEXT_NUM ,
+			TEXT_SECRET ,
+			TEXT_SECRET_ZHMC ,
+			CM_USER_CODE ,
+			APPLY_DATE ,
+			APPLY_DEPT ,
+			APPLY_ID ,
+			CREATED_BY ,
+			CREATED_DEPT ,
+			CREATION_DATE ,
+			LAST_UPDATED_BY ,
+			LAST_UPDATE_DATE ,
+			LAST_UPDATE_IP ,
+			ORG_IDENTITY ,
+			SYS_APPLICATION_ID ,
+			LOG_APP_ID ,
+			VERSION ,
+			OPERATION_TYPE_ ,
+			CHANG_ID 
+		)
+		<foreach collection="entityList" item="item" index="index"  separator="union all" >
+			select
+				#{item.id,jdbcType = VARCHAR} ,
+				#{item.contractNo,jdbcType = VARCHAR} ,
+				#{item.contractName,jdbcType = VARCHAR} ,
+				#{item.contractState,jdbcType = VARCHAR} ,
+				#{item.contractMoney,jdbcType = DECIMAL} ,
+				#{item.contractMoneyUpper,jdbcType = VARCHAR} ,
+				#{item.contractWbMoney,jdbcType = DECIMAL} ,
+				#{item.contractClassifyName,jdbcType = VARCHAR} ,
+				#{item.contractClasstypeName,jdbcType = VARCHAR} ,
+				#{item.contractEstimateBegin,jdbcType = VARCHAR} ,
+				#{item.contractEstimateEnd,jdbcType = VARCHAR} ,
+				#{item.contractingParties,jdbcType = VARCHAR} ,
+				#{item.cmdOrder,jdbcType = VARCHAR} ,
+				#{item.businessArea,jdbcType = VARCHAR} ,
+				#{item.attribute02,jdbcType = VARCHAR} ,
+				#{item.militaryCmType,jdbcType = VARCHAR} ,
+				#{item.scientificCmType,jdbcType = VARCHAR} ,
+				#{item.itemSecret,jdbcType = VARCHAR} ,
+				#{item.projectCode,jdbcType = VARCHAR} ,
+				#{item.projectAbbreviation,jdbcType = VARCHAR} ,
+				#{item.projectType,jdbcType = VARCHAR} ,
+				#{item.currency,jdbcType = VARCHAR} ,
+				#{item.currencyZhmc,jdbcType = VARCHAR} ,
+				#{item.exchangeRate,jdbcType = DECIMAL} ,
+				#{item.multiContract,jdbcType = VARCHAR} ,
+				#{item.signOrg,jdbcType = VARCHAR} ,
+				#{item.signOrgName,jdbcType = VARCHAR} ,
+				#{item.unifiedSocialCreditCode,jdbcType = VARCHAR} ,
+				#{item.supplierName,jdbcType = VARCHAR} ,
+				#{item.supplierContactNo,jdbcType = VARCHAR} ,
+				#{item.purchaseMode,jdbcType = VARCHAR} ,
+				#{item.sealType,jdbcType = VARCHAR} ,
+				#{item.sealTypeName,jdbcType = VARCHAR} ,
+				#{item.ynSeal,jdbcType = VARCHAR} ,
+				#{item.ynSealZhmc,jdbcType = VARCHAR} ,
+				#{item.ynFramework,jdbcType = VARCHAR} ,
+				#{item.ynFrameworkZhmc,jdbcType = VARCHAR} ,
+				#{item.ynAgreedCycle,jdbcType = VARCHAR} ,
+				#{item.ynAgreedCycleZhmc,jdbcType = VARCHAR} ,
+				#{item.ynMilitaryDirectsigning,jdbcType = VARCHAR} ,
+				#{item.ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR} ,
+				#{item.ynMilitarySupervise,jdbcType = VARCHAR} ,
+				#{item.ynMilitarySuperviseCompany,jdbcType = VARCHAR} ,
+				#{item.ynPldgCm,jdbcType = VARCHAR} ,
+				#{item.ynPldgCmZhmc,jdbcType = VARCHAR} ,
+				#{item.ynZdPrice,jdbcType = VARCHAR} ,
+				#{item.ynZdPriceZhmc,jdbcType = VARCHAR} ,
+				#{item.ynSignOrder,jdbcType = VARCHAR} ,
+				#{item.cmZdPrice,jdbcType = DECIMAL} ,
+				#{item.settlementMethod,jdbcType = VARCHAR} ,
+				#{item.settlementZjBl,jdbcType = DECIMAL} ,
+				#{item.settlementZjMoney,jdbcType = DECIMAL} ,
+				#{item.electronicPlatform,jdbcType = VARCHAR} ,
+				#{item.internetRemark,jdbcType = VARCHAR} ,
+				#{item.otherFeeRemark,jdbcType = VARCHAR} ,
+				#{item.groupBusputunderDept,jdbcType = VARCHAR} ,
+				#{item.weContractSrType,jdbcType = VARCHAR} ,
+				#{item.textNum,jdbcType = VARCHAR} ,
+				#{item.textSecret,jdbcType = VARCHAR} ,
+				#{item.textSecretZhmc,jdbcType = VARCHAR} ,
+				#{item.cmUserCode,jdbcType = VARCHAR} ,
+				#{item.applyDate,jdbcType = VARCHAR} ,
+				#{item.applyDept,jdbcType = VARCHAR} ,
+				#{item.applyId,jdbcType = VARCHAR} ,
+				#{item.createdBy,jdbcType = VARCHAR} ,
+				#{item.createdDept,jdbcType = VARCHAR} ,
+				#{item.creationDate,jdbcType = TIMESTAMP} ,
+				#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+				#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+				#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+				#{item.orgIdentity,jdbcType = VARCHAR} ,
+				#{item.sysApplicationId,jdbcType = VARCHAR} ,
+				#{item.logAppId,jdbcType = VARCHAR} ,
+				#{item.version,jdbcType = DECIMAL} ,
+				#{item.operationType,jdbcType = VARCHAR} ,
+				#{item.changId,jdbcType = VARCHAR} 
+			from dual
+		</foreach>
+	</insert>
+
+	<!-- 更新对象 CMJT_CONTRACT -->
+	<update id="updateSensitive" parameterType="avicit.cmjt.cmjtcontract.dto.CmjtContractDTO">
+		update CMJT_CONTRACT
+		<set>
+			<if test="id != null">
+				ID = #{id,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractNo != null">
+				CONTRACT_NO = #{contractNo,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractName != null">
+				CONTRACT_NAME = #{contractName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractState != null">
+				CONTRACT_STATE = #{contractState,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractMoney != null">
+				CONTRACT_MONEY = #{contractMoney,jdbcType = DECIMAL} ,
+			</if>
+			<if test="contractMoneyUpper != null">
+				CONTRACT_MONEY_UPPER = #{contractMoneyUpper,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractWbMoney != null">
+				CONTRACT_WB_MONEY = #{contractWbMoney,jdbcType = DECIMAL} ,
+			</if>
+			<if test="contractClassifyName != null">
+				CONTRACT_CLASSIFY_NAME = #{contractClassifyName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractClasstypeName != null">
+				CONTRACT_CLASSTYPE_NAME = #{contractClasstypeName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractEstimateBegin != null">
+				CONTRACT_ESTIMATE_BEGIN = #{contractEstimateBegin,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractEstimateEnd != null">
+				CONTRACT_ESTIMATE_END = #{contractEstimateEnd,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractingParties != null">
+				CONTRACTING_PARTIES = #{contractingParties,jdbcType = VARCHAR} ,
+			</if>
+			<if test="cmdOrder != null">
+				CMD_ORDER = #{cmdOrder,jdbcType = VARCHAR} ,
+			</if>
+			<if test="businessArea != null">
+				BUSINESS_AREA = #{businessArea,jdbcType = VARCHAR} ,
+			</if>
+			<if test="attribute02 != null">
+				ATTRIBUTE02 = #{attribute02,jdbcType = VARCHAR} ,
+			</if>
+			<if test="militaryCmType != null">
+				MILITARY_CM_TYPE = #{militaryCmType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="scientificCmType != null">
+				SCIENTIFIC_CM_TYPE = #{scientificCmType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="itemSecret != null">
+				ITEM_SECRET = #{itemSecret,jdbcType = VARCHAR} ,
+			</if>
+			<if test="projectCode != null">
+				PROJECT_CODE = #{projectCode,jdbcType = VARCHAR} ,
+			</if>
+			<if test="projectAbbreviation != null">
+				PROJECT_ABBREVIATION = #{projectAbbreviation,jdbcType = VARCHAR} ,
+			</if>
+			<if test="projectType != null">
+				PROJECT_TYPE = #{projectType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="currency != null">
+				CURRENCY = #{currency,jdbcType = VARCHAR} ,
+			</if>
+			<if test="currencyZhmc != null">
+				CURRENCY_ZHMC = #{currencyZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="exchangeRate != null">
+				EXCHANGE_RATE = #{exchangeRate,jdbcType = DECIMAL} ,
+			</if>
+			<if test="multiContract != null">
+				MULTI_CONTRACT = #{multiContract,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signOrg != null">
+				SIGN_ORG = #{signOrg,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signOrgName != null">
+				SIGN_ORG_NAME = #{signOrgName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				UNIFIED_SOCIAL_CREDIT_CODE = #{unifiedSocialCreditCode,jdbcType = VARCHAR} ,
+			</if>
+			<if test="supplierName != null">
+				SUPPLIER_NAME = #{supplierName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="supplierContactNo != null">
+				SUPPLIER_CONTACT_NO = #{supplierContactNo,jdbcType = VARCHAR} ,
+			</if>
+			<if test="purchaseMode != null">
+				PURCHASE_MODE = #{purchaseMode,jdbcType = VARCHAR} ,
+			</if>
+			<if test="sealType != null">
+				SEAL_TYPE = #{sealType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="sealTypeName != null">
+				SEAL_TYPE_NAME = #{sealTypeName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynSeal != null">
+				YN_SEAL = #{ynSeal,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynSealZhmc != null">
+				YN_SEAL_ZHMC = #{ynSealZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynFramework != null">
+				YN_FRAMEWORK = #{ynFramework,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynFrameworkZhmc != null">
+				YN_FRAMEWORK_ZHMC = #{ynFrameworkZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynAgreedCycle != null">
+				YN_AGREED_CYCLE = #{ynAgreedCycle,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynAgreedCycleZhmc != null">
+				YN_AGREED_CYCLE_ZHMC = #{ynAgreedCycleZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynMilitaryDirectsigning != null">
+				YN_MILITARY_DIRECTSIGNING = #{ynMilitaryDirectsigning,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynMilitaryDirectsigningZhmc != null">
+				YN_MILITARY_DIRECTSIGNING_ZHMC = #{ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynMilitarySupervise != null">
+				YN_MILITARY_SUPERVISE = #{ynMilitarySupervise,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynMilitarySuperviseCompany != null">
+				YN_MILITARY_SUPERVISE_COMPANY = #{ynMilitarySuperviseCompany,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynPldgCm != null">
+				YN_PLDG_CM = #{ynPldgCm,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynPldgCmZhmc != null">
+				YN_PLDG_CM_ZHMC = #{ynPldgCmZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynZdPrice != null">
+				YN_ZD_PRICE = #{ynZdPrice,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynZdPriceZhmc != null">
+				YN_ZD_PRICE_ZHMC = #{ynZdPriceZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynSignOrder != null">
+				YN_SIGN_ORDER = #{ynSignOrder,jdbcType = VARCHAR} ,
+			</if>
+			<if test="cmZdPrice != null">
+				CM_ZD_PRICE = #{cmZdPrice,jdbcType = DECIMAL} ,
+			</if>
+			<if test="settlementMethod != null">
+				SETTLEMENT_METHOD = #{settlementMethod,jdbcType = VARCHAR} ,
+			</if>
+			<if test="settlementZjBl != null">
+				SETTLEMENT_ZJ_BL = #{settlementZjBl,jdbcType = DECIMAL} ,
+			</if>
+			<if test="settlementZjMoney != null">
+				SETTLEMENT_ZJ_MONEY = #{settlementZjMoney,jdbcType = DECIMAL} ,
+			</if>
+			<if test="electronicPlatform != null">
+				ELECTRONIC_PLATFORM = #{electronicPlatform,jdbcType = VARCHAR} ,
+			</if>
+			<if test="internetRemark != null">
+				INTERNET_REMARK = #{internetRemark,jdbcType = VARCHAR} ,
+			</if>
+			<if test="otherFeeRemark != null">
+				OTHER_FEE_REMARK = #{otherFeeRemark,jdbcType = VARCHAR} ,
+			</if>
+			<if test="groupBusputunderDept != null">
+				GROUP_BUSPUTUNDER_DEPT = #{groupBusputunderDept,jdbcType = VARCHAR} ,
+			</if>
+			<if test="weContractSrType != null">
+				WE_CONTRACT_SR_TYPE = #{weContractSrType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="textNum != null">
+				TEXT_NUM = #{textNum,jdbcType = VARCHAR} ,
+			</if>
+			<if test="textSecret != null">
+				TEXT_SECRET = #{textSecret,jdbcType = VARCHAR} ,
+			</if>
+			<if test="textSecretZhmc != null">
+				TEXT_SECRET_ZHMC = #{textSecretZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="cmUserCode != null">
+				CM_USER_CODE = #{cmUserCode,jdbcType = VARCHAR} ,
+			</if>
+			<if test="applyDate != null">
+				APPLY_DATE = #{applyDate,jdbcType = VARCHAR} ,
+			</if>
+			<if test="applyDept != null">
+				APPLY_DEPT = #{applyDept,jdbcType = VARCHAR} ,
+			</if>
+			<if test="applyId != null">
+				APPLY_ID = #{applyId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="logAppId != null">
+				LOG_APP_ID = #{logAppId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="version != null">
+				VERSION = version+1 ,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="changId != null">
+				CHANG_ID = #{changId,jdbcType = VARCHAR} 
+			</if>
+		</set>
+		where id = #{id}
+		and version = #{version}
+	</update>
+
+	<!-- 更新对象 CMJT_CONTRACT -->
+	<update id="updateAll" parameterType="avicit.cmjt.cmjtcontract.dto.CmjtContractDTO">
+		update CMJT_CONTRACT
+		<trim prefix="set" suffixOverrides=",">
+			ID = #{id,jdbcType = VARCHAR} ,
+			CONTRACT_NO = #{contractNo,jdbcType = VARCHAR} ,
+			CONTRACT_NAME = #{contractName,jdbcType = VARCHAR} ,
+			CONTRACT_STATE = #{contractState,jdbcType = VARCHAR} ,
+			CONTRACT_MONEY = #{contractMoney,jdbcType = DECIMAL} ,
+			CONTRACT_MONEY_UPPER = #{contractMoneyUpper,jdbcType = VARCHAR} ,
+			CONTRACT_WB_MONEY = #{contractWbMoney,jdbcType = DECIMAL} ,
+			CONTRACT_CLASSIFY_NAME = #{contractClassifyName,jdbcType = VARCHAR} ,
+			CONTRACT_CLASSTYPE_NAME = #{contractClasstypeName,jdbcType = VARCHAR} ,
+			CONTRACT_ESTIMATE_BEGIN = #{contractEstimateBegin,jdbcType = VARCHAR} ,
+			CONTRACT_ESTIMATE_END = #{contractEstimateEnd,jdbcType = VARCHAR} ,
+			CONTRACTING_PARTIES = #{contractingParties,jdbcType = VARCHAR} ,
+			CMD_ORDER = #{cmdOrder,jdbcType = VARCHAR} ,
+			BUSINESS_AREA = #{businessArea,jdbcType = VARCHAR} ,
+			ATTRIBUTE02 = #{attribute02,jdbcType = VARCHAR} ,
+			MILITARY_CM_TYPE = #{militaryCmType,jdbcType = VARCHAR} ,
+			SCIENTIFIC_CM_TYPE = #{scientificCmType,jdbcType = VARCHAR} ,
+			ITEM_SECRET = #{itemSecret,jdbcType = VARCHAR} ,
+			PROJECT_CODE = #{projectCode,jdbcType = VARCHAR} ,
+			PROJECT_ABBREVIATION = #{projectAbbreviation,jdbcType = VARCHAR} ,
+			PROJECT_TYPE = #{projectType,jdbcType = VARCHAR} ,
+			CURRENCY = #{currency,jdbcType = VARCHAR} ,
+			CURRENCY_ZHMC = #{currencyZhmc,jdbcType = VARCHAR} ,
+			EXCHANGE_RATE = #{exchangeRate,jdbcType = DECIMAL} ,
+			MULTI_CONTRACT = #{multiContract,jdbcType = VARCHAR} ,
+			SIGN_ORG = #{signOrg,jdbcType = VARCHAR} ,
+			SIGN_ORG_NAME = #{signOrgName,jdbcType = VARCHAR} ,
+			UNIFIED_SOCIAL_CREDIT_CODE = #{unifiedSocialCreditCode,jdbcType = VARCHAR} ,
+			SUPPLIER_NAME = #{supplierName,jdbcType = VARCHAR} ,
+			SUPPLIER_CONTACT_NO = #{supplierContactNo,jdbcType = VARCHAR} ,
+			PURCHASE_MODE = #{purchaseMode,jdbcType = VARCHAR} ,
+			SEAL_TYPE = #{sealType,jdbcType = VARCHAR} ,
+			SEAL_TYPE_NAME = #{sealTypeName,jdbcType = VARCHAR} ,
+			YN_SEAL = #{ynSeal,jdbcType = VARCHAR} ,
+			YN_SEAL_ZHMC = #{ynSealZhmc,jdbcType = VARCHAR} ,
+			YN_FRAMEWORK = #{ynFramework,jdbcType = VARCHAR} ,
+			YN_FRAMEWORK_ZHMC = #{ynFrameworkZhmc,jdbcType = VARCHAR} ,
+			YN_AGREED_CYCLE = #{ynAgreedCycle,jdbcType = VARCHAR} ,
+			YN_AGREED_CYCLE_ZHMC = #{ynAgreedCycleZhmc,jdbcType = VARCHAR} ,
+			YN_MILITARY_DIRECTSIGNING = #{ynMilitaryDirectsigning,jdbcType = VARCHAR} ,
+			YN_MILITARY_DIRECTSIGNING_ZHMC = #{ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR} ,
+			YN_MILITARY_SUPERVISE = #{ynMilitarySupervise,jdbcType = VARCHAR} ,
+			YN_MILITARY_SUPERVISE_COMPANY = #{ynMilitarySuperviseCompany,jdbcType = VARCHAR} ,
+			YN_PLDG_CM = #{ynPldgCm,jdbcType = VARCHAR} ,
+			YN_PLDG_CM_ZHMC = #{ynPldgCmZhmc,jdbcType = VARCHAR} ,
+			YN_ZD_PRICE = #{ynZdPrice,jdbcType = VARCHAR} ,
+			YN_ZD_PRICE_ZHMC = #{ynZdPriceZhmc,jdbcType = VARCHAR} ,
+			YN_SIGN_ORDER = #{ynSignOrder,jdbcType = VARCHAR} ,
+			CM_ZD_PRICE = #{cmZdPrice,jdbcType = DECIMAL} ,
+			SETTLEMENT_METHOD = #{settlementMethod,jdbcType = VARCHAR} ,
+			SETTLEMENT_ZJ_BL = #{settlementZjBl,jdbcType = DECIMAL} ,
+			SETTLEMENT_ZJ_MONEY = #{settlementZjMoney,jdbcType = DECIMAL} ,
+			ELECTRONIC_PLATFORM = #{electronicPlatform,jdbcType = VARCHAR} ,
+			INTERNET_REMARK = #{internetRemark,jdbcType = VARCHAR} ,
+			OTHER_FEE_REMARK = #{otherFeeRemark,jdbcType = VARCHAR} ,
+			GROUP_BUSPUTUNDER_DEPT = #{groupBusputunderDept,jdbcType = VARCHAR} ,
+			WE_CONTRACT_SR_TYPE = #{weContractSrType,jdbcType = VARCHAR} ,
+			TEXT_NUM = #{textNum,jdbcType = VARCHAR} ,
+			TEXT_SECRET = #{textSecret,jdbcType = VARCHAR} ,
+			TEXT_SECRET_ZHMC = #{textSecretZhmc,jdbcType = VARCHAR} ,
+			CM_USER_CODE = #{cmUserCode,jdbcType = VARCHAR} ,
+			APPLY_DATE = #{applyDate,jdbcType = VARCHAR} ,
+			APPLY_DEPT = #{applyDept,jdbcType = VARCHAR} ,
+			APPLY_ID = #{applyId,jdbcType = VARCHAR} ,
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+			LOG_APP_ID = #{logAppId,jdbcType = VARCHAR} ,
+			VERSION = version+1 ,
+			OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+			CHANG_ID = #{changId,jdbcType = VARCHAR} 
+		</trim>
+		where id = #{id}
+		and version = #{version}
+	</update>
+
+	<!-- 批量更新对象   CMJT_CONTRACT -->
+	<update id="updateBatch" parameterType="java.util.List">
+		<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+		<foreach collection="entityList" item="item" index="index"  separator=";" >
+			update CMJT_CONTRACT
+			set
+				ID = #{item.id,jdbcType = VARCHAR} ,
+				CONTRACT_NO = #{item.contractNo,jdbcType = VARCHAR} ,
+				CONTRACT_NAME = #{item.contractName,jdbcType = VARCHAR} ,
+				CONTRACT_STATE = #{item.contractState,jdbcType = VARCHAR} ,
+				CONTRACT_MONEY = #{item.contractMoney,jdbcType = DECIMAL} ,
+				CONTRACT_MONEY_UPPER = #{item.contractMoneyUpper,jdbcType = VARCHAR} ,
+				CONTRACT_WB_MONEY = #{item.contractWbMoney,jdbcType = DECIMAL} ,
+				CONTRACT_CLASSIFY_NAME = #{item.contractClassifyName,jdbcType = VARCHAR} ,
+				CONTRACT_CLASSTYPE_NAME = #{item.contractClasstypeName,jdbcType = VARCHAR} ,
+				CONTRACT_ESTIMATE_BEGIN = #{item.contractEstimateBegin,jdbcType = VARCHAR} ,
+				CONTRACT_ESTIMATE_END = #{item.contractEstimateEnd,jdbcType = VARCHAR} ,
+				CONTRACTING_PARTIES = #{item.contractingParties,jdbcType = VARCHAR} ,
+				CMD_ORDER = #{item.cmdOrder,jdbcType = VARCHAR} ,
+				BUSINESS_AREA = #{item.businessArea,jdbcType = VARCHAR} ,
+				ATTRIBUTE02 = #{item.attribute02,jdbcType = VARCHAR} ,
+				MILITARY_CM_TYPE = #{item.militaryCmType,jdbcType = VARCHAR} ,
+				SCIENTIFIC_CM_TYPE = #{item.scientificCmType,jdbcType = VARCHAR} ,
+				ITEM_SECRET = #{item.itemSecret,jdbcType = VARCHAR} ,
+				PROJECT_CODE = #{item.projectCode,jdbcType = VARCHAR} ,
+				PROJECT_ABBREVIATION = #{item.projectAbbreviation,jdbcType = VARCHAR} ,
+				PROJECT_TYPE = #{item.projectType,jdbcType = VARCHAR} ,
+				CURRENCY = #{item.currency,jdbcType = VARCHAR} ,
+				CURRENCY_ZHMC = #{item.currencyZhmc,jdbcType = VARCHAR} ,
+				EXCHANGE_RATE = #{item.exchangeRate,jdbcType = DECIMAL} ,
+				MULTI_CONTRACT = #{item.multiContract,jdbcType = VARCHAR} ,
+				SIGN_ORG = #{item.signOrg,jdbcType = VARCHAR} ,
+				SIGN_ORG_NAME = #{item.signOrgName,jdbcType = VARCHAR} ,
+				UNIFIED_SOCIAL_CREDIT_CODE = #{item.unifiedSocialCreditCode,jdbcType = VARCHAR} ,
+				SUPPLIER_NAME = #{item.supplierName,jdbcType = VARCHAR} ,
+				SUPPLIER_CONTACT_NO = #{item.supplierContactNo,jdbcType = VARCHAR} ,
+				PURCHASE_MODE = #{item.purchaseMode,jdbcType = VARCHAR} ,
+				SEAL_TYPE = #{item.sealType,jdbcType = VARCHAR} ,
+				SEAL_TYPE_NAME = #{item.sealTypeName,jdbcType = VARCHAR} ,
+				YN_SEAL = #{item.ynSeal,jdbcType = VARCHAR} ,
+				YN_SEAL_ZHMC = #{item.ynSealZhmc,jdbcType = VARCHAR} ,
+				YN_FRAMEWORK = #{item.ynFramework,jdbcType = VARCHAR} ,
+				YN_FRAMEWORK_ZHMC = #{item.ynFrameworkZhmc,jdbcType = VARCHAR} ,
+				YN_AGREED_CYCLE = #{item.ynAgreedCycle,jdbcType = VARCHAR} ,
+				YN_AGREED_CYCLE_ZHMC = #{item.ynAgreedCycleZhmc,jdbcType = VARCHAR} ,
+				YN_MILITARY_DIRECTSIGNING = #{item.ynMilitaryDirectsigning,jdbcType = VARCHAR} ,
+				YN_MILITARY_DIRECTSIGNING_ZHMC = #{item.ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR} ,
+				YN_MILITARY_SUPERVISE = #{item.ynMilitarySupervise,jdbcType = VARCHAR} ,
+				YN_MILITARY_SUPERVISE_COMPANY = #{item.ynMilitarySuperviseCompany,jdbcType = VARCHAR} ,
+				YN_PLDG_CM = #{item.ynPldgCm,jdbcType = VARCHAR} ,
+				YN_PLDG_CM_ZHMC = #{item.ynPldgCmZhmc,jdbcType = VARCHAR} ,
+				YN_ZD_PRICE = #{item.ynZdPrice,jdbcType = VARCHAR} ,
+				YN_ZD_PRICE_ZHMC = #{item.ynZdPriceZhmc,jdbcType = VARCHAR} ,
+				YN_SIGN_ORDER = #{item.ynSignOrder,jdbcType = VARCHAR} ,
+				CM_ZD_PRICE = #{item.cmZdPrice,jdbcType = DECIMAL} ,
+				SETTLEMENT_METHOD = #{item.settlementMethod,jdbcType = VARCHAR} ,
+				SETTLEMENT_ZJ_BL = #{item.settlementZjBl,jdbcType = DECIMAL} ,
+				SETTLEMENT_ZJ_MONEY = #{item.settlementZjMoney,jdbcType = DECIMAL} ,
+				ELECTRONIC_PLATFORM = #{item.electronicPlatform,jdbcType = VARCHAR} ,
+				INTERNET_REMARK = #{item.internetRemark,jdbcType = VARCHAR} ,
+				OTHER_FEE_REMARK = #{item.otherFeeRemark,jdbcType = VARCHAR} ,
+				GROUP_BUSPUTUNDER_DEPT = #{item.groupBusputunderDept,jdbcType = VARCHAR} ,
+				WE_CONTRACT_SR_TYPE = #{item.weContractSrType,jdbcType = VARCHAR} ,
+				TEXT_NUM = #{item.textNum,jdbcType = VARCHAR} ,
+				TEXT_SECRET = #{item.textSecret,jdbcType = VARCHAR} ,
+				TEXT_SECRET_ZHMC = #{item.textSecretZhmc,jdbcType = VARCHAR} ,
+				CM_USER_CODE = #{item.cmUserCode,jdbcType = VARCHAR} ,
+				APPLY_DATE = #{item.applyDate,jdbcType = VARCHAR} ,
+				APPLY_DEPT = #{item.applyDept,jdbcType = VARCHAR} ,
+				APPLY_ID = #{item.applyId,jdbcType = VARCHAR} ,
+				CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+				CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+				CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+				LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+				LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+				LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+				ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+				SYS_APPLICATION_ID = #{item.sysApplicationId,jdbcType = VARCHAR} ,
+				LOG_APP_ID = #{item.logAppId,jdbcType = VARCHAR} ,
+				VERSION = version+1  ,
+				OPERATION_TYPE_ = #{item.operationType,jdbcType = VARCHAR} ,
+				CHANG_ID = #{item.changId,jdbcType = VARCHAR} 
+			where id = #{item.id}
+			and version = #{item.version}
+		</foreach>
+		<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">;end;</if>
+	</update>
+
+	<!-- 主键删除 CMJT_CONTRACT -->
+	<delete id="delete" >
+		delete from CMJT_CONTRACT  where id = #{id}
+	</delete>
+
+	<!-- 主键批量删除 CMJT_CONTRACT -->
+	<delete id="deleteByIds" parameterType="java.lang.String">
+		delete from CMJT_CONTRACT where id in
+		<foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<update id="updateMerge" parameterType="avicit.cmjt.cmjtcontract.dto.CmjtContractDTO">
+		MERGE INTO CMJT_CONTRACT t1
+		USING dual
+		ON(t1.ID = #{id,jdbcType=VARCHAR})
+		WHEN MATCHED THEN
+		UPDATE <set>
+		<if test="contractNo != null">
+			CONTRACT_NO = #{contractNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractName != null">
+			CONTRACT_NAME = #{contractName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractState != null">
+			CONTRACT_STATE = #{contractState,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractMoney != null">
+			CONTRACT_MONEY = #{contractMoney,jdbcType = DECIMAL} ,
+		</if>
+		<if test="contractMoneyUpper != null">
+			CONTRACT_MONEY_UPPER = #{contractMoneyUpper,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractWbMoney != null">
+			CONTRACT_WB_MONEY = #{contractWbMoney,jdbcType = DECIMAL} ,
+		</if>
+		<if test="contractClassifyName != null">
+			CONTRACT_CLASSIFY_NAME = #{contractClassifyName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractClasstypeName != null">
+			CONTRACT_CLASSTYPE_NAME = #{contractClasstypeName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractEstimateBegin != null">
+			CONTRACT_ESTIMATE_BEGIN = #{contractEstimateBegin,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractEstimateEnd != null">
+			CONTRACT_ESTIMATE_END = #{contractEstimateEnd,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contractingParties != null">
+			CONTRACTING_PARTIES = #{contractingParties,jdbcType = VARCHAR} ,
+		</if>
+		<if test="cmdOrder != null">
+			CMD_ORDER = #{cmdOrder,jdbcType = VARCHAR} ,
+		</if>
+		<if test="businessArea != null">
+			BUSINESS_AREA = #{businessArea,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="militaryCmType != null">
+			MILITARY_CM_TYPE = #{militaryCmType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="scientificCmType != null">
+			SCIENTIFIC_CM_TYPE = #{scientificCmType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="itemSecret != null">
+			ITEM_SECRET = #{itemSecret,jdbcType = VARCHAR} ,
+		</if>
+		<if test="projectCode != null">
+			PROJECT_CODE = #{projectCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="projectAbbreviation != null">
+			PROJECT_ABBREVIATION = #{projectAbbreviation,jdbcType = VARCHAR} ,
+		</if>
+		<if test="projectType != null">
+			PROJECT_TYPE = #{projectType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="currency != null">
+			CURRENCY = #{currency,jdbcType = VARCHAR} ,
+		</if>
+		<if test="currencyZhmc != null">
+			CURRENCY_ZHMC = #{currencyZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="exchangeRate != null">
+			EXCHANGE_RATE = #{exchangeRate,jdbcType = DECIMAL} ,
+		</if>
+		<if test="multiContract != null">
+			MULTI_CONTRACT = #{multiContract,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signOrg != null">
+			SIGN_ORG = #{signOrg,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signOrgName != null">
+			SIGN_ORG_NAME = #{signOrgName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="unifiedSocialCreditCode != null">
+			UNIFIED_SOCIAL_CREDIT_CODE = #{unifiedSocialCreditCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="supplierName != null">
+			SUPPLIER_NAME = #{supplierName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="supplierContactNo != null">
+			SUPPLIER_CONTACT_NO = #{supplierContactNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="purchaseMode != null">
+			PURCHASE_MODE = #{purchaseMode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sealType != null">
+			SEAL_TYPE = #{sealType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sealTypeName != null">
+			SEAL_TYPE_NAME = #{sealTypeName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynSeal != null">
+			YN_SEAL = #{ynSeal,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynSealZhmc != null">
+			YN_SEAL_ZHMC = #{ynSealZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynFramework != null">
+			YN_FRAMEWORK = #{ynFramework,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynFrameworkZhmc != null">
+			YN_FRAMEWORK_ZHMC = #{ynFrameworkZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynAgreedCycle != null">
+			YN_AGREED_CYCLE = #{ynAgreedCycle,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynAgreedCycleZhmc != null">
+			YN_AGREED_CYCLE_ZHMC = #{ynAgreedCycleZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynMilitaryDirectsigning != null">
+			YN_MILITARY_DIRECTSIGNING = #{ynMilitaryDirectsigning,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynMilitaryDirectsigningZhmc != null">
+			YN_MILITARY_DIRECTSIGNING_ZHMC = #{ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynMilitarySupervise != null">
+			YN_MILITARY_SUPERVISE = #{ynMilitarySupervise,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynMilitarySuperviseCompany != null">
+			YN_MILITARY_SUPERVISE_COMPANY = #{ynMilitarySuperviseCompany,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynPldgCm != null">
+			YN_PLDG_CM = #{ynPldgCm,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynPldgCmZhmc != null">
+			YN_PLDG_CM_ZHMC = #{ynPldgCmZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynZdPrice != null">
+			YN_ZD_PRICE = #{ynZdPrice,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynZdPriceZhmc != null">
+			YN_ZD_PRICE_ZHMC = #{ynZdPriceZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynSignOrder != null">
+			YN_SIGN_ORDER = #{ynSignOrder,jdbcType = VARCHAR} ,
+		</if>
+		<if test="cmZdPrice != null">
+			CM_ZD_PRICE = #{cmZdPrice,jdbcType = DECIMAL} ,
+		</if>
+		<if test="settlementMethod != null">
+			SETTLEMENT_METHOD = #{settlementMethod,jdbcType = VARCHAR} ,
+		</if>
+		<if test="settlementZjBl != null">
+			SETTLEMENT_ZJ_BL = #{settlementZjBl,jdbcType = DECIMAL} ,
+		</if>
+		<if test="settlementZjMoney != null">
+			SETTLEMENT_ZJ_MONEY = #{settlementZjMoney,jdbcType = DECIMAL} ,
+		</if>
+		<if test="electronicPlatform != null">
+			ELECTRONIC_PLATFORM = #{electronicPlatform,jdbcType = VARCHAR} ,
+		</if>
+		<if test="internetRemark != null">
+			INTERNET_REMARK = #{internetRemark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="otherFeeRemark != null">
+			OTHER_FEE_REMARK = #{otherFeeRemark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="groupBusputunderDept != null">
+			GROUP_BUSPUTUNDER_DEPT = #{groupBusputunderDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="weContractSrType != null">
+			WE_CONTRACT_SR_TYPE = #{weContractSrType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="textNum != null">
+			TEXT_NUM = #{textNum,jdbcType = VARCHAR} ,
+		</if>
+		<if test="textSecret != null">
+			TEXT_SECRET = #{textSecret,jdbcType = VARCHAR} ,
+		</if>
+		<if test="textSecretZhmc != null">
+			TEXT_SECRET_ZHMC = #{textSecretZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="cmUserCode != null">
+			CM_USER_CODE = #{cmUserCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applyDate != null">
+			APPLY_DATE = #{applyDate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applyDept != null">
+			APPLY_DEPT = #{applyDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applyId != null">
+			APPLY_ID = #{applyId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sysApplicationId != null">
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="logAppId != null">
+			LOG_APP_ID = #{logAppId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="operationType != null">
+			OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="changId != null">
+			CHANG_ID = #{changId,jdbcType = VARCHAR},
+		</if>
+		<if test="contractTypeId != null">
+			CONTRACT_TYPE_ID = #{contractTypeId,jdbcType = VARCHAR},
+		</if>
+
+		<if test="contractPerformer != null">
+			CONTRACT_PERFORMER = #{contractPerformer,jdbcType = VARCHAR},
+		</if>
+		<if test="contractPerformerCode != null">
+			CONTRACT_PERFORMER_CODE = #{contractPerformerCode,jdbcType = VARCHAR},
+		</if>
+		<if test="lyUserCode != null">
+			LY_USER_CODE = #{lyUserCode,jdbcType = VARCHAR},
+		</if>
+		<if test="lyUserName != null">
+			LY_USER_NAME = #{lyUserName,jdbcType = VARCHAR},
+		</if>
+
+		<if test="jsType != null">
+			JS_TYPE = #{jsType,jdbcType = VARCHAR},
+		</if>
+		<if test="jsTypeName != null">
+			JS_TYPE_NAME = #{jsTypeName,jdbcType = VARCHAR}
+		</if>
+	</set>
+		WHEN NOT MATCHED THEN
+		INSERT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="contractNo != null">
+				CONTRACT_NO,
+			</if>
+			<if test="contractName != null">
+				CONTRACT_NAME,
+			</if>
+			<if test="contractState != null">
+				CONTRACT_STATE,
+			</if>
+			<if test="contractMoney != null">
+				CONTRACT_MONEY,
+			</if>
+			<if test="contractMoneyUpper != null">
+				CONTRACT_MONEY_UPPER,
+			</if>
+			<if test="contractWbMoney != null">
+				CONTRACT_WB_MONEY,
+			</if>
+			<if test="contractClassifyName != null">
+				CONTRACT_CLASSIFY_NAME,
+			</if>
+			<if test="contractClasstypeName != null">
+				CONTRACT_CLASSTYPE_NAME,
+			</if>
+			<if test="contractEstimateBegin != null">
+				CONTRACT_ESTIMATE_BEGIN,
+			</if>
+			<if test="contractEstimateEnd != null">
+				CONTRACT_ESTIMATE_END,
+			</if>
+			<if test="contractingParties != null">
+				CONTRACTING_PARTIES,
+			</if>
+			<if test="cmdOrder != null">
+				CMD_ORDER,
+			</if>
+			<if test="businessArea != null">
+				BUSINESS_AREA,
+			</if>
+			<if test="attribute02 != null">
+				ATTRIBUTE02,
+			</if>
+			<if test="militaryCmType != null">
+				MILITARY_CM_TYPE,
+			</if>
+			<if test="scientificCmType != null">
+				SCIENTIFIC_CM_TYPE,
+			</if>
+			<if test="itemSecret != null">
+				ITEM_SECRET,
+			</if>
+			<if test="projectCode != null">
+				PROJECT_CODE,
+			</if>
+			<if test="projectAbbreviation != null">
+				PROJECT_ABBREVIATION,
+			</if>
+			<if test="projectType != null">
+				PROJECT_TYPE,
+			</if>
+			<if test="currency != null">
+				CURRENCY,
+			</if>
+			<if test="currencyZhmc != null">
+				CURRENCY_ZHMC,
+			</if>
+			<if test="exchangeRate != null">
+				EXCHANGE_RATE,
+			</if>
+			<if test="multiContract != null">
+				MULTI_CONTRACT,
+			</if>
+			<if test="signOrg != null">
+				SIGN_ORG,
+			</if>
+			<if test="signOrgName != null">
+				SIGN_ORG_NAME,
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				UNIFIED_SOCIAL_CREDIT_CODE,
+			</if>
+			<if test="supplierName != null">
+				SUPPLIER_NAME,
+			</if>
+			<if test="supplierContactNo != null">
+				SUPPLIER_CONTACT_NO,
+			</if>
+			<if test="purchaseMode != null">
+				PURCHASE_MODE,
+			</if>
+			<if test="sealType != null">
+				SEAL_TYPE,
+			</if>
+			<if test="sealTypeName != null">
+				SEAL_TYPE_NAME,
+			</if>
+			<if test="ynSeal != null">
+				YN_SEAL,
+			</if>
+			<if test="ynSealZhmc != null">
+				YN_SEAL_ZHMC,
+			</if>
+			<if test="ynFramework != null">
+				YN_FRAMEWORK,
+			</if>
+			<if test="ynFrameworkZhmc != null">
+				YN_FRAMEWORK_ZHMC,
+			</if>
+			<if test="ynAgreedCycle != null">
+				YN_AGREED_CYCLE,
+			</if>
+			<if test="ynAgreedCycleZhmc != null">
+				YN_AGREED_CYCLE_ZHMC,
+			</if>
+			<if test="ynMilitaryDirectsigning != null">
+				YN_MILITARY_DIRECTSIGNING,
+			</if>
+			<if test="ynMilitaryDirectsigningZhmc != null">
+				YN_MILITARY_DIRECTSIGNING_ZHMC,
+			</if>
+			<if test="ynMilitarySupervise != null">
+				YN_MILITARY_SUPERVISE,
+			</if>
+			<if test="ynMilitarySuperviseCompany != null">
+				YN_MILITARY_SUPERVISE_COMPANY,
+			</if>
+			<if test="ynPldgCm != null">
+				YN_PLDG_CM,
+			</if>
+			<if test="ynPldgCmZhmc != null">
+				YN_PLDG_CM_ZHMC,
+			</if>
+			<if test="ynZdPrice != null">
+				YN_ZD_PRICE,
+			</if>
+			<if test="ynZdPriceZhmc != null">
+				YN_ZD_PRICE_ZHMC,
+			</if>
+			<if test="ynSignOrder != null">
+				YN_SIGN_ORDER,
+			</if>
+			<if test="cmZdPrice != null">
+				CM_ZD_PRICE,
+			</if>
+			<if test="settlementMethod != null">
+				SETTLEMENT_METHOD,
+			</if>
+			<if test="settlementZjBl != null">
+				SETTLEMENT_ZJ_BL,
+			</if>
+			<if test="settlementZjMoney != null">
+				SETTLEMENT_ZJ_MONEY,
+			</if>
+			<if test="electronicPlatform != null">
+				ELECTRONIC_PLATFORM,
+			</if>
+			<if test="internetRemark != null">
+				INTERNET_REMARK,
+			</if>
+			<if test="otherFeeRemark != null">
+				OTHER_FEE_REMARK,
+			</if>
+			<if test="groupBusputunderDept != null">
+				GROUP_BUSPUTUNDER_DEPT,
+			</if>
+			<if test="weContractSrType != null">
+				WE_CONTRACT_SR_TYPE,
+			</if>
+			<if test="textNum != null">
+				TEXT_NUM,
+			</if>
+			<if test="textSecret != null">
+				TEXT_SECRET,
+			</if>
+			<if test="textSecretZhmc != null">
+				TEXT_SECRET_ZHMC,
+			</if>
+			<if test="cmUserCode != null">
+				CM_USER_CODE,
+			</if>
+			<if test="applyDate != null">
+				APPLY_DATE,
+			</if>
+			<if test="applyDept != null">
+				APPLY_DEPT,
+			</if>
+			<if test="applyId != null">
+				APPLY_ID,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID,
+			</if>
+			<if test="logAppId != null">
+				LOG_APP_ID,
+			</if>
+			<if test="version != null">
+				VERSION,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_,
+			</if>
+			<if test="changId != null">
+				CHANG_ID,
+			</if>
+			<if test="contractTypeId != null">
+				CONTRACT_TYPE_ID,
+			</if>
+
+			<if test="contractPerformer != null">
+				CONTRACT_PERFORMER,
+			</if>
+			<if test="contractPerformerCode != null">
+				CONTRACT_PERFORMER_CODE,
+			</if>
+			<if test="lyUserCode != null">
+				LY_USER_CODE,
+			</if>
+			<if test="lyUserName != null">
+				LY_USER_NAME,
+			</if>
+
+
+			<if test="jsType != null">
+				JS_TYPE,
+			</if>
+			<if test="jsTypeName != null">
+				JS_TYPE_NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType = VARCHAR},
+			</if>
+			<if test="contractNo != null">
+				#{contractNo,jdbcType = VARCHAR},
+			</if>
+			<if test="contractName != null">
+				#{contractName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractState != null">
+				#{contractState,jdbcType = VARCHAR},
+			</if>
+			<if test="contractMoney != null">
+				#{contractMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="contractMoneyUpper != null">
+				#{contractMoneyUpper,jdbcType = VARCHAR},
+			</if>
+			<if test="contractWbMoney != null">
+				#{contractWbMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="contractClassifyName != null">
+				#{contractClassifyName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractClasstypeName != null">
+				#{contractClasstypeName,jdbcType = VARCHAR},
+			</if>
+			<if test="contractEstimateBegin != null">
+				#{contractEstimateBegin,jdbcType = VARCHAR},
+			</if>
+			<if test="contractEstimateEnd != null">
+				#{contractEstimateEnd,jdbcType = VARCHAR},
+			</if>
+			<if test="contractingParties != null">
+				#{contractingParties,jdbcType = VARCHAR},
+			</if>
+			<if test="cmdOrder != null">
+				#{cmdOrder,jdbcType = VARCHAR},
+			</if>
+			<if test="businessArea != null">
+				#{businessArea,jdbcType = VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType = VARCHAR},
+			</if>
+			<if test="militaryCmType != null">
+				#{militaryCmType,jdbcType = VARCHAR},
+			</if>
+			<if test="scientificCmType != null">
+				#{scientificCmType,jdbcType = VARCHAR},
+			</if>
+			<if test="itemSecret != null">
+				#{itemSecret,jdbcType = VARCHAR},
+			</if>
+			<if test="projectCode != null">
+				#{projectCode,jdbcType = VARCHAR},
+			</if>
+			<if test="projectAbbreviation != null">
+				#{projectAbbreviation,jdbcType = VARCHAR},
+			</if>
+			<if test="projectType != null">
+				#{projectType,jdbcType = VARCHAR},
+			</if>
+			<if test="currency != null">
+				#{currency,jdbcType = VARCHAR},
+			</if>
+			<if test="currencyZhmc != null">
+				#{currencyZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="exchangeRate != null">
+				#{exchangeRate,jdbcType = DECIMAL},
+			</if>
+			<if test="multiContract != null">
+				#{multiContract,jdbcType = VARCHAR},
+			</if>
+			<if test="signOrg != null">
+				#{signOrg,jdbcType = VARCHAR},
+			</if>
+			<if test="signOrgName != null">
+				#{signOrgName,jdbcType = VARCHAR},
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				#{unifiedSocialCreditCode,jdbcType = VARCHAR},
+			</if>
+			<if test="supplierName != null">
+				#{supplierName,jdbcType = VARCHAR},
+			</if>
+			<if test="supplierContactNo != null">
+				#{supplierContactNo,jdbcType = VARCHAR},
+			</if>
+			<if test="purchaseMode != null">
+				#{purchaseMode,jdbcType = VARCHAR},
+			</if>
+			<if test="sealType != null">
+				#{sealType,jdbcType = VARCHAR},
+			</if>
+			<if test="sealTypeName != null">
+				#{sealTypeName,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSeal != null">
+				#{ynSeal,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSealZhmc != null">
+				#{ynSealZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynFramework != null">
+				#{ynFramework,jdbcType = VARCHAR},
+			</if>
+			<if test="ynFrameworkZhmc != null">
+				#{ynFrameworkZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynAgreedCycle != null">
+				#{ynAgreedCycle,jdbcType = VARCHAR},
+			</if>
+			<if test="ynAgreedCycleZhmc != null">
+				#{ynAgreedCycleZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitaryDirectsigning != null">
+				#{ynMilitaryDirectsigning,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitaryDirectsigningZhmc != null">
+				#{ynMilitaryDirectsigningZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitarySupervise != null">
+				#{ynMilitarySupervise,jdbcType = VARCHAR},
+			</if>
+			<if test="ynMilitarySuperviseCompany != null">
+				#{ynMilitarySuperviseCompany,jdbcType = VARCHAR},
+			</if>
+			<if test="ynPldgCm != null">
+				#{ynPldgCm,jdbcType = VARCHAR},
+			</if>
+			<if test="ynPldgCmZhmc != null">
+				#{ynPldgCmZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynZdPrice != null">
+				#{ynZdPrice,jdbcType = VARCHAR},
+			</if>
+			<if test="ynZdPriceZhmc != null">
+				#{ynZdPriceZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynSignOrder != null">
+				#{ynSignOrder,jdbcType = VARCHAR},
+			</if>
+			<if test="cmZdPrice != null">
+				#{cmZdPrice,jdbcType = DECIMAL},
+			</if>
+			<if test="settlementMethod != null">
+				#{settlementMethod,jdbcType = VARCHAR},
+			</if>
+			<if test="settlementZjBl != null">
+				#{settlementZjBl,jdbcType = DECIMAL},
+			</if>
+			<if test="settlementZjMoney != null">
+				#{settlementZjMoney,jdbcType = DECIMAL},
+			</if>
+			<if test="electronicPlatform != null">
+				#{electronicPlatform,jdbcType = VARCHAR},
+			</if>
+			<if test="internetRemark != null">
+				#{internetRemark,jdbcType = VARCHAR},
+			</if>
+			<if test="otherFeeRemark != null">
+				#{otherFeeRemark,jdbcType = VARCHAR},
+			</if>
+			<if test="groupBusputunderDept != null">
+				#{groupBusputunderDept,jdbcType = VARCHAR},
+			</if>
+			<if test="weContractSrType != null">
+				#{weContractSrType,jdbcType = VARCHAR},
+			</if>
+			<if test="textNum != null">
+				#{textNum,jdbcType = VARCHAR},
+			</if>
+			<if test="textSecret != null">
+				#{textSecret,jdbcType = VARCHAR},
+			</if>
+			<if test="textSecretZhmc != null">
+				#{textSecretZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="cmUserCode != null">
+				#{cmUserCode,jdbcType = VARCHAR},
+			</if>
+			<if test="applyDate != null">
+				#{applyDate,jdbcType = VARCHAR},
+			</if>
+			<if test="applyDept != null">
+				#{applyDept,jdbcType = VARCHAR},
+			</if>
+			<if test="applyId != null">
+				#{applyId,jdbcType = VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType = VARCHAR},
+			</if>
+			<if test="createdDept != null">
+				#{createdDept,jdbcType = VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType = VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType = VARCHAR},
+			</if>
+			<if test="sysApplicationId != null">
+				#{sysApplicationId,jdbcType = VARCHAR},
+			</if>
+			<if test="logAppId != null">
+				#{logAppId,jdbcType = VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType = DECIMAL},
+			</if>
+			<if test="operationType != null">
+				#{operationType,jdbcType = VARCHAR},
+			</if>
+			<if test="changId != null">
+				#{changId,jdbcType = VARCHAR},
+			</if>
+			<if test="contractTypeId != null">
+				#{contractTypeId,jdbcType = VARCHAR},
+			</if>
+
+			<if test="contractPerformer != null">
+				#{contractPerformer,jdbcType = VARCHAR},
+			</if>
+			<if test="contractPerformerCode != null">
+				#{contractPerformerCode,jdbcType = VARCHAR},
+			</if>
+			<if test="lyUserCode != null">
+				#{lyUserCode,jdbcType = VARCHAR},
+			</if>
+			<if test="lyUserName != null">
+				#{lyUserName,jdbcType = VARCHAR},
+			</if>
+
+			<if test="jsType != null">
+				#{jsType,jdbcType = VARCHAR},
+			</if>
+			<if test="jsTypeName != null">
+				#{jsTypeName,jdbcType = VARCHAR},
+			</if>
+		</trim>
+	</update>
+	<select id="findContractsToSync" resultMap="CmjtContractDTOMap">
+		select <include refid="commonColums"/>
+		from CMJT_CONTRACT t1 where t1.sync_status in('N','F','E') AND t1.contract_state ='4' AND fmp_flag='0' AND contract_no is not null
+	</select>
+
+	<update id="updateSyncStatus" parameterType="java.lang.String">
+		update cm.CMJT_CONTRACT dd set sync_Status=#{syncStatus},msg=#{msg} where id =#{contractId}
+	</update>
+
+	<select id="selectCmjtContractByDate" parameterType="java.lang.String" resultMap="CmjtContractResponseDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_CONTRACT t1
+		where  to_char(t1.LAST_UPDATE_DATE,'yyyy-mm-dd') BETWEEN #{startDate} AND #{endDate}
+	</select>
+</mapper>

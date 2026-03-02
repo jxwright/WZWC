@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="ssp.lib.dept.entity.SysDept" tableName="SYS_DEPT">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="deptCode" column="DEPT_CODE"/>
+        <property name="parentDeptId" column="PARENT_DEPT_ID"/>
+        <property name="orgId" column="ORG_ID"/>
+        <property name="orderBy" column="ORDER_BY"/>
+        <property name="post" column="POST"/>
+        <property name="tel" column="TEL"/>
+        <property name="fax" column="FAX"/>
+        <property name="email" column="EMAIL"/>
+        <property name="deptAlias" column="DEPT_ALIAS"/>
+        <property name="deptType" column="DEPT_TYPE"/>
+        <property name="deptIndexTreeNo" column="DEPT_INDEX_TREE_NO"/>
+        <property name="workCalendarId" column="WORK_CALENDAR_ID"/>
+        <property name="validFlag" column="VALID_FLAG"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true"/>
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false"/>
+        <property name="deptLevel" column="DEPT_LEVEL"/>
+        <property name="attribute01" column="ATTRIBUTE_01"/>
+        <property name="attribute02" column="ATTRIBUTE_02"/>
+        <property name="attribute03" column="ATTRIBUTE_03"/>
+        <property name="attribute04" column="ATTRIBUTE_04"/>
+        <property name="attribute05" column="ATTRIBUTE_05"/>
+        <property name="attribute06" column="ATTRIBUTE_06"/>
+        <property name="attribute07" column="ATTRIBUTE_07"/>
+        <property name="attribute08" column="ATTRIBUTE_08"/>
+        <property name="attribute09" column="ATTRIBUTE_09"/>
+        <property name="attribute10" column="ATTRIBUTE_10"/>
+    </vo>
+</vobjs>

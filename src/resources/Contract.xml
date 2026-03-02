@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.cm.domain.contract.entity.Contract" tableName="CM_CONTRACT">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="contractType" column="CONTRACT_TYPE"/>
+        <property name="categoryId" column="CATEGORY_ID"/>
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property name="entityId" column="ENTITY_ID"/>
+        <property name="entitySid" column="ENTITY_SID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="deptOwnerUid" column="DEPT_OWNER_UID"/>
+        <property name="userDeptId" column="USER_DEPT_ID"/>
+        <property name="isFrame" column="IS_FRAME"/>
+        <property name="contProperties" column="CONT_PROPERTIES"/>
+        <property name="direction" column="DIRECTION"/>
+        <property name="projectId" column="PROJECT_ID"/>
+        <property name="taskNo" column="TASK_NO"/>
+        <property name="contStatus" column="CONT_STATUS"/>
+        <property name="contExecStatus" column="CONT_EXEC_STATUS"/>
+        <property name="contSettleStatus" column="CONT_SETTLE_STATUS"/>
+        <property name="contEndDate" column="CONT_END_DATE"/>
+        <property name="isArchived" column="IS_ARCHIVED"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="taskSecretLevel" column="TASK_SECRET_LEVEL"/>
+        <property name="taskSecretCode" column="TASK_SECRET_CODE"/>
+        <property name="contractFlag" column="CONTRACT_FLAG"/>
+        <property name="isOutsource" column="IS_OUTSOURCE"/>
+        <property name="contCode" column="CONT_CODE"/>
+        <property name="contName" column="CONT_NAME"/>
+        <property name="contractSource" column="CONTRACT_SOURCE"/>
+        <property name="pContractId" column="PCONTRACT_ID"/>
+        <lookup name="projectName" lookupKey="projectId-projectId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="projectName"
+                bean="projectDomainServiceImpl" method="getProjectNameByIdForLookUp"/>
+    </vo>
+
+    <vo class="avicit.cm.domain.contract.entity.CmContractData" tableName="CM_CONTRACT_DATA">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="contractId" column="CONTRACT_ID" isPrimaryKey="true"/>
+        <property name="revsion" column="REVSION"/>
+        <property name="contAbstract" column="CONT_ABSTRACT"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="exchangeRate" column="EXCHANGE_RATE"/>
+        <property name="objectAmount" column="OBJECT_AMOUNT"/>
+        <property name="objectAmountFc" column="OBJECT_AMOUNT_FC"/>
+        <property name="paymentCode" column="PAYMENT_CODE"/>
+        <property name="paymentType" column="PAYMENT_TYPE"/>
+        <property name="invoiceType" column="INVOICE_TYPE"/>
+        <property name="invoiceTax" column="INVOICE_TAX"/>
+        <property name="effectiveDate" column="EFFECTIVE_DATE"/>
+        <property name="finishDate" column="FINISH_DATE"/>
+        <property name="isOnlineDoc" column="IS_ONLINE_DOC"/>
+        <property name="activeState" column="ACTIVE_STATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="attachData" column="ATTACH_DATA"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="fromRev" column="FROM_REV"/>
+        <property name="isCurrentRev" column="IS_CURRENT_REV"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="apprStatus" column="APPR_STATUS"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="sourceSys" column="SOURCE_SYS"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="fundSource" column="FUND_SOURCE"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+        <join name="cmContractParty" joinKey="contractId-contractId" joinType="oneToMany" isAggregation="true" class="avicit.cm.domain.contract.entity.CmContractParty"></join>
+<!--        <join name="cmContractGoods" joinKey="id-contractId" joinType="oneToMany" isAggregation="true" class="avicit.cm.domain.contract.entity.CmContractGoods"></join>-->
+<!--        <join name="cmContractRef" joinKey="contractId-contractId" joinType="oneToMany" isAggregation="true" class="avicit.cm.domain.contract.entity.CmContractRef"></join>-->
+        <multiJoin name="cmContractGoods" multiJoinKey="contractId-contractId" multiJoinType="oneToMany"
+                   paramType="assign" params="{entity:['revsion-revsion']}" isAggregation="true"
+                returnType="vo" class="avicit.cm.domain.contract.entity.CmContractGoods"/>
+        <multiJoin name="cmContractRef" multiJoinKey="contractId-contractId" multiJoinType="oneToMany"
+                   paramType="assign" params="{entity:['revsion-revsion']}" isAggregation="true"
+                   returnType="vo" class="avicit.cm.domain.contract.entity.CmContractRef"/>
+        <join name="contract" joinKey="contractId-id" joinType="manyToOne" isAggregation="true" class="avicit.cm.domain.contract.entity.Contract"></join>
+    </vo>
+
+    <vo tableName="cm_contract_category" class="avicit.cm.domain.contract.entity.CmContractCategory">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="parentId" column="PARENT_ID"/>
+        <property name="code" column="CODE"/>
+        <property name="name" column="NAME"/>
+        <property name="contractType" column="CONTRACT_TYPE"/>
+        <property name="keyId" column="KEY_ID"/>
+        <property name="seqNo" column="SEQNO" select="true" insert="true" update="true" delete="true"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo tableName="cm_contract_type" class="avicit.cm.domain.contract.entity.CmContractType">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="name" column="NAME"/>
+        <property name="direction" column="DIRECTION"/>
+        <property name="isEnable" column="IS_ENABLE"/>
+        <property name="sortNo" column="SORT_NO"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="bizType" column="BIZ_TYPE"/>
+        <property name="code" column="CODE"/>
+        <property name="selectFlag" column="SELECT_FLAG"/>
+        <property name="selectOption" column="SELECT_OPTION"/>
+    </vo>
+
+    <vo tableName="cm_contract_req" class="avicit.cm.domain.contract.entity.CmContractReq">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="contractId" column="CONTRACT_ID" jdbcType="VARCHAR" />
+        <property name="reqAction" column="REQ_ACTION" jdbcType="VARCHAR" />
+        <property name="actionType" column="ACTION_TYPE" jdbcType="VARCHAR" />
+        <property name="actionReason" column="ACTION_REASON" jdbcType="VARCHAR" />
+        <property name="actionContent" column="ACTION_CONTENT" jdbcType="VARCHAR" />
+        <property name="actionStart" column="ACTION_START" jdbcType="TIMESTAMP" />
+        <property name="actionEnd" column="ACTION_END" jdbcType="TIMESTAMP" />
+        <property name="refParty" column="REF_PARTY" jdbcType="VARCHAR" />
+        <property name="isNegotiate" column="IS_NEGOTIATE" jdbcType="CHAR" />
+        <property name="isOnlineDoc" column="IS_ONLINE_DOC" jdbcType="CHAR" />
+        <property name="optionData" column="OPTION_DATA" jdbcType="VARCHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+    </vo>
+
+    <vo tableName="cm_contract_party" class="avicit.cm.domain.contract.entity.CmContractParty">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="contractId" column="CONTRACT_ID" jdbcType="VARCHAR" />
+        <property name="partyName" column="PARTY_NAME" jdbcType="VARCHAR" />
+        <property name="partyOf" column="PARTY_OF" jdbcType="VARCHAR" />
+        <property name="isOur" column="IS_OUR" jdbcType="CHAR" />
+        <property name="custId" column="CUST_ID" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="signer" column="SIGNER" jdbcType="VARCHAR" />
+    </vo>
+
+    <vo tableName="CM_EXEC_TRACE" class="avicit.cm.domain.contract.entity.CmExecTrace">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="contractId" column="CONTRACT_ID"/>
+        <property name="execStage" column="EXEC_STAGE"/>
+        <property name="execStageDesc" column="EXEC_STAGE_DESC"/>
+        <property name="execAction" column="EXEC_ACTION"/>
+        <property name="execActionDesc" column="EXEC_ACTION_DESC"/>
+        <property name="execType" column="EXEC_TYPE"/>
+        <property name="event" column="EVENT"/>
+        <property name="eventDate" column="EVENT_DATE"/>
+        <property name="eventUrl" column="EVENT_URL"/>
+        <property name="eventDept" column="EVENT_DEPT"/>
+        <property name="writerUid" column="WRITER_UID"/>
+        <property name="state" column="STATE"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="sourceSys" column="SOURCE_SYS"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="eventOppDesc" column="EVENT_OPP_DESC"/>
+        <property name="isDisputed" column="IS_DISPUTED"/>
+        <property name="disputeDesc" column="DISPUTE_DESC"/>
+        <property name="isResolution" column="IS_RESOLUTION"/>
+    </vo>
+
+    <vo class="avicit.cm.domain.contract.entity.ContractArchived" tableName="CONTRACT_ARCHIVED">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="archiveUid" column="ARCHIVE_UID"/>
+        <property name="archiveDate" column="ARCHIVE_DATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo tableName="CM_CONTRACT_GOODS" class="avicit.cm.domain.contract.entity.CmContractGoods">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="sid" column="SID" jdbcType="VARCHAR" />
+        <property name="contractId" column="CONTRACT_ID" jdbcType="VARCHAR" />
+        <property name="revsion" column="REVSION"/>
+        <property name="code" column="CODE" jdbcType="VARCHAR" />
+        <property name="name" column="NAME" jdbcType="VARCHAR" />
+        <property name="manufacturer" column="MANUFACTURER" jdbcType="VARCHAR" />
+        <property name="brandName" column="BRAND_NAME" jdbcType="VARCHAR" />
+        <property name="spec" column="SPEC" jdbcType="VARCHAR" />
+        <property name="model" column="MODEL" jdbcType="VARCHAR" />
+        <property name="unit" column="UNIT" jdbcType="VARCHAR" />
+        <property name="quantity" column="QUANTITY" jdbcType="DECIMAL" />
+        <property name="exchangeRate" column="EXCHANGE_RATE" jdbcType="DECIMAL" />
+        <property name="price" column="PRICE" jdbcType="DECIMAL" />
+        <property name="priceFc" column="PRICE_FC" jdbcType="DECIMAL" />
+        <property name="materialId" column="MATERIAL_ID" jdbcType="VARCHAR" />
+        <property name="lineNo" column="LINE_NO" jdbcType="DECIMAL" />
+        <property name="dataSource" column="DATA_SOURCE" jdbcType="VARCHAR" />
+        <property name="sourceSys" column="SOURCE_SYS" jdbcType="VARCHAR" />
+        <property name="revStatus" column="REV_STATUS" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+        <property name="assetsCode" column="ASSETS_CODE" jdbcType="VARCHAR" />
+        <property name="oldAssetsCode" column="OLD_ASSETS_CODE" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)"  updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)"  updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE" jdbcType="DECIMAL" />
+    </vo>
+
+    <vo tableName="cm_contract_ref" class="avicit.cm.domain.contract.entity.CmContractRef">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="contractId" column="CONTRACT_ID"/>
+        <property name="revsion" column="REVSION"/>
+        <property name="contractField" column="CONTRACT_FIELD"/>
+        <property name="refType" column="REF_TYPE"/>
+        <property name="refDataId" column="REF_DATA_ID"/>
+        <property name="refDataText" column="REF_DATA_TEXT"/>
+        <property name="refDataSrc" column="REF_DATA_SRC"/>
+        <property name="refDataOption" column="REF_DATA_OPTION"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="refUrl" column="REF_URL"/>
+    </vo>
+
+    <vo class="avicit.cm.domain.contract.entity.CmApprDocCheckList" tableName="CM_APPR_DOC_CHECKLIST">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="contdataId" column="CONTDATA_ID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="apprStage" column="APPR_STAGE"/>
+        <property name="checkItemId" column="CHECK_ITEM_ID"/>
+        <property name="checkValue" column="CHECK_VALUE"/>
+        <property name="checkMsg" column="CHECK_MSG"/>
+        <property name="isEnable" column="IS_ENABLE"/>
+        <property name="workflowCode" column="WORKFLOW_CODE"/>
+        <property name="approveUser" column="APPROVE_USER"/>
+        <property name="approveDate" column="APPROVE_DATE"/>
+    </vo>
+
+    <vo class="avicit.cm.domain.contract.entity.CmContractAddition" tableName="CM_CONTRACT_ADDITION">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="sid" column="SID"/>
+        <property name="contractId" column="CONTRACT_ID"/>
+        <property name="revsion" column="REVSION"/>
+        <property name="fieldName" column="FIELD_NAME"/>
+        <property name="fieldValue" column="FIELD_VALUE"/>
+        <property name="additionType" column="ADDITION_TYPE"/>
+        <property name="dataSource" column="DATA_SOURCE"/>
+        <property name="sourceSys" column="SOURCE_SYS"/>
+        <property name="revStatus" column="REV_STATUS"/>
+        <property name="revLock" column="REV_LOCK"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+</vobjs>

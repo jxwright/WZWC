@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cmjt.cmjtsigninfo.dao.CmjtSignInfoDAO">
+	<resultMap id="CmjtSignInfoDTOMap" type="avicit.cmjt.cmjtsigninfo.dto.CmjtSignInfoDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="contractId" column="CONTRACT_ID" jdbcType="VARCHAR" />
+		<result property="signId" column="SIGN_ID" jdbcType="VARCHAR" />
+		<result property="signName" column="SIGN_NAME" jdbcType="VARCHAR" />
+		<result property="signParties" column="SIGN_PARTIES" jdbcType="VARCHAR" />
+		<result property="signPartiesZhmc" column="SIGN_PARTIES_ZHMC" jdbcType="VARCHAR" />
+		<result property="signContractNo" column="SIGN_CONTRACT_NO" jdbcType="VARCHAR" />
+		<result property="signContacts" column="SIGN_CONTACTS" jdbcType="VARCHAR" />
+		<result property="signTel" column="SIGN_TEL" jdbcType="VARCHAR" />
+		<result property="orderNum" column="ORDER_NUM" jdbcType="VARCHAR" />
+		<result property="orderNumZhmc" column="ORDER_NUM_ZHMC" jdbcType="VARCHAR" />
+		<result property="ynTransaction" column="YN_TRANSACTION" jdbcType="VARCHAR" />
+		<result property="ynTransactionZhmc" column="YN_TRANSACTION_ZHMC" jdbcType="VARCHAR" />
+		<result property="editFlag" column="EDIT_FLAG" jdbcType="VARCHAR" />
+		<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+		<result property="operationType" column="OPERATION_TYPE_" jdbcType="VARCHAR" />
+		<result property="sysApplicationId" column="SYS_APPLICATION_ID" jdbcType="VARCHAR" />
+		<result property="logAppId" column="LOG_APP_ID" jdbcType="VARCHAR" />
+		<result property="unifiedSocialCreditCode" column="UNIFIED_SOCIAL_CREDIT_CODE" jdbcType="VARCHAR" />
+		<result property="unitAttribute" column="UNIT_ATTRIBUTE" jdbcType="VARCHAR" />
+		<result property="supplierName" column="SUPPLIER_NAME" jdbcType="VARCHAR" />
+    </resultMap>
+
+	<sql id="commonColums">
+		<trim suffixOverrides=",">
+			t1.ID,
+			t1.CONTRACT_ID,
+			t1.SIGN_ID,
+			t1.SIGN_NAME,
+			t1.SIGN_PARTIES,
+			t1.SIGN_PARTIES_ZHMC,
+			t1.SIGN_CONTRACT_NO,
+			t1.SIGN_CONTACTS,
+			t1.SIGN_TEL,
+			t1.ORDER_NUM,
+			t1.ORDER_NUM_ZHMC,
+			t1.YN_TRANSACTION,
+			t1.YN_TRANSACTION_ZHMC,
+			t1.EDIT_FLAG,
+			t1.SECRET_LEVEL,
+			t1.CREATED_BY,
+			t1.CREATED_DEPT,
+			t1.CREATION_DATE,
+			t1.LAST_UPDATED_BY,
+			t1.LAST_UPDATE_DATE,
+			t1.LAST_UPDATE_IP,
+			t1.VERSION,
+			t1.ORG_IDENTITY,
+			t1.OPERATION_TYPE_,
+			t1.SYS_APPLICATION_ID,
+			t1.LOG_APP_ID,
+			t1.UNIFIED_SOCIAL_CREDIT_CODE,
+			t1.UNIT_ATTRIBUTE,
+			t1.SUPPLIER_NAME
+		</trim>
+	</sql>
+
+	<!-- 默认查询条件 -->
+	<sql id="defaultWhereAnd">
+		<!--<if test="bean.orgIdentity != null and bean.orgIdentity != ''">-->
+			<!--and t1.org_identity = #{bean.orgIdentity}-->
+		<!--</if>-->
+	</sql>
+
+	<sql id="commonWhereAnd">
+		<if test="bean.id != null and bean.id != ''">
+			and t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.contractId != null and bean.contractId != ''">
+			and t1.CONTRACT_ID like concat(concat('%',#{bean.contractId}),'%')
+		</if>
+		<if test="bean.signId != null and bean.signId != ''">
+			and t1.SIGN_ID like concat(concat('%',#{bean.signId}),'%')
+		</if>
+		<if test="bean.signName != null and bean.signName != ''">
+			and t1.SIGN_NAME like concat(concat('%',#{bean.signName}),'%')
+		</if>
+		<if test="bean.signParties != null and bean.signParties != ''">
+			and t1.SIGN_PARTIES like concat(concat('%',#{bean.signParties}),'%')
+		</if>
+		<if test="bean.signPartiesZhmc != null and bean.signPartiesZhmc != ''">
+			and t1.SIGN_PARTIES_ZHMC like concat(concat('%',#{bean.signPartiesZhmc}),'%')
+		</if>
+		<if test="bean.signContractNo != null and bean.signContractNo != ''">
+			and t1.SIGN_CONTRACT_NO like concat(concat('%',#{bean.signContractNo}),'%')
+		</if>
+		<if test="bean.signContacts != null and bean.signContacts != ''">
+			and t1.SIGN_CONTACTS like concat(concat('%',#{bean.signContacts}),'%')
+		</if>
+		<if test="bean.signTel != null and bean.signTel != ''">
+			and t1.SIGN_TEL like concat(concat('%',#{bean.signTel}),'%')
+		</if>
+		<if test="bean.orderNum != null and bean.orderNum != ''">
+			and t1.ORDER_NUM like concat(concat('%',#{bean.orderNum}),'%')
+		</if>
+		<if test="bean.orderNumZhmc != null and bean.orderNumZhmc != ''">
+			and t1.ORDER_NUM_ZHMC like concat(concat('%',#{bean.orderNumZhmc}),'%')
+		</if>
+		<if test="bean.ynTransaction != null and bean.ynTransaction != ''">
+			and t1.YN_TRANSACTION like concat(concat('%',#{bean.ynTransaction}),'%')
+		</if>
+		<if test="bean.ynTransactionZhmc != null and bean.ynTransactionZhmc != ''">
+			and t1.YN_TRANSACTION_ZHMC like concat(concat('%',#{bean.ynTransactionZhmc}),'%')
+		</if>
+		<if test="bean.editFlag != null and bean.editFlag != ''">
+			and t1.EDIT_FLAG like concat(concat('%',#{bean.editFlag}),'%')
+		</if>
+		<if test="bean.secretLevel != null and bean.secretLevel != ''">
+			and t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			and t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.version != null ">
+			and t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.operationType != null and bean.operationType != ''">
+			and t1.OPERATION_TYPE_ like concat(concat('%',#{bean.operationType}),'%')
+		</if>
+		<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+			and t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+		</if>
+		<if test="bean.logAppId != null and bean.logAppId != ''">
+			and t1.LOG_APP_ID like concat(concat('%',#{bean.logAppId}),'%')
+		</if>
+	</sql>
+
+	<!-- 关键字查询条件 -->
+	<sql id="commonWhereOr">
+		<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID like concat(concat('%',#{bean.id}),'%')
+			</if>
+			<if test="bean.contractId != null and bean.contractId != ''">
+				or t1.CONTRACT_ID like concat(concat('%',#{bean.contractId}),'%')
+			</if>
+			<if test="bean.signId != null and bean.signId != ''">
+				or t1.SIGN_ID like concat(concat('%',#{bean.signId}),'%')
+			</if>
+			<if test="bean.signName != null and bean.signName != ''">
+				or t1.SIGN_NAME like concat(concat('%',#{bean.signName}),'%')
+			</if>
+			<if test="bean.signParties != null and bean.signParties != ''">
+				or t1.SIGN_PARTIES like concat(concat('%',#{bean.signParties}),'%')
+			</if>
+			<if test="bean.signPartiesZhmc != null and bean.signPartiesZhmc != ''">
+				or t1.SIGN_PARTIES_ZHMC like concat(concat('%',#{bean.signPartiesZhmc}),'%')
+			</if>
+			<if test="bean.signContractNo != null and bean.signContractNo != ''">
+				or t1.SIGN_CONTRACT_NO like concat(concat('%',#{bean.signContractNo}),'%')
+			</if>
+			<if test="bean.signContacts != null and bean.signContacts != ''">
+				or t1.SIGN_CONTACTS like concat(concat('%',#{bean.signContacts}),'%')
+			</if>
+			<if test="bean.signTel != null and bean.signTel != ''">
+				or t1.SIGN_TEL like concat(concat('%',#{bean.signTel}),'%')
+			</if>
+			<if test="bean.orderNum != null and bean.orderNum != ''">
+				or t1.ORDER_NUM like concat(concat('%',#{bean.orderNum}),'%')
+			</if>
+			<if test="bean.orderNumZhmc != null and bean.orderNumZhmc != ''">
+				or t1.ORDER_NUM_ZHMC like concat(concat('%',#{bean.orderNumZhmc}),'%')
+			</if>
+			<if test="bean.ynTransaction != null and bean.ynTransaction != ''">
+				or t1.YN_TRANSACTION like concat(concat('%',#{bean.ynTransaction}),'%')
+			</if>
+			<if test="bean.ynTransactionZhmc != null and bean.ynTransactionZhmc != ''">
+				or t1.YN_TRANSACTION_ZHMC like concat(concat('%',#{bean.ynTransactionZhmc}),'%')
+			</if>
+			<if test="bean.editFlag != null and bean.editFlag != ''">
+				or t1.EDIT_FLAG like concat(concat('%',#{bean.editFlag}),'%')
+			</if>
+			<if test="bean.secretLevel != null and bean.secretLevel != ''">
+				or t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+			</if>
+			<if test="bean.createdDept != null and bean.createdDept != ''">
+				or t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+			</if>
+			<if test="bean.creationDateBegin != null">
+				or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+			</if>
+			<if test="bean.creationDateEnd != null">
+				or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+			</if>
+			<if test="bean.lastUpdateDateBegin != null">
+				or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+			</if>
+			<if test="bean.lastUpdateDateEnd != null">
+				or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+			</if>
+			<if test="bean.version != null and bean.version != ''">
+				or t1.VERSION = #{bean.version}
+			</if>
+			<if test="bean.operationType != null and bean.operationType != ''">
+				or t1.OPERATION_TYPE_ like concat(concat('%',#{bean.operationType}),'%')
+			</if>
+			<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+				or t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+			</if>
+			<if test="bean.logAppId != null and bean.logAppId != ''">
+				or t1.LOG_APP_ID like concat(concat('%',#{bean.logAppId}),'%')
+			</if>
+		</trim>
+	</sql>
+
+
+	<sql id="commonOrderBy">
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!-- 分页查询 CMJT_SIGN_INFO -->
+	<select id="searchCmjtSignInfoByPage" parameterType="java.util.Map" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_SIGN_INFO t1
+		<where>
+			<if test="bean != null">
+				<choose>
+					<when test="keyWord != null and keyWord != '' ">
+						<include refid="commonWhereOr"/>
+					</when>
+					<otherwise>
+						<include refid="commonWhereAnd"/>
+					</otherwise>
+				</choose>
+				<include refid="defaultWhereAnd"/>
+			</if>
+		</where>
+		<include refid="commonOrderBy"></include>
+	</select>
+
+	<!-- 根据合同签约信息表查询 -->
+	<select id="findListByPage" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_SIGN_INFO t1
+		<where>
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</where>
+		<include refid="commonOrderBy"></include>
+	</select>
+
+	<!-- 查询 CMJT_SIGN_INFO -->
+	<select id="findList" parameterType="java.util.Map" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_SIGN_INFO t1
+		<where>
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</where>
+		<include refid="commonOrderBy"></include>
+	</select>
+
+	<!-- 主键批量查询对象 CMJT_SIGN_INFO -->
+	<select id="findListByIds" parameterType="java.lang.String" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+			from CMJT_SIGN_INFO t1
+			where t1.id  in
+		<foreach item="id" index="index" collection="idList" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+	<!-- 主键查询对象 CMJT_SIGN_INFO -->
+	<select id="get" parameterType="java.util.Map" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+			from CMJT_SIGN_INFO t1
+			where t1.id = #{id}
+	</select>
+
+
+	<!-- 新增对象 CMJT_SIGN_INFO -->
+	<insert id="insert" parameterType="avicit.cmjt.cmjtsigninfo.dto.CmjtSignInfoDTO">
+		insert into CMJT_SIGN_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="contractId != null">
+				CONTRACT_ID,
+			</if>
+			<if test="signId != null">
+				SIGN_ID,
+			</if>
+			<if test="signName != null">
+				SIGN_NAME,
+			</if>
+			<if test="signParties != null">
+				SIGN_PARTIES,
+			</if>
+			<if test="signPartiesZhmc != null">
+				SIGN_PARTIES_ZHMC,
+			</if>
+			<if test="signContractNo != null">
+				SIGN_CONTRACT_NO,
+			</if>
+			<if test="signContacts != null">
+				SIGN_CONTACTS,
+			</if>
+			<if test="signTel != null">
+				SIGN_TEL,
+			</if>
+			<if test="orderNum != null">
+				ORDER_NUM,
+			</if>
+			<if test="orderNumZhmc != null">
+				ORDER_NUM_ZHMC,
+			</if>
+			<if test="ynTransaction != null">
+				YN_TRANSACTION,
+			</if>
+			<if test="ynTransactionZhmc != null">
+				YN_TRANSACTION_ZHMC,
+			</if>
+			<if test="editFlag != null">
+				EDIT_FLAG,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID,
+			</if>
+			<if test="version != null">
+				VERSION,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_,
+			</if>
+			<if test="secretLevel != null">
+				SECRET_LEVEL,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType = VARCHAR},
+			</if>
+			<if test="contractId != null">
+				#{contractId,jdbcType = VARCHAR},
+			</if>
+			<if test="signId != null">
+				#{signId,jdbcType = VARCHAR},
+			</if>
+			<if test="signName != null">
+				#{signName,jdbcType = VARCHAR},
+			</if>
+			<if test="signParties != null">
+				#{signParties,jdbcType = VARCHAR},
+			</if>
+			<if test="signPartiesZhmc != null">
+				#{signPartiesZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="signContractNo != null">
+				#{signContractNo,jdbcType = VARCHAR},
+			</if>
+			<if test="signContacts != null">
+				#{signContacts,jdbcType = VARCHAR},
+			</if>
+			<if test="signTel != null">
+				#{signTel,jdbcType = VARCHAR},
+			</if>
+			<if test="orderNum != null">
+				#{orderNum,jdbcType = VARCHAR},
+			</if>
+			<if test="orderNumZhmc != null">
+				#{orderNumZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynTransaction != null">
+				#{ynTransaction,jdbcType = VARCHAR},
+			</if>
+			<if test="ynTransactionZhmc != null">
+				#{ynTransactionZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="editFlag != null">
+				#{editFlag,jdbcType = VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType = VARCHAR},
+			</if>
+			<if test="createdDept != null">
+				#{createdDept,jdbcType = VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType = VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType = VARCHAR},
+			</if>
+			<if test="sysApplicationId != null">
+				#{sysApplicationId,jdbcType = VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType = DECIMAL},
+			</if>
+			<if test="operationType != null">
+				#{operationType,jdbcType = VARCHAR},
+			</if>
+			<if test="secretLevel != null">
+				#{secretLevel,jdbcType = VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量新增对象 CMJT_SIGN_INFO -->
+	<insert id="insertBatch" parameterType="java.util.List" >
+		insert into CMJT_SIGN_INFO(
+			ID ,
+			CONTRACT_ID ,
+			SIGN_ID ,
+			SIGN_NAME ,
+			SIGN_PARTIES ,
+			SIGN_PARTIES_ZHMC ,
+			SIGN_CONTRACT_NO ,
+			SIGN_CONTACTS ,
+			SIGN_TEL ,
+			ORDER_NUM ,
+			ORDER_NUM_ZHMC ,
+			YN_TRANSACTION ,
+			YN_TRANSACTION_ZHMC ,
+			EDIT_FLAG ,
+			CREATED_BY ,
+			CREATED_DEPT ,
+			CREATION_DATE ,
+			LAST_UPDATED_BY ,
+			LAST_UPDATE_DATE ,
+			LAST_UPDATE_IP ,
+			ORG_IDENTITY ,
+			SYS_APPLICATION_ID ,
+			VERSION ,
+			OPERATION_TYPE_ ,
+			SECRET_LEVEL 
+		)
+		<foreach collection="entityList" item="item" index="index"  separator="union all" >
+			select
+				#{item.id,jdbcType = VARCHAR} ,
+				#{item.contractId,jdbcType = VARCHAR} ,
+				#{item.signId,jdbcType = VARCHAR} ,
+				#{item.signName,jdbcType = VARCHAR} ,
+				#{item.signParties,jdbcType = VARCHAR} ,
+				#{item.signPartiesZhmc,jdbcType = VARCHAR} ,
+				#{item.signContractNo,jdbcType = VARCHAR} ,
+				#{item.signContacts,jdbcType = VARCHAR} ,
+				#{item.signTel,jdbcType = VARCHAR} ,
+				#{item.orderNum,jdbcType = VARCHAR} ,
+				#{item.orderNumZhmc,jdbcType = VARCHAR} ,
+				#{item.ynTransaction,jdbcType = VARCHAR} ,
+				#{item.ynTransactionZhmc,jdbcType = VARCHAR} ,
+				#{item.editFlag,jdbcType = VARCHAR} ,
+				#{item.createdBy,jdbcType = VARCHAR} ,
+				#{item.createdDept,jdbcType = VARCHAR} ,
+				#{item.creationDate,jdbcType = TIMESTAMP} ,
+				#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+				#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+				#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+				#{item.orgIdentity,jdbcType = VARCHAR} ,
+				#{item.sysApplicationId,jdbcType = VARCHAR} ,
+				#{item.version,jdbcType = DECIMAL} ,
+				#{item.operationType,jdbcType = VARCHAR} ,
+				#{item.secretLevel,jdbcType = VARCHAR} 
+			from dual
+		</foreach>
+	</insert>
+
+	<!-- 更新对象 CMJT_SIGN_INFO -->
+	<update id="updateSensitive" parameterType="avicit.cmjt.cmjtsigninfo.dto.CmjtSignInfoDTO">
+		update CMJT_SIGN_INFO
+		<set>
+			<if test="id != null">
+				ID = #{id,jdbcType = VARCHAR} ,
+			</if>
+			<if test="contractId != null">
+				CONTRACT_ID = #{contractId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signId != null">
+				SIGN_ID = #{signId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signName != null">
+				SIGN_NAME = #{signName,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signParties != null">
+				SIGN_PARTIES = #{signParties,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signPartiesZhmc != null">
+				SIGN_PARTIES_ZHMC = #{signPartiesZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signContractNo != null">
+				SIGN_CONTRACT_NO = #{signContractNo,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signContacts != null">
+				SIGN_CONTACTS = #{signContacts,jdbcType = VARCHAR} ,
+			</if>
+			<if test="signTel != null">
+				SIGN_TEL = #{signTel,jdbcType = VARCHAR} ,
+			</if>
+			<if test="orderNum != null">
+				ORDER_NUM = #{orderNum,jdbcType = VARCHAR} ,
+			</if>
+			<if test="orderNumZhmc != null">
+				ORDER_NUM_ZHMC = #{orderNumZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynTransaction != null">
+				YN_TRANSACTION = #{ynTransaction,jdbcType = VARCHAR} ,
+			</if>
+			<if test="ynTransactionZhmc != null">
+				YN_TRANSACTION_ZHMC = #{ynTransactionZhmc,jdbcType = VARCHAR} ,
+			</if>
+			<if test="editFlag != null">
+				EDIT_FLAG = #{editFlag,jdbcType = VARCHAR} ,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+			</if>
+			<if test="version != null">
+				VERSION = version+1 ,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+			</if>
+			<if test="secretLevel != null">
+				SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} 
+			</if>
+		</set>
+		where id = #{id}
+		and version = #{version}
+	</update>
+
+	<!-- 更新对象 CMJT_SIGN_INFO -->
+	<update id="updateAll" parameterType="avicit.cmjt.cmjtsigninfo.dto.CmjtSignInfoDTO">
+		update CMJT_SIGN_INFO
+		<trim prefix="set" suffixOverrides=",">
+			ID = #{id,jdbcType = VARCHAR} ,
+			CONTRACT_ID = #{contractId,jdbcType = VARCHAR} ,
+			SIGN_ID = #{signId,jdbcType = VARCHAR} ,
+			SIGN_NAME = #{signName,jdbcType = VARCHAR} ,
+			SIGN_PARTIES = #{signParties,jdbcType = VARCHAR} ,
+			SIGN_PARTIES_ZHMC = #{signPartiesZhmc,jdbcType = VARCHAR} ,
+			SIGN_CONTRACT_NO = #{signContractNo,jdbcType = VARCHAR} ,
+			SIGN_CONTACTS = #{signContacts,jdbcType = VARCHAR} ,
+			SIGN_TEL = #{signTel,jdbcType = VARCHAR} ,
+			ORDER_NUM = #{orderNum,jdbcType = VARCHAR} ,
+			ORDER_NUM_ZHMC = #{orderNumZhmc,jdbcType = VARCHAR} ,
+			YN_TRANSACTION = #{ynTransaction,jdbcType = VARCHAR} ,
+			YN_TRANSACTION_ZHMC = #{ynTransactionZhmc,jdbcType = VARCHAR} ,
+			EDIT_FLAG = #{editFlag,jdbcType = VARCHAR} ,
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+			VERSION = version+1 ,
+			OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} 
+		</trim>
+		where id = #{id}
+		and version = #{version}
+	</update>
+
+	<!-- 批量更新对象   CMJT_SIGN_INFO -->
+	<update id="updateBatch" parameterType="java.util.List">
+		<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+		<foreach collection="entityList" item="item" index="index"  separator=";" >
+			update CMJT_SIGN_INFO
+			set
+				ID = #{item.id,jdbcType = VARCHAR} ,
+				CONTRACT_ID = #{item.contractId,jdbcType = VARCHAR} ,
+				SIGN_ID = #{item.signId,jdbcType = VARCHAR} ,
+				SIGN_NAME = #{item.signName,jdbcType = VARCHAR} ,
+				SIGN_PARTIES = #{item.signParties,jdbcType = VARCHAR} ,
+				SIGN_PARTIES_ZHMC = #{item.signPartiesZhmc,jdbcType = VARCHAR} ,
+				SIGN_CONTRACT_NO = #{item.signContractNo,jdbcType = VARCHAR} ,
+				SIGN_CONTACTS = #{item.signContacts,jdbcType = VARCHAR} ,
+				SIGN_TEL = #{item.signTel,jdbcType = VARCHAR} ,
+				ORDER_NUM = #{item.orderNum,jdbcType = VARCHAR} ,
+				ORDER_NUM_ZHMC = #{item.orderNumZhmc,jdbcType = VARCHAR} ,
+				YN_TRANSACTION = #{item.ynTransaction,jdbcType = VARCHAR} ,
+				YN_TRANSACTION_ZHMC = #{item.ynTransactionZhmc,jdbcType = VARCHAR} ,
+				EDIT_FLAG = #{item.editFlag,jdbcType = VARCHAR} ,
+				CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+				CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+				CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+				LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+				LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+				LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+				ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+				SYS_APPLICATION_ID = #{item.sysApplicationId,jdbcType = VARCHAR} ,
+				VERSION = version+1  ,
+				OPERATION_TYPE_ = #{item.operationType,jdbcType = VARCHAR} ,
+				SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} 
+			where id = #{item.id}
+			and version = #{item.version}
+		</foreach>
+		<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">;end;</if>
+	</update>
+
+	<!-- 主键删除 CMJT_SIGN_INFO -->
+	<delete id="delete" >
+		delete from CMJT_SIGN_INFO  where id = #{id}
+	</delete>
+
+	<!-- 主键批量删除 CMJT_SIGN_INFO -->
+	<delete id="deleteByIds" parameterType="java.lang.String">
+		delete from CMJT_SIGN_INFO where id in
+		<foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<update id="updateMerge" parameterType="avicit.cmjt.cmjtsigninfo.dto.CmjtSignInfoDTO">
+		MERGE INTO CMJT_SIGN_INFO t1
+		USING dual
+		ON(t1.ID = #{id,jdbcType=VARCHAR})
+		WHEN MATCHED THEN
+	     UPDATE <set>
+		<if test="contractId != null">
+			CONTRACT_ID = #{contractId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signId != null">
+			SIGN_ID = #{signId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signName != null">
+			SIGN_NAME = #{signName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signParties != null">
+			SIGN_PARTIES = #{signParties,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signPartiesZhmc != null">
+			SIGN_PARTIES_ZHMC = #{signPartiesZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signContractNo != null">
+			SIGN_CONTRACT_NO = #{signContractNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signContacts != null">
+			SIGN_CONTACTS = #{signContacts,jdbcType = VARCHAR} ,
+		</if>
+		<if test="signTel != null">
+			SIGN_TEL = #{signTel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderNum != null">
+			ORDER_NUM = #{orderNum,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderNumZhmc != null">
+			ORDER_NUM_ZHMC = #{orderNumZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynTransaction != null">
+			YN_TRANSACTION = #{ynTransaction,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynTransactionZhmc != null">
+			YN_TRANSACTION_ZHMC = #{ynTransactionZhmc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="editFlag != null">
+			EDIT_FLAG = #{editFlag,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sysApplicationId != null">
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="operationType != null">
+			OPERATION_TYPE_ = #{operationType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="unifiedSocialCreditCode != null">
+			UNIFIED_SOCIAL_CREDIT_CODE = #{unifiedSocialCreditCode,jdbcType = VARCHAR},
+		</if>
+		<if test="unitAttribute != null">
+			UNIT_ATTRIBUTE = #{unitAttribute,jdbcType = VARCHAR},
+		</if>
+		<if test="supplierName != null">
+			SUPPLIER_NAME = #{supplierName,jdbcType = VARCHAR}
+		</if>
+	</set>
+	WHEN NOT MATCHED THEN
+	 	INSERT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="contractId != null">
+				CONTRACT_ID,
+			</if>
+			<if test="signId != null">
+				SIGN_ID,
+			</if>
+			<if test="signName != null">
+				SIGN_NAME,
+			</if>
+			<if test="signParties != null">
+				SIGN_PARTIES,
+			</if>
+			<if test="signPartiesZhmc != null">
+				SIGN_PARTIES_ZHMC,
+			</if>
+			<if test="signContractNo != null">
+				SIGN_CONTRACT_NO,
+			</if>
+			<if test="signContacts != null">
+				SIGN_CONTACTS,
+			</if>
+			<if test="signTel != null">
+				SIGN_TEL,
+			</if>
+			<if test="orderNum != null">
+				ORDER_NUM,
+			</if>
+			<if test="orderNumZhmc != null">
+				ORDER_NUM_ZHMC,
+			</if>
+			<if test="ynTransaction != null">
+				YN_TRANSACTION,
+			</if>
+			<if test="ynTransactionZhmc != null">
+				YN_TRANSACTION_ZHMC,
+			</if>
+			<if test="editFlag != null">
+				EDIT_FLAG,
+			</if>
+			<if test="createdBy != null">
+				CREATED_BY,
+			</if>
+			<if test="createdDept != null">
+				CREATED_DEPT,
+			</if>
+			<if test="creationDate != null">
+				CREATION_DATE,
+			</if>
+			<if test="lastUpdatedBy != null">
+				LAST_UPDATED_BY,
+			</if>
+			<if test="lastUpdateDate != null">
+				LAST_UPDATE_DATE,
+			</if>
+			<if test="lastUpdateIp != null">
+				LAST_UPDATE_IP,
+			</if>
+			<if test="orgIdentity != null">
+				ORG_IDENTITY,
+			</if>
+			<if test="sysApplicationId != null">
+				SYS_APPLICATION_ID,
+			</if>
+			<if test="version != null">
+				VERSION,
+			</if>
+			<if test="operationType != null">
+				OPERATION_TYPE_,
+			</if>
+			<if test="secretLevel != null">
+				SECRET_LEVEL,
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				UNIFIED_SOCIAL_CREDIT_CODE,
+			</if>
+			<if test="unitAttribute != null">
+				UNIT_ATTRIBUTE,
+			</if>
+			<if test="supplierName != null">
+				SUPPLIER_NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType = VARCHAR},
+			</if>
+			<if test="contractId != null">
+				#{contractId,jdbcType = VARCHAR},
+			</if>
+			<if test="signId != null">
+				#{signId,jdbcType = VARCHAR},
+			</if>
+			<if test="signName != null">
+				#{signName,jdbcType = VARCHAR},
+			</if>
+			<if test="signParties != null">
+				#{signParties,jdbcType = VARCHAR},
+			</if>
+			<if test="signPartiesZhmc != null">
+				#{signPartiesZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="signContractNo != null">
+				#{signContractNo,jdbcType = VARCHAR},
+			</if>
+			<if test="signContacts != null">
+				#{signContacts,jdbcType = VARCHAR},
+			</if>
+			<if test="signTel != null">
+				#{signTel,jdbcType = VARCHAR},
+			</if>
+			<if test="orderNum != null">
+				#{orderNum,jdbcType = VARCHAR},
+			</if>
+			<if test="orderNumZhmc != null">
+				#{orderNumZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="ynTransaction != null">
+				#{ynTransaction,jdbcType = VARCHAR},
+			</if>
+			<if test="ynTransactionZhmc != null">
+				#{ynTransactionZhmc,jdbcType = VARCHAR},
+			</if>
+			<if test="editFlag != null">
+				#{editFlag,jdbcType = VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType = VARCHAR},
+			</if>
+			<if test="createdDept != null">
+				#{createdDept,jdbcType = VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType = VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate,jdbcType = TIMESTAMP},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType = VARCHAR},
+			</if>
+			<if test="orgIdentity != null">
+				#{orgIdentity,jdbcType = VARCHAR},
+			</if>
+			<if test="sysApplicationId != null">
+				#{sysApplicationId,jdbcType = VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType = DECIMAL},
+			</if>
+			<if test="operationType != null">
+				#{operationType,jdbcType = VARCHAR},
+			</if>
+			<if test="secretLevel != null">
+				#{secretLevel,jdbcType = VARCHAR},
+			</if>
+			<if test="unifiedSocialCreditCode != null">
+				#{unifiedSocialCreditCode,jdbcType = VARCHAR},
+			</if>
+			<if test="unitAttribute != null">
+				#{unitAttribute,jdbcType = VARCHAR},
+			</if>
+			<if test="supplierName != null">
+				#{supplierName,jdbcType = VARCHAR},
+			</if>
+		</trim>
+	</update>
+
+	<select id="selectByContractIds" parameterType="java.lang.String" resultMap="CmjtSignInfoDTOMap">
+		select
+		<include refid="commonColums"/>
+		from CMJT_SIGN_INFO t1
+		where t1.CONTRACT_ID in
+		<foreach item="id" index="index" collection="idList" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+</mapper>

@@ -1,0 +1,84 @@
+# this project
+
+# platform
+/src/i18n/
+/src/license/
+/src/*.conf
+/src/*.sh
+/src/*.properties
+/src/*.xml
+/src/*.bat
+/src/service/
+/src/avicit/platform6/
+
+
+/WebRoot/
+/WebRoot/icontool/
+/WebRoot/login/
+/WebRoot/META-INF/
+/WebRoot/WEB-INF/
+/WebRoot/static/
+/WebRoot/favicon.ico
+/WebRoot/index.jsp
+/WebRoot/avicit/platform6/
+/WebRoot/avicit/identifyingcode/
+/WebRoot/avicit/phoneproject/
+
+/app.info
+
+# ssp
+/WebRoot/admin/
+/WebRoot/ssp
+
+# projects default
+/backup/
+/tools/
+/devTools/
+/patch/
+/classes/
+#java
+*.class
+
+# package file
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.exe
+
+
+
+# maven ignore
+target/
+build/
+
+# vscode ignore
+*.code-workspace
+
+# eclipse ignore
+.externalToolBuilders/
+.settings/
+.project
+.classpath
+.mymetadata
+
+# Intellij idea
+out
+.idea/
+/idea/
+*.ipr
+*.iml
+*.iws
+
+# temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable

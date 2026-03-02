@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaLetterReq" tableName="la_poa_letter_req">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="authType" column="AUTH_TYPE" jdbcType="VARCHAR" />
+        <property name="authorizedUid" column="AUTHORIZED_UID" jdbcType="VARCHAR" />
+        <property name="refCust" column="REF_CUST" jdbcType="VARCHAR" />
+        <property name="refMatter" column="REF_MATTER" jdbcType="VARCHAR" />
+        <property name="authScope" column="AUTH_SCOPE" jdbcType="VARCHAR" />
+        <property name="authAmount" column="AUTH_AMOUNT" jdbcType="DECIMAL" />
+        <property name="isLimit" column="IS_LIMIT" jdbcType="CHAR" />
+        <property name="limitStart" column="LIMIT_START" jdbcType="TIMESTAMP" />
+        <property name="limitEnd" column="LIMIT_END" jdbcType="TIMESTAMP" />
+        <property name="refAuthId" column="REF_AUTH_ID" jdbcType="VARCHAR" />
+        <property name="refData" column="REF_DATA" jdbcType="VARCHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+        <join name="laPoaAuthType" joinKey="authType-id" joinType="manyToOne" isAggregation="false" class="avicit.la.domain.laPoaLetter.entity.LaPoaAuthType"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaLetter" tableName="la_poa_letter">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="authId" column="AUTH_ID" jdbcType="VARCHAR" />
+        <property name="reqDeptId" column="REQ_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="reqDocId" column="REQ_DOC_ID" jdbcType="VARCHAR" />
+        <property name="authScope" column="AUTH_SCOPE" jdbcType="VARCHAR" />
+        <property name="authAmount" column="AUTH_AMOUNT" jdbcType="DECIMAL" />
+        <property name="limitStart" column="LIMIT_START" jdbcType="TIMESTAMP" />
+        <property name="limitEnd" column="LIMIT_END" jdbcType="TIMESTAMP" />
+        <property name="isOnlineDoc" column="IS_ONLINE_DOC" jdbcType="CHAR" />
+        <property name="isSigned" column="IS_SIGNED" jdbcType="CHAR" />
+        <property name="signDate" column="SIGN_DATE" jdbcType="TIMESTAMP" />
+        <property name="signerUid" column="SIGNER_UID" jdbcType="VARCHAR" />
+        <property name="receiveType" column="RECEIVE_TYPE" jdbcType="CHAR" />
+        <property name="recipientUid" column="RECIPIENT_UID" jdbcType="VARCHAR" />
+        <property name="receiveDate" column="RECEIVE_DATE" jdbcType="TIMESTAMP" />
+        <property name="returnDate" column="RETURN_DATE" jdbcType="TIMESTAMP" />
+        <property name="receiveState" column="RECEIVE_STATE" jdbcType="VARCHAR" />
+        <property name="validState" column="VALID_STATE" jdbcType="VARCHAR" />
+        <property name="refData" column="REF_DATA" jdbcType="VARCHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+        <join name="laPoaAuth" joinKey="authId-id" joinType="manyToOne" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaAuth"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaAuth" tableName="la_poa_auth">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="authType" column="AUTH_TYPE"/>
+        <property name="authorizer" column="AUTHORIZER"/>
+        <property name="authorizedUid" column="AUTHORIZED_UID"/>
+        <lookup name="authorizedUName" lookupKey="authorizedUid-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="authDeptid" column="AUTH_DEPTID"/>
+        <lookup name="authDeptName" lookupKey="authDeptid-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="authPost" column="AUTH_POST"/>
+        <property name="authPostid" column="AUTH_POSTID"/>
+        <property name="age" column="AGE"/>
+        <property name="authFrom" column="AUTH_FROM"/>
+        <property name="refCust" column="REF_CUST"/>
+        <property name="refMatter" column="REF_MATTER"/>
+        <property name="authScope" column="AUTH_SCOPE"/>
+        <property name="authAmount" column="AUTH_AMOUNT"/>
+        <property name="isLimit" column="IS_LIMIT"/>
+        <property name="limitStart" column="LIMIT_START"/>
+        <property name="limitEnd" column="LIMIT_END"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="effectiveDate" column="EFFECTIVE_DATE"/>
+        <property name="terminateEnd" column="TERMINATE_END"/>
+        <property name="authState" column="AUTH_STATE"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="refPostauthSid" column="REF_POSTAUTH_SID"/>
+        <property name="isPostauth" column="IS_POSTAUTH"/>
+        <property name="isLetter" column="IS_LETTER"/>
+        <property name="createdBy" column="CREATED_BY"/>
+        <property name="creationDate" column="CREATION_DATE"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP"/>
+        <property name="version" column="VERSION"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="sid" column="SID"/>
+        <join name="laPoaAuthType" joinKey="authType-id" joinType="manyToOne" isAggregation="false" class="avicit.la.domain.laPoaLetter.entity.LaPoaAuthType"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaAuthReq" tableName="la_poa_auth_req">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="authId" column="AUTH_ID" jdbcType="VARCHAR" />
+        <property name="reqAction" column="REQ_ACTION" jdbcType="VARCHAR" />
+        <property name="optionData" column="OPTION_DATA" jdbcType="VARCHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaAuthType" tableName="LA_POA_AUTH_TYPE">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="authTypeName" column="AUTH_TYPE_NAME"/>
+        <property name="poaType" column="POA_TYPE"/>
+        <property name="isPostauth" column="IS_POSTAUTH"/>
+        <property name="isLetter" column="IS_LETTER"/>
+        <property name="isEnable" column="IS_ENABLE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaDeptpostauth" tableName="LA_POA_DEPTPOSTAUTH">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="sid" column="SID"/>
+        <property name="orgId" column="ORG_ID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="postId" column="POST_ID"/>
+        <property name="authScope" column="AUTH_SCOPE"/>
+        <property name="authAmount" column="AUTH_AMOUNT"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="effectiveDate" column="EFFECTIVE_DATE"/>
+        <property name="terminateEnd" column="TERMINATE_END"/>
+        <property name="authState" column="AUTH_STATE"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true" defaultValue="getFromParams(userId)" />
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true" defaultValue="getTime()"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(userId)" updateValue="getFromParams(userId)"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true" defaultValue="getTime()" updateValue="getTime()"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true" defaultValue="getFromParams(ip)" updateValue="getFromParams(ip)"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false" defaultValue="0"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaDeptpostauthReq" tableName="LA_POA_DEPTPOSTAUTH_REQ">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="reqAction" column="REQ_ACTION"/>
+        <property name="refPostauthId" column="REF_POSTAUTH_ID"/>
+        <property name="orgId" column="ORG_ID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <lookup name="deptName" lookupKey="deptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="postId" column="POST_ID"/>
+        <lookup name="posName" lookupKey="postId-posId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="posName"
+                bean="sysUserDomainServiceImpl" method="getPosNameById"/>
+        <property name="authScope" column="AUTH_SCOPE"/>
+        <property name="authAmount" column="AUTH_AMOUNT"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="limitStart" column="LIMIT_START"/>
+        <property name="limitEnd" column="LIMIT_END"/>
+        <property name="optionData" column="OPTION_DATA"/>
+        <join name="refPostAuth" joinKey="refPostauthId-id" joinType="manyToOne" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaDeptpostauth"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaPostpoaReq" tableName="LA_POA_POSTPOA_REQ">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="authorizedUid" column="AUTHORIZED_UID"/>
+        <lookup name="authorizedUName" lookupKey="authorizedUid-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="age" column="AGE"/>
+        <property name="authDeptid" column="AUTH_DEPTID"/>
+        <lookup name="authDeptName" lookupKey="authDeptid-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="authPostid" column="AUTH_POSTID"/>
+        <lookup name="authPostName" lookupKey="authPostid-posId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="posName"
+                bean="sysUserDomainServiceImpl" method="getPosNameById"/>
+        <property name="oldDeptid" column="OLD_DEPTID"/>
+        <lookup name="oldDeptName" lookupKey="oldDeptid-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="oldPostid" column="OLD_POSTID"/>
+        <lookup name="oldPostName" lookupKey="oldPostid-posId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="posName"
+                bean="sysUserDomainServiceImpl" method="getPosNameById"/>
+        <property name="hasPostChange" column="HAS_POST_CHANGE"/>
+        <join name="laPoaPostpoaReqDetails" joinKey="id-pid" joinType="oneToMany" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaPostpoaReqDetail"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.LaPoaPostpoaReqDetail" tableName="LA_POA_POSTPOA_REQ_DETAIL">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="pid" column="PID"/>
+        <property name="reqAction" column="REQ_ACTION"/>
+        <property name="authType" column="AUTH_TYPE"/>
+        <property name="isPostauth" column="IS_POSTAUTH"/>
+        <property name="refPostauthId" column="REF_POSTAUTH_ID"/>
+        <property name="refPostauthSid" column="REF_POSTAUTH_SID"/>
+        <property name="authScope" column="AUTH_SCOPE"/>
+        <property name="authAmount" column="AUTH_AMOUNT"/>
+        <property name="limitStart" column="LIMIT_START"/>
+        <property name="limitEnd" column="LIMIT_END"/>
+        <property name="authId" column="AUTH_ID"/>
+        <property name="description" column="DESCRIPTION"/>
+        <join name="refPostAuth" joinKey="refPostauthId-id" joinType="manyToOne" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaDeptpostauth"></join>
+        <join name="laPoaAuth" joinKey="authId-id" joinType="manyToOne" isAggregation="false" class="avicit.la.domain.laPoaLetter.entity.LaPoaAuth"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.PoaPostFlowDoc" tableName="flow_doc">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docType" column="DOC_TYPE" jdbcType="VARCHAR" />
+        <property name="bizType" column="BIZ_TYPE" jdbcType="VARCHAR" />
+        <property name="docSpecies" column="DOC_SPECIES" jdbcType="VARCHAR" />
+        <property name="docNo" column="DOC_NO" jdbcType="VARCHAR" />
+        <property name="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+        <property name="title" column="TITLE" jdbcType="VARCHAR" />
+        <property name="entityId" column="ENTITY_ID" jdbcType="VARCHAR" />
+        <property name="entitySid" column="ENTITY_SID" jdbcType="VARCHAR" />
+        <property name="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+        <property name="userDeptId" column="USER_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="adminDeptId" column="ADMIN_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+        <property name="userId" column="USER_ID" jdbcType="VARCHAR" />
+        <property name="checkerId" column="CHECKER_ID" jdbcType="VARCHAR" />
+        <property name="approverId" column="APPROVER_ID" jdbcType="VARCHAR" />
+        <property name="executerId" column="EXECUTER_ID" jdbcType="VARCHAR" />
+        <property name="applyDate" column="APPLY_DATE" jdbcType="TIMESTAMP" />
+        <property name="checkDate" column="CHECK_DATE" jdbcType="TIMESTAMP" />
+        <property name="approveDate" column="APPROVE_DATE" jdbcType="TIMESTAMP" />
+        <property name="executeDate" column="EXECUTE_DATE" jdbcType="TIMESTAMP" />
+        <property name="isArchived" column="IS_ARCHIVED" jdbcType="CHAR" />
+        <property name="approveDesc" column="APPROVE_DESC" jdbcType="VARCHAR" />
+        <property name="examinaResult" column="EXAMINA_RESULT" jdbcType="VARCHAR" />
+        <property name="isEditable" column="IS_EDITABLE" jdbcType="CHAR" />
+        <property name="flowStatus" column="FLOW_STATUS" jdbcType="VARCHAR" />
+        <property name="execStatus" column="EXEC_STATUS" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="recRemove" column="REC_REMOVE" jdbcType="DECIMAL" />
+        <lookup name="entityName" lookupKey="entitySid-entitySid" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="entityName"
+                bean="sspBaseDocService" method="getEntityNameBySid"/>
+        <lookup name="userDeptName" lookupKey="userDeptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <join name="laPoaPostpoaReqs" joinKey="id-docId" joinType="oneToMany" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaPostpoaReq"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laPoaLetter.entity.DeptPoaPostFlowDoc" tableName="flow_doc">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docType" column="DOC_TYPE" jdbcType="VARCHAR" />
+        <property name="bizType" column="BIZ_TYPE" jdbcType="VARCHAR" />
+        <property name="docSpecies" column="DOC_SPECIES" jdbcType="VARCHAR" />
+        <property name="docNo" column="DOC_NO" jdbcType="VARCHAR" />
+        <property name="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+        <property name="title" column="TITLE" jdbcType="VARCHAR" />
+        <property name="entityId" column="ENTITY_ID" jdbcType="VARCHAR" />
+        <property name="entitySid" column="ENTITY_SID" jdbcType="VARCHAR" />
+        <property name="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+        <property name="userDeptId" column="USER_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="adminDeptId" column="ADMIN_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="ownerId" column="OWNER_ID" jdbcType="VARCHAR" />
+        <property name="userId" column="USER_ID" jdbcType="VARCHAR" />
+        <property name="checkerId" column="CHECKER_ID" jdbcType="VARCHAR" />
+        <property name="approverId" column="APPROVER_ID" jdbcType="VARCHAR" />
+        <property name="executerId" column="EXECUTER_ID" jdbcType="VARCHAR" />
+        <property name="applyDate" column="APPLY_DATE" jdbcType="TIMESTAMP" />
+        <property name="checkDate" column="CHECK_DATE" jdbcType="TIMESTAMP" />
+        <property name="approveDate" column="APPROVE_DATE" jdbcType="TIMESTAMP" />
+        <property name="executeDate" column="EXECUTE_DATE" jdbcType="TIMESTAMP" />
+        <property name="isArchived" column="IS_ARCHIVED" jdbcType="CHAR" />
+        <property name="approveDesc" column="APPROVE_DESC" jdbcType="VARCHAR" />
+        <property name="examinaResult" column="EXAMINA_RESULT" jdbcType="VARCHAR" />
+        <property name="isEditable" column="IS_EDITABLE" jdbcType="CHAR" />
+        <property name="flowStatus" column="FLOW_STATUS" jdbcType="VARCHAR" />
+        <property name="execStatus" column="EXEC_STATUS" jdbcType="VARCHAR" />
+        <property name="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+        <property name="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+        <property name="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+        <property name="version" column="VERSION" jdbcType="DECIMAL" />
+        <property name="recRemove" column="REC_REMOVE" jdbcType="DECIMAL" />
+        <lookup name="entityName" lookupKey="entitySid-entitySid" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="entityName"
+                bean="sspBaseDocService" method="getEntityNameBySid"/>
+        <lookup name="userDeptName" lookupKey="userDeptId-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <join name="laPoaDeptpostauthReqs" joinKey="id-docId" joinType="oneToMany" isAggregation="true" class="avicit.la.domain.laPoaLetter.entity.LaPoaDeptpostauthReq"></join>
+    </vo>
+</vobjs>

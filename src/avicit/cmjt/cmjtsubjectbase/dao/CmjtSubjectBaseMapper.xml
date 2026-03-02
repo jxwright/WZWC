@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cmjt.cmjtsubjectbase.dao.CmjtSubjectBaseDAO">
+<resultMap id="CmjtSubjectBaseDTOMap" type="avicit.cmjt.cmjtsubjectbase.dto.CmjtSubjectBaseDTO">
+	<result property="subjectNum" column="SUBJECT_NUM" jdbcType="DECIMAL" />
+	<result property="sysApplicationId" column="SYS_APPLICATION_ID" jdbcType="VARCHAR" />
+	<result property="subjectPrice" column="SUBJECT_PRICE" jdbcType="DECIMAL" />
+	<result property="deliverDate" column="DELIVER_DATE" jdbcType="VARCHAR" />
+	<result property="specsType" column="SPECS_TYPE" jdbcType="VARCHAR" />
+	<result property="dataSource" column="DATA_SOURCE" jdbcType="VARCHAR" />
+	<result property="jtId" column="JT_ID" jdbcType="VARCHAR" />
+	<result property="errorInfo" column="ERROR_INFO" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="isTrans" column="IS_TRANS" jdbcType="VARCHAR" />
+	<result property="isOccupy" column="IS_OCCUPY" jdbcType="VARCHAR" />
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="businessId" column="BUSINESS_ID" jdbcType="VARCHAR" />
+	<result property="unit" column="UNIT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="operationType" column="OPERATION_TYPE" jdbcType="VARCHAR" />
+	<result property="increDecreRate" column="INCRE_DECRE_RATE" jdbcType="DECIMAL" />
+	<result property="subjectName" column="SUBJECT_NAME" jdbcType="VARCHAR" />
+	<result property="orgCode" column="ORG_CODE" jdbcType="VARCHAR" />
+	<result property="subjectTotalAmount" column="SUBJECT_TOTAL_AMOUNT" jdbcType="DECIMAL" />
+	<result property="taxRate" column="TAX_RATE" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="taskNo" column="TASK_NO" jdbcType="VARCHAR" />
+	<result property="taskType" column="TASK_TYPE" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	t1.SUBJECT_NUM,
+	t1.SYS_APPLICATION_ID,
+	t1.SUBJECT_PRICE,
+	t1.DELIVER_DATE,
+	t1.SPECS_TYPE,
+	t1.DATA_SOURCE,
+	t1.JT_ID,
+	t1.ERROR_INFO,
+	t1.LAST_UPDATE_DATE,
+	t1.IS_TRANS,
+	t1.IS_OCCUPY,
+	t1.ID,
+	t1.CREATED_DEPT,
+	t1.SECRET_LEVEL,
+	t1.LAST_UPDATE_IP,
+	t1.CREATED_BY,
+	t1.LAST_UPDATED_BY,
+	t1.BUSINESS_ID,
+	t1.UNIT,
+	t1.CREATION_DATE,
+	t1.OPERATION_TYPE,
+	t1.INCRE_DECRE_RATE,
+	t1.SUBJECT_NAME,
+	t1.ORG_CODE,
+	t1.SUBJECT_TOTAL_AMOUNT,
+	t1.TAX_RATE,
+	t1.VERSION,
+	t1.ORG_IDENTITY,
+	t1.TASK_NO,
+	t1.TASK_TYPE,
+	t1.PLAN_TYPE</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+		and t1.org_identity = #{bean.orgIdentity}
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+    <if test="bean.subjectNum != null ">
+        and t1.SUBJECT_NUM = #{bean.subjectNum}
+    </if>
+    <if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+        and t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+    </if>
+    <if test="bean.subjectPrice != null ">
+        and t1.SUBJECT_PRICE = #{bean.subjectPrice}
+    </if>
+    <if test="bean.deliverDate != null and bean.deliverDate != ''">
+        and t1.DELIVER_DATE like concat(concat('%',#{bean.deliverDate}),'%')
+    </if>
+    <if test="bean.specsType != null and bean.specsType != ''">
+        and t1.SPECS_TYPE like concat(concat('%',#{bean.specsType}),'%')
+    </if>
+    <if test="bean.dataSource != null and bean.dataSource != ''">
+        and t1.DATA_SOURCE like concat(concat('%',#{bean.dataSource}),'%')
+    </if>
+    <if test="bean.jtId != null and bean.jtId != ''">
+        and t1.JT_ID like concat(concat('%',#{bean.jtId}),'%')
+    </if>
+    <if test="bean.errorInfo != null and bean.errorInfo != ''">CmjtSubjectBaseDTO
+        and t1.ERROR_INFO like concat(concat('%',#{bean.errorInfo}),'%')
+    </if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and Trunc(t1.LAST_UPDATE_DATE) &gt;= Trunc(#{bean.lastUpdateDateBegin})
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and Trunc(t1.LAST_UPDATE_DATE) &lt;= Trunc(#{bean.lastUpdateDateEnd})
+	</if>
+    <if test="bean.isTrans != null and bean.isTrans != ''">
+        and t1.IS_TRANS like concat(concat('%',#{bean.isTrans}),'%')
+    </if>
+    <if test="bean.isOccupy != null and bean.isOccupy != ''">
+        and t1.IS_OCCUPY like concat(concat('%',#{bean.isOccupy}),'%')
+    </if>
+    <if test="bean.id != null and bean.id != ''">
+        and t1.ID like concat(concat('%',#{bean.id}),'%')
+    </if>
+    <if test="bean.createdDept != null and bean.createdDept != ''">
+        and t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+    </if>
+    <if test="bean.secretLevel != null and bean.secretLevel != ''">
+        and t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')
+    </if>
+    <if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+        and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+    </if>
+    <if test="bean.createdBy != null and bean.createdBy != ''">
+        and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+    </if>
+    <if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+        and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+    </if>
+    <if test="bean.businessId != null and bean.businessId != ''">
+        and t1.BUSINESS_ID like concat(concat('%',#{bean.businessId}),'%')
+    </if>
+    <if test="bean.unit != null and bean.unit != ''">
+        and t1.UNIT like concat(concat('%',#{bean.unit}),'%')
+    </if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+    <if test="bean.operationType != null and bean.operationType != ''">
+        and t1.OPERATION_TYPE like concat(concat('%',#{bean.operationType}),'%')
+    </if>
+    <if test="bean.increDecreRate != null ">
+        and t1.INCRE_DECRE_RATE = #{bean.increDecreRate}
+    </if>
+    <if test="bean.subjectName != null and bean.subjectName != ''">
+        and t1.SUBJECT_NAME like concat(concat('%',#{bean.subjectName}),'%')
+    </if>
+    <if test="bean.orgCode != null and bean.orgCode != ''">
+        and t1.ORG_CODE like concat(concat('%',#{bean.orgCode}),'%')
+    </if>
+    <if test="bean.subjectTotalAmount != null ">
+        and t1.SUBJECT_TOTAL_AMOUNT = #{bean.subjectTotalAmount}
+    </if>
+    <if test="bean.taxRate != null and bean.taxRate != ''">
+        and t1.TAX_RATE like concat(concat('%',#{bean.taxRate}),'%')
+    </if>
+    <if test="bean.version != null ">
+        and t1.VERSION = #{bean.version}
+    </if>
+    <if test="bean.planType != null and bean.planType != ''">
+        and t1.PLAN_TYPE like concat(concat('%',#{bean.planType}),'%')
+    </if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.subjectNum != null and bean.subjectNum != ''">
+			or t1.SUBJECT_NUM = #{bean.subjectNum}
+		</if>
+		<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+			or t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')
+		</if>
+		<if test="bean.subjectPrice != null and bean.subjectPrice != ''">
+			or t1.SUBJECT_PRICE = #{bean.subjectPrice}
+		</if>
+		<if test="bean.deliverDate != null and bean.deliverDate != ''">
+			or t1.DELIVER_DATE like concat(concat('%',#{bean.deliverDate}),'%')
+		</if>
+		<if test="bean.specsType != null and bean.specsType != ''">
+			or t1.SPECS_TYPE like concat(concat('%',#{bean.specsType}),'%')
+		</if>
+		<if test="bean.dataSource != null and bean.dataSource != ''">
+			or t1.DATA_SOURCE like concat(concat('%',#{bean.dataSource}),'%')
+		</if>
+		<if test="bean.jtId != null and bean.jtId != ''">
+			or t1.JT_ID like concat(concat('%',#{bean.jtId}),'%')
+		</if>
+		<if test="bean.errorInfo != null and bean.errorInfo != ''">
+			or t1.ERROR_INFO like concat(concat('%',#{bean.errorInfo}),'%')
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.isTrans != null and bean.isTrans != ''">
+			or t1.IS_TRANS like concat(concat('%',#{bean.isTrans}),'%')
+		</if>
+		<if test="bean.isOccupy != null and bean.isOccupy != ''">
+			or t1.IS_OCCUPY like concat(concat('%',#{bean.isOccupy}),'%')
+		</if>
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID like concat(concat('%',#{bean.id}),'%')
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT like concat(concat('%',#{bean.createdDept}),'%')
+		</if>
+		<if test="bean.secretLevel != null and bean.secretLevel != ''">
+			or t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')
+		</if>
+		<if test="bean.businessId != null and bean.businessId != ''">
+			or t1.BUSINESS_ID like concat(concat('%',#{bean.businessId}),'%')
+		</if>
+		<if test="bean.unit != null and bean.unit != ''">
+			or t1.UNIT like concat(concat('%',#{bean.unit}),'%')
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.operationType != null and bean.operationType != ''">
+			or t1.OPERATION_TYPE like concat(concat('%',#{bean.operationType}),'%')
+		</if>
+		<if test="bean.increDecreRate != null and bean.increDecreRate != ''">
+			or t1.INCRE_DECRE_RATE = #{bean.increDecreRate}
+		</if>
+		<if test="bean.subjectName != null and bean.subjectName != ''">
+			or t1.SUBJECT_NAME like concat(concat('%',#{bean.subjectName}),'%')
+		</if>
+		<if test="bean.orgCode != null and bean.orgCode != ''">
+			or t1.ORG_CODE like concat(concat('%',#{bean.orgCode}),'%')
+		</if>
+		<if test="bean.subjectTotalAmount != null and bean.subjectTotalAmount != ''">
+			or t1.SUBJECT_TOTAL_AMOUNT = #{bean.subjectTotalAmount}
+		</if>
+		<if test="bean.taxRate != null and bean.taxRate != ''">
+			or t1.TAX_RATE like concat(concat('%',#{bean.taxRate}),'%')
+		</if>
+		<if test="bean.version != null and bean.version != ''">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.planType != null and bean.planType != ''">
+			or t1.PLAN_TYPE like concat(concat('%',#{bean.planType}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="pOrderBy != null and pOrderBy != ''">
+			order by ${pOrderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+<!-- 分页查询 CMJT_SUBJECT_BASE -->
+<select id="searchCmjtSubjectBaseByPage" parameterType="java.util.Map" resultMap="CmjtSubjectBaseDTOMap">
+	select
+	<include refid="commonColums"/>
+	from CMJT_SUBJECT_BASE t1   
+<where>
+	<if test="bean != null">
+		<choose>
+			<when test="keyWord != null and keyWord != '' ">
+				<include refid="commonWhereOr"/>
+			</when>
+			<otherwise>
+				<include refid="commonWhereAnd"/>
+			</otherwise>
+		</choose>
+		<include refid="defaultWhereAnd"/>
+	</if>
+</where>
+<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 CMJT_SUBJECT_BASE -->
+<select id="searchCmjtSubjectBase" parameterType="java.util.Map" resultMap="CmjtSubjectBaseDTOMap">
+	select
+	<include refid="commonColums"/>
+    from CMJT_SUBJECT_BASE 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="defaultWhereAnd"/>
+		</if>
+	</where>
+</select>
+<!-- 主键查询对象 CMJT_SUBJECT_BASE -->
+<select id="findCmjtSubjectBaseById" parameterType="java.lang.String" resultMap="CmjtSubjectBaseDTOMap">
+	select
+	<include refid="commonColums"/>
+	from CMJT_SUBJECT_BASE t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 CMJT_SUBJECT_BASE -->
+<insert id="insertCmjtSubjectBase" parameterType="avicit.cmjt.cmjtsubjectbase.dto.CmjtSubjectBaseDTO">
+	insert into CMJT_SUBJECT_BASE
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="subjectNum != null">
+			SUBJECT_NUM,
+		</if>
+		<if test="sysApplicationId != null">
+			SYS_APPLICATION_ID,
+		</if>
+		<if test="subjectPrice != null">
+			SUBJECT_PRICE,
+		</if>
+		<if test="deliverDate != null">
+			DELIVER_DATE,
+		</if>
+		<if test="specsType != null">
+			SPECS_TYPE,
+		</if>
+		<if test="dataSource != null">
+			DATA_SOURCE,
+		</if>
+		<if test="jtId != null">
+			JT_ID,
+		</if>
+		<if test="errorInfo != null">
+			ERROR_INFO,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="isTrans != null">
+			IS_TRANS,
+		</if>
+		<if test="isOccupy != null">
+			IS_OCCUPY,
+		</if>
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="businessId != null">
+			BUSINESS_ID,
+		</if>
+		<if test="unit != null">
+			UNIT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="operationType != null">
+			OPERATION_TYPE,
+		</if>
+		<if test="increDecreRate != null">
+			INCRE_DECRE_RATE,
+		</if>
+		<if test="subjectName != null">
+			SUBJECT_NAME,
+		</if>
+		<if test="orgCode != null">
+			ORG_CODE,
+		</if>
+		<if test="subjectTotalAmount != null">
+			SUBJECT_TOTAL_AMOUNT,
+		</if>
+		<if test="taxRate != null">
+			TAX_RATE,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="taskNo != null">
+			TASK_NO,
+		</if>
+		<if test="taskType != null">
+			TASK_TYPE,
+		</if>
+		<if test="planType != null">
+			PLAN_TYPE,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="subjectNum != null">
+			#{subjectNum,jdbcType = DECIMAL},
+		</if>
+		<if test="sysApplicationId != null">
+			#{sysApplicationId,jdbcType = VARCHAR},
+		</if>
+		<if test="subjectPrice != null">
+			#{subjectPrice,jdbcType = DECIMAL},
+		</if>
+		<if test="deliverDate != null">
+			#{deliverDate,jdbcType = VARCHAR},
+		</if>
+		<if test="specsType != null">
+			#{specsType,jdbcType = VARCHAR},
+		</if>
+		<if test="dataSource != null">
+			#{dataSource,jdbcType = VARCHAR},
+		</if>
+		<if test="jtId != null">
+			#{jtId,jdbcType = VARCHAR},
+		</if>
+		<if test="errorInfo != null">
+			#{errorInfo,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="isTrans != null">
+			#{isTrans,jdbcType = VARCHAR},
+		</if>
+		<if test="isOccupy != null">
+			#{isOccupy,jdbcType = VARCHAR},
+		</if>
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="businessId != null">
+			#{businessId,jdbcType = VARCHAR},
+		</if>
+		<if test="unit != null">
+			#{unit,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="operationType != null">
+			#{operationType,jdbcType = VARCHAR},
+		</if>
+		<if test="increDecreRate != null">
+			#{increDecreRate,jdbcType = DECIMAL},
+		</if>
+		<if test="subjectName != null">
+			#{subjectName,jdbcType = VARCHAR},
+		</if>
+		<if test="orgCode != null">
+			#{orgCode,jdbcType = VARCHAR},
+		</if>
+		<if test="subjectTotalAmount != null">
+			#{subjectTotalAmount,jdbcType = DECIMAL},
+		</if>
+		<if test="taxRate != null">
+			#{taxRate,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="taskNo != null">
+			#{taskNo,jdbcType = VARCHAR},
+		</if>
+		<if test="taskType != null">
+			#{taskType,jdbcType = VARCHAR},
+		</if>
+		<if test="planType != null">
+			#{planType,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 CMJT_SUBJECT_BASE -->
+<insert id="insertCmjtSubjectBaseList" parameterType="java.util.List">
+	insert into CMJT_SUBJECT_BASE(
+	SUBJECT_NUM ,
+	SYS_APPLICATION_ID ,
+	SUBJECT_PRICE ,
+	DELIVER_DATE ,
+	SPECS_TYPE ,
+	DATA_SOURCE ,
+	JT_ID ,
+	ERROR_INFO ,
+	LAST_UPDATE_DATE ,
+	IS_TRANS ,
+	IS_OCCUPY ,
+	ID ,
+	CREATED_DEPT ,
+	SECRET_LEVEL ,
+	LAST_UPDATE_IP ,
+	CREATED_BY ,
+	LAST_UPDATED_BY ,
+	BUSINESS_ID ,
+	UNIT ,
+	CREATION_DATE ,
+	OPERATION_TYPE ,
+	INCRE_DECRE_RATE ,
+	SUBJECT_NAME ,
+	ORG_CODE ,
+	SUBJECT_TOTAL_AMOUNT ,
+	TAX_RATE ,
+	VERSION ,
+	ORG_IDENTITY ,
+	TASK_NO,
+	TASK_TYPE,
+	PLAN_TYPE )
+<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+	select
+	#{item.subjectNum,jdbcType = DECIMAL} ,
+	#{item.sysApplicationId,jdbcType = VARCHAR} ,
+	#{item.subjectPrice,jdbcType = DECIMAL} ,
+	#{item.deliverDate,jdbcType = VARCHAR} ,
+	#{item.specsType,jdbcType = VARCHAR} ,
+	#{item.dataSource,jdbcType = VARCHAR} ,
+	#{item.jtId,jdbcType = VARCHAR} ,
+	#{item.errorInfo,jdbcType = VARCHAR} ,
+	#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+	#{item.isTrans,jdbcType = VARCHAR} ,
+	#{item.isOccupy,jdbcType = VARCHAR} ,
+	#{item.id,jdbcType = VARCHAR} ,
+	#{item.createdDept,jdbcType = VARCHAR} ,
+	#{item.secretLevel,jdbcType = VARCHAR} ,
+	#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+	#{item.createdBy,jdbcType = VARCHAR} ,
+	#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+	#{item.businessId,jdbcType = VARCHAR} ,
+	#{item.unit,jdbcType = VARCHAR} ,
+	#{item.creationDate,jdbcType = TIMESTAMP} ,
+	#{item.operationType,jdbcType = VARCHAR} ,
+	#{item.increDecreRate,jdbcType = DECIMAL} ,
+	#{item.subjectName,jdbcType = VARCHAR} ,
+	#{item.orgCode,jdbcType = VARCHAR} ,
+	#{item.subjectTotalAmount,jdbcType = DECIMAL} ,
+	#{item.taxRate,jdbcType = VARCHAR} ,
+	#{item.version,jdbcType = DECIMAL} ,
+	#{item.orgIdentity,jdbcType = VARCHAR} ,
+	#{item.taskNo,jdbcType = VARCHAR} ,
+	#{item.taskType,jdbcType = VARCHAR} ,
+	#{item.planType,jdbcType = VARCHAR} 	from dual
+</foreach>
+</insert>
+<!-- 更新对象 CMJT_SUBJECT_BASE -->
+<update id="updateCmjtSubjectBaseSensitive" parameterType="avicit.cmjt.cmjtsubjectbase.dto.CmjtSubjectBaseDTO">
+	update CMJT_SUBJECT_BASE
+	<set>
+		<if test="subjectNum != null">
+			SUBJECT_NUM = #{subjectNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="sysApplicationId != null">
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="subjectPrice != null">
+			SUBJECT_PRICE = #{subjectPrice,jdbcType = DECIMAL} ,
+		</if>
+		<if test="deliverDate != null">
+			DELIVER_DATE = #{deliverDate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="specsType != null">
+			SPECS_TYPE = #{specsType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="dataSource != null">
+			DATA_SOURCE = #{dataSource,jdbcType = VARCHAR} ,
+		</if>
+		<if test="jtId != null">
+			JT_ID = #{jtId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="errorInfo != null">
+			ERROR_INFO = #{errorInfo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="isTrans != null">
+			IS_TRANS = #{isTrans,jdbcType = VARCHAR} ,
+		</if>
+		<if test="isOccupy != null">
+			IS_OCCUPY = #{isOccupy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="businessId != null">
+			BUSINESS_ID = #{businessId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="unit != null">
+			UNIT = #{unit,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="operationType != null">
+			OPERATION_TYPE = #{operationType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="increDecreRate != null">
+			INCRE_DECRE_RATE = #{increDecreRate,jdbcType = DECIMAL} ,
+		</if>
+		<if test="subjectName != null">
+			SUBJECT_NAME = #{subjectName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgCode != null">
+			ORG_CODE = #{orgCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="subjectTotalAmount != null">
+			SUBJECT_TOTAL_AMOUNT = #{subjectTotalAmount,jdbcType = DECIMAL} ,
+		</if>
+		<if test="taxRate != null">
+			TAX_RATE = #{taxRate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="taskNo != null">
+			TASK_NO = #{taskNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="taskType != null">
+			TASK_TYPE = #{taskType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="planType != null">
+			PLAN_TYPE = #{planType,jdbcType = VARCHAR} 		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 CMJT_SUBJECT_BASE -->
+<update id="updateCmjtSubjectBaseAll" parameterType="avicit.cmjt.cmjtsubjectbase.dto.CmjtSubjectBaseDTO">
+	update CMJT_SUBJECT_BASE
+	set
+	SUBJECT_NUM = #{subjectNum,jdbcType = DECIMAL} ,
+	SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+	SUBJECT_PRICE = #{subjectPrice,jdbcType = DECIMAL} ,
+	DELIVER_DATE = #{deliverDate,jdbcType = VARCHAR} ,
+	SPECS_TYPE = #{specsType,jdbcType = VARCHAR} ,
+	DATA_SOURCE = #{dataSource,jdbcType = VARCHAR} ,
+	JT_ID = #{jtId,jdbcType = VARCHAR} ,
+	ERROR_INFO = #{errorInfo,jdbcType = VARCHAR} ,
+	LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+	IS_TRANS = #{isTrans,jdbcType = VARCHAR} ,
+	IS_OCCUPY = #{isOccupy,jdbcType = VARCHAR} ,
+	ID = #{id,jdbcType = VARCHAR} ,
+	CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+	SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+	LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+	CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+	LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+	BUSINESS_ID = #{businessId,jdbcType = VARCHAR} ,
+	UNIT = #{unit,jdbcType = VARCHAR} ,
+	CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+	OPERATION_TYPE = #{operationType,jdbcType = VARCHAR} ,
+	INCRE_DECRE_RATE = #{increDecreRate,jdbcType = DECIMAL} ,
+	SUBJECT_NAME = #{subjectName,jdbcType = VARCHAR} ,
+	ORG_CODE = #{orgCode,jdbcType = VARCHAR} ,
+	SUBJECT_TOTAL_AMOUNT = #{subjectTotalAmount,jdbcType = DECIMAL} ,
+	TAX_RATE = #{taxRate,jdbcType = VARCHAR} ,
+	VERSION = version+1 ,
+	ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+	TASK_TYPE = #{item.taskType,jdbcType = VARCHAR} ,
+		TASK_NO = #{item.taskNo,jdbcType = VARCHAR} ,
+	PLAN_TYPE = #{planType,jdbcType = VARCHAR} 	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   CMJT_SUBJECT_BASE -->
+<update id="updateCmjtSubjectBaseList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator=";" close=";end;">
+		update CMJT_SUBJECT_BASE
+		set
+		SUBJECT_NUM = #{item.subjectNum,jdbcType = DECIMAL} ,
+		SYS_APPLICATION_ID = #{item.sysApplicationId,jdbcType = VARCHAR} ,
+		SUBJECT_PRICE = #{item.subjectPrice,jdbcType = DECIMAL} ,
+		DELIVER_DATE = #{item.deliverDate,jdbcType = VARCHAR} ,
+		SPECS_TYPE = #{item.specsType,jdbcType = VARCHAR} ,
+		DATA_SOURCE = #{item.dataSource,jdbcType = VARCHAR} ,
+		JT_ID = #{item.jtId,jdbcType = VARCHAR} ,
+		ERROR_INFO = #{item.errorInfo,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+		IS_TRANS = #{item.isTrans,jdbcType = VARCHAR} ,
+		IS_OCCUPY = #{item.isOccupy,jdbcType = VARCHAR} ,
+		ID = #{item.id,jdbcType = VARCHAR} ,
+		CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+		SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+		LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+		CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+		BUSINESS_ID = #{item.businessId,jdbcType = VARCHAR} ,
+		UNIT = #{item.unit,jdbcType = VARCHAR} ,
+		CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+		OPERATION_TYPE = #{item.operationType,jdbcType = VARCHAR} ,
+		INCRE_DECRE_RATE = #{item.increDecreRate,jdbcType = DECIMAL} ,
+		SUBJECT_NAME = #{item.subjectName,jdbcType = VARCHAR} ,
+		ORG_CODE = #{item.orgCode,jdbcType = VARCHAR} ,
+		SUBJECT_TOTAL_AMOUNT = #{item.subjectTotalAmount,jdbcType = DECIMAL} ,
+		TAX_RATE = #{item.taxRate,jdbcType = VARCHAR} ,
+		VERSION = version+1  ,
+		ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+		TASK_TYPE = #{item.taskType,jdbcType = VARCHAR} ,
+		TASK_NO = #{item.taskNo,jdbcType = VARCHAR} ,
+		PLAN_TYPE = #{item.planType,jdbcType = VARCHAR}
+		where DATA_SOURCE = #{item.dataSource}
+		and BUSINESS_ID = #{item.businessId}
+		and version = #{item.version}
+	</foreach>
+</update>
+<!-- 更新对象 CMJT_SUBJECT_BASE -->
+<update id="updateSensitiveBySourceAndBusinessId" parameterType="avicit.cmjt.cmjtsubjectbase.dto.CmjtSubjectBaseDTO">
+	update CMJT_SUBJECT_BASE
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="businessId != null">
+			BUSINESS_ID = #{businessId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sysApplicationId != null">
+			SYS_APPLICATION_ID = #{sysApplicationId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="subjectName != null">
+			SUBJECT_NAME = #{subjectName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="subjectNum != null">
+			SUBJECT_NUM = #{subjectNum,jdbcType = DECIMAL} ,
+		</if>
+		<if test="subjectPrice != null">
+			SUBJECT_PRICE = #{subjectPrice,jdbcType = DECIMAL} ,
+		</if>
+		<if test="subjectTotalAmount != null">
+			SUBJECT_TOTAL_AMOUNT = #{subjectTotalAmount,jdbcType = DECIMAL} ,
+		</if>
+		<if test="deliverDate != null">
+			DELIVER_DATE = #{deliverDate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="increDecreRate != null">
+			INCRE_DECRE_RATE = #{increDecreRate,jdbcType = DECIMAL} ,
+		</if>
+		<if test="planType != null">
+			PLAN_TYPE = #{planType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="specsType != null">
+			SPECS_TYPE = #{specsType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="taxRate != null">
+			TAX_RATE = #{taxRate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="unit != null">
+			UNIT = #{unit,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orgCode != null">
+			ORG_CODE = #{orgCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="isOccupy != null">
+			IS_OCCUPY = #{isOccupy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="dataSource != null">
+			DATA_SOURCE = #{dataSource,jdbcType = VARCHAR} ,
+		</if>
+		<if test="isTrans != null">
+			IS_TRANS = #{isTrans,jdbcType = VARCHAR} ,
+		</if>
+		<if test="operationType != null">
+		OPERATION_TYPE = #{operationType,jdbcType = VARCHAR} ,
+	</if>
+		<if test="taskNo != null">
+			TASK_NO = #{taskNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="taskType != null">
+			TASK_TYPE = #{taskType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="jtId != null">
+			JT_ID = #{jtId,jdbcType = VARCHAR}
+		</if>
+	</set>
+	where DATA_SOURCE = #{dataSource}
+	and BUSINESS_ID = #{businessId}
+</update>
+<!-- 主键删除 CMJT_SUBJECT_BASE -->
+<delete id="deleteCmjtSubjectBaseById" parameterType="java.lang.String">
+	delete from CMJT_SUBJECT_BASE  where id = #{id}
+</delete>
+
+<!-- 根据数据来源和数据ID 删除 CMJT_SUBJECT_BASE -->
+<delete id="deleteCmjtSubjectBaseBySourceAndBusinessId" parameterType="java.lang.String">
+	delete from CMJT_SUBJECT_BASE  where DATA_SOURCE = #{dataSource} And BUSINESS_ID = #{businessId}
+</delete>
+	<!-- 主键批量删除 CMJT_SUBJECT_BASE -->
+<delete id="deleteByIds">
+	DELETE FROM CMJT_SUBJECT_BASE
+	WHERE id IN
+	<foreach collection="list" item="id" open="(" separator="," close=")">
+		#{id}
+	</foreach>
+</delete>
+</mapper>

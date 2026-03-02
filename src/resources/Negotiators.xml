@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.cm.domain.negotiate.entity.Negotiators" tableName="CM_NEGOTIATORS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="negotiateId" column="NEGOTIATE_ID"/>
+        <property name="negotiators" column="NEGOTIATORS"/>
+        <property name="partyOrg" column="PARTY_ORG"/>
+        <property name="negotiatorsUid" column="NEGOTIATORS_UID"/>
+        <property name="deptId" column="DEPT_ID"/>
+        <property name="negotiatorsOf" column="NEGOTIATORS_OF"/>
+        <property name="isChief" column="IS_CHIEF"/>
+        <property name="description" column="DESCRIPTION"/>
+    </vo>
+</vobjs>

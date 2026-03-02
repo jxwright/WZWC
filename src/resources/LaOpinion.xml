@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.la.domain.laOpinion.entity.LaOpinion" tableName="la_legalopinion">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="legalopinionType" column="LEGALOPINION_TYPE" jdbcType="VARCHAR" />
+        <property name="reqDeptId" column="REQ_DEPT_ID" jdbcType="VARCHAR" />
+        <property name="client" column="CLIENT" jdbcType="VARCHAR" />
+        <property name="overview" column="OVERVIEW" jdbcType="VARCHAR" />
+        <property name="conclusion" column="CONCLUSION" jdbcType="VARCHAR" />
+        <property name="fileNo" column="FILE_NO" jdbcType="VARCHAR" />
+        <property name="providerType" column="PROVIDER_TYPE" jdbcType="VARCHAR" />
+        <property name="providerName" column="PROVIDER_NAME" jdbcType="VARCHAR" />
+        <property name="isOnlineDoc" column="IS_ONLINE_DOC" jdbcType="CHAR" />
+        <property name="isSigned" column="IS_SIGNED" jdbcType="CHAR" />
+        <property name="signDate" column="SIGN_DATE" jdbcType="TIMESTAMP" />
+        <property name="signerUid" column="SIGNER_UID" jdbcType="VARCHAR" />
+        <property name="reqDocId" column="REQ_DOC_ID" jdbcType="VARCHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laOpinion.entity.LaOpinionReq" tableName="la_legalopinion_req">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="overview" column="OVERVIEW" jdbcType="VARCHAR" />
+        <property name="requirement" column="REQUIREMENT" jdbcType="VARCHAR" />
+        <property name="isRefContract" column="IS_REF_CONTRACT" jdbcType="CHAR" />
+        <property name="isRefCust" column="IS_REF_CUST" jdbcType="CHAR" />
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laOpinion.entity.LaDocRefData" tableName="la_doc_refdata">
+        <property name="id" column="ID" jdbcType="VARCHAR" isPrimaryKey="true"/>
+        <property name="docId" column="DOC_ID" jdbcType="VARCHAR" />
+        <property name="refType" column="REF_TYPE" jdbcType="VARCHAR" />
+        <property name="refDataId" column="REF_DATA_ID" jdbcType="VARCHAR" />
+        <property name="filter1" column="FILTER_1" jdbcType="VARCHAR" />
+        <property name="filter2" column="FILTER_2" jdbcType="VARCHAR" />
+        <property name="filter3" column="FILTER_3" jdbcType="VARCHAR" />
+    </vo>
+</vobjs>

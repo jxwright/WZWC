@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="ssp.lib.user.entity.SysUser" tableName="SYS_USER">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="name" column="NAME"/>
+        <property name="nameEn" column="NAME_EN"/>
+        <property name="no" column="NO"/>
+        <property name="loginName" column="LOGIN_NAME"/>
+        <property name="loginPassword" column="LOGIN_PASSWORD"/>
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property name="birthday" column="BIRTHDAY"/>
+        <property name="sex" column="SEX"/>
+        <property name="nation" column="NATION"/>
+        <property name="birthAddress" column="BIRTH_ADDRESS"/>
+        <property name="polity" column="POLITY"/>
+        <property name="workDate" column="WORK_DATE"/>
+        <property name="title" column="TITLE"/>
+        <property name="degree" column="DEGREE"/>
+        <property name="education" column="EDUCATION"/>
+        <property name="mobile" column="MOBILE"/>
+        <property name="officeTel" column="OFFICE_TEL"/>
+        <property name="fax" column="FAX"/>
+        <property name="email" column="EMAIL"/>
+        <property name="workSpace" column="WORK_SPACE"/>
+        <property name="roomNo" column="ROOM_NO"/>
+        <property name="homeAddress" column="HOME_ADDRESS"/>
+        <property name="homeZip" column="HOME_ZIP"/>
+        <property name="homeTel" column="HOME_TEL"/>
+        <property name="orderBy" column="ORDER_BY"/>
+        <property name="type" column="TYPE"/>
+        <property name="status" column="STATUS"/>
+        <property name="remark" column="REMARK"/>
+        <property name="languageCode" column="LANGUAGE_CODE"/>
+        <property name="lastLoginDeptId" column="LAST_LOGIN_DEPT_ID"/>
+        <property name="lastPasswordDate" column="LAST_PASSWORD_DATE"/>
+        <property name="lastLoginDate" column="LAST_LOGIN_DATE"/>
+        <property name="passwordDays" column="PASSWORD_DAYS"/>
+        <property name="loginFailTimes" column="LOGIN_FAIL_TIMES"/>
+        <property name="userLocked" column="USER_LOCKED"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false" insert="true" update="true" delete="true"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE" select="false" insert="true" update="true" delete="true"/>
+        <property name="creationDate" column="CREATION_DATE" select="false" insert="true" update="false" delete="true"/>
+        <property name="createdBy" column="CREATED_BY" select="false" insert="true" update="false" delete="true"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" select="false" insert="true" update="true" delete="true"/>
+        <property name="version" column="VERSION" select="true" insert="true" update="true" delete="false"/>
+        <property name="attribute01" column="ATTRIBUTE_01"/>
+        <property name="attribute02" column="ATTRIBUTE_02"/>
+        <property name="attribute03" column="ATTRIBUTE_03"/>
+        <property name="attribute04" column="ATTRIBUTE_04"/>
+        <property name="attribute05" column="ATTRIBUTE_05"/>
+        <property name="attribute06" column="ATTRIBUTE_06"/>
+        <property name="attribute07" column="ATTRIBUTE_07"/>
+        <property name="attribute08" column="ATTRIBUTE_08"/>
+        <property name="attribute09" column="ATTRIBUTE_09"/>
+        <property name="attribute10" column="ATTRIBUTE_10"/>
+        <property name="loginFailFirstTime" column="LOGIN_FAIL_FIRST_TIME"/>
+        <property name="unitCode" column="UNIT_CODE"/>
+        <property name="photo" column="PHOTO"/>
+        <property name="sign" column="SIGN"/>
+    </vo>
+</vobjs>

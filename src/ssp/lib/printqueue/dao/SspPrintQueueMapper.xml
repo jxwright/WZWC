@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssp.lib.printqueue.dao.SspPrintQueueDao">
+    <resultMap id="AppFormSetsMap" type="java.util.HashMap">
+        <result property="printTemplate" column="PRINT_TEMPLATE" jdbcType="VARCHAR" />
+        <result property="printOption" column="PRINT_OPTION" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 查询树对象 SYS_DEPT -->
+    <select id="getFormSetPrintInfo" parameterType="java.lang.String" resultMap="AppFormSetsMap">
+        select
+            t2.PRINT_OPTION,
+            t2.PRINT_TEMPLATE
+        FROM from APP_FORM_SETS t2
+        where t2.FORM_CODE = #{formCode}
+    </select>
+
+    <delete id="removeFromQueue" parameterType="java.util.Map">
+        DELETE FROM APPDATA.APPDATA_PRINT_QUEUE apq
+        WHERE
+            apq.TASK_ID  = (SELECT apt.ID FROM APPDATA.APPDATA_PRINT_TASKS apt WHERE apt.DATA_ID = #{dataId} AND apt.DATA_SRC = #{dataSrc} AND apt.REC_REMOVE = '-1')
+            AND apq .PRINTER_ID = #{printerId}
+    </delete>
+
+    <select id="getTaskIdByDocInfo" parameterType="java.lang.String" resultType="java.lang.String">
+        select apt.id from APPDATA.APPDATA_PRINT_TASKS apt WHERE apt.DATA_ID = #{dataId} AND apt.DATA_SRC = #{dataSrc} AND apt.REC_REMOVE = '-1'
+    </select>
+</mapper>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+    <vo class="avicit.la.domain.laCase.entity.LaCaseData" tableName="LA_CASE_DATA">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseName" column="CASE_NAME"/>
+        <property name="caseOrg" column="CASE_ORG"/>
+        <lookup name="caseOrgName" lookupKey="caseOrg-deptId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="deptName"
+                bean="sysDeptDomainServiceImpl" method="getDeptNameById"/>
+        <property name="caseOrgManager" column="CASE_ORG_MANAGER"/>
+        <lookup name="caseOrgManagerName" lookupKey="caseOrgManager-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="caseOrgAgent" column="CASE_ORG_AGENT"/>
+        <lookup name="caseOrgAgentName" lookupKey="caseOrgAgent-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="caseOrgTel" column="CASE_ORG_TEL"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="exchangeRate" column="EXCHANGE_RATE"/>
+        <property name="caseAmount" column="CASE_AMOUNT"/>
+        <property name="caseAmountFc" column="CASE_AMOUNT_FC"/>
+        <property name="isRelateContract" column="IS_RELATE_CONTRACT"/>
+        <property name="isRelateCase" column="IS_RELATE_CASE"/>
+        <property name="caId" column="CA_ID"/>
+        <lookup name="caName" lookupKey="caId-id" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="name"
+                bean="LaCase" method="getCaNameById"/>
+        <property name="isCaFiling" column="IS_CA_FILING"/>
+        <property name="caCaseno" column="CA_CASENO"/>
+        <property name="caFilingDate" column="CA_FILING_DATE"/>
+        <property name="caHearTime" column="CA_HEAR_TIME"/>
+        <property name="caseDetail" column="CASE_DETAIL"/>
+        <property name="claims" column="CLAIMS"/>
+        <property name="caseCatalog" column="CASE_CATALOG"/>
+        <lookup name="caseCatalogName" lookupKey="caseCatalog-refId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="refName"
+                bean="sspRefCodeService" method="getRefNameById"/>
+        <extend isAggregation="true" class="avicit.la.domain.laCase.entity.LaCaseFilingReq"/>
+        <lookup name="relateContract" lookupKey="id-caseId" lookupType="oneToMany"
+                paramType="none"
+                returnType="vo"
+                bean="LaCase" method="getRelateContractById"/>
+        <lookup name="relateCase" lookupKey="id-caseId" lookupType="oneToMany"
+                paramType="none"
+                returnType="vo"
+                bean="LaCase" method="getRelateCaseById"/>
+        <join name="laCasePartyList" joinKey="id-caseId" joinType="oneToMany" isAggregation="true" class="avicit.la.domain.laCase.entity.LaCaseParty"></join>
+        <join name="laLegalDocs" joinKey="id-docId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaLegalDocs"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseFilingReq" tableName="LA_CASE_FILING_REQ">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseHandleWay" column="CASE_HANDLE_WAY"/>
+        <property name="caseType" column="CASE_TYPE"/>
+        <property name="isFiling" column="IS_FILING"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCase" tableName="LA_CASE">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseType" column="CASE_TYPE"/>
+        <property name="caseLevel" column="CASE_LEVEL"/>
+        <property name="caseHandleWay" column="CASE_HANDLE_WAY"/>
+        <property name="caseAgent" column="CASE_AGENT"/>
+        <property name="isExternal" column="IS_EXTERNAL"/>
+        <property name="inProcess" column="IN_PROCESS"/>
+        <property name="handleState" column="HANDLE_STATE"/>
+        <property name="handleStage" column="HANDLE_STAGE"/>
+        <property name="execState" column="EXEC_STATE"/>
+        <property name="filingDate" column="FILING_DATE"/>
+        <property name="closeType" column="CLOSE_TYPE"/>
+        <property name="closeDate" column="CLOSE_DATE"/>
+        <property name="execDate" column="EXEC_DATE"/>
+        <property name="handleBudget" column="HANDLE_BUDGET"/>
+        <property name="handleTotal" column="HANDLE_TOTAL"/>
+        <property name="decisionAmount" column="DECISION_AMOUNT"/>
+        <property name="decisionAmountFc" column="DECISION_AMOUNT_FC"/>
+        <property name="execAmount" column="EXEC_AMOUNT"/>
+        <property name="execAmountFc" column="EXEC_AMOUNT_FC"/>
+        <property name="decidsionDetail" column="DECIDSION_DETAIL"/>
+        <property name="execDetail" column="EXEC_DETAIL"/>
+        <property name="caseBrief" column="CASE_BRIEF"/>
+        <property name="allowExec" column="ALLOW_EXEC"/>
+        <property name="closeState" column="CLOSE_STATE"/>
+        <property name="objectAmount" column="OBJECT_AMOUNT"/>
+        <property name="objectAmountFc" column="OBJECT_AMOUNT_FC"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.BizDoc"/>
+        <join name="laCaseData" joinKey="id-id" joinType="manyToOne" isAggregation="true" class="avicit.la.domain.laCase.entity.LaCaseData"></join>
+        <lookup name="laCaseStage" lookupKey="id-caseId" lookupType="manyToOne"
+                paramType="none"
+                returnType="vo"
+                bean="LaCase" method="getCaseHandleStage"/>
+        <join name="laCasePartyList" joinKey="id-caseId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaCaseParty"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseSolution" tableName="LA_CASE_SOLUTION">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+        <join name="laCase" joinKey="caseId-id" joinType="manyToOne" isAggregation="true" class="avicit.la.domain.laCase.entity.LaCase"></join>
+        <join name="laLegalDocs" joinKey="id-docId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaLegalDocs"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseType" tableName="LA_CASE_TYPE">
+        <property name="caseType" column="CASE_TYPE" isPrimaryKey="true"/>
+        <property name="caseTypeName" column="CASE_TYPE_NAME"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="optionData" column="OPTION_DATA"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseParty" tableName="LA_CASE_PARTY">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="partyName" column="PARTY_NAME"/>
+        <property name="partyType" column="PARTY_TYPE"/>
+        <property name="partyOf" column="PARTY_OF"/>
+        <property name="isOur" column="IS_OUR"/>
+        <property name="custId" column="CUST_ID"/>
+        <property name="description" column="DESCRIPTION"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseActionBizDoc" tableName="LA_CASE_ACTION">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="actionType" column="ACTION_TYPE"/>
+        <lookup name="actionTypeName" lookupKey="actionType-type" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="name"
+                bean="LaCase" method="getActionNameByType"/>
+        <property name="startDate" column="START_DATE"/>
+        <property name="endDate" column="END_DATE"/>
+        <property name="isDone" column="IS_DONE"/>
+        <property name="refCaAction" column="REF_CA_ACTION"/>
+        <property name="actionDesc" column="ACTION_DESC"/>
+        <property name="actionResult" column="ACTION_RESULT"/>
+        <property name="thisProcess" column="THIS_PROCESS"/>
+        <property name="nextProcess" column="NEXT_PROCESS"/>
+        <property name="thisStage" column="THIS_STAGE"/>
+        <property name="nextStage" column="NEXT_STAGE"/>
+        <property name="thisState" column="THIS_STATE"/>
+        <property name="nextState" column="NEXT_STATE"/>
+        <property name="actionFeeType" column="ACTION_FEE_TYPE"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="exchangeRate" column="EXCHANGE_RATE"/>
+        <property name="execAmount" column="EXEC_AMOUNT"/>
+        <property name="execAmountFc" column="EXEC_AMOUNT_FC"/>
+        <property name="actionFeeType" column="ACTION_FEE_TYPE"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.BizDoc"/>
+        <join name="laLegalDocs" joinKey="id-docId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaLegalDocs"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseActionFlowDoc" tableName="LA_CASE_ACTION">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="actionType" column="ACTION_TYPE"/>
+        <lookup name="actionTypeName" lookupKey="actionType-type" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="name"
+                bean="LaCase" method="getActionNameByType"/>
+        <property name="startDate" column="START_DATE"/>
+        <property name="endDate" column="END_DATE"/>
+        <property name="isDone" column="IS_DONE"/>
+        <property name="refCaAction" column="REF_CA_ACTION"/>
+        <property name="actionDesc" column="ACTION_DESC"/>
+        <property name="actionResult" column="ACTION_RESULT"/>
+        <property name="thisProcess" column="THIS_PROCESS"/>
+        <property name="nextProcess" column="NEXT_PROCESS"/>
+        <property name="thisStage" column="THIS_STAGE"/>
+        <property name="nextStage" column="NEXT_STAGE"/>
+        <property name="thisState" column="THIS_STATE"/>
+        <property name="nextState" column="NEXT_STATE"/>
+        <property name="currencyCode" column="CURRENCY_CODE"/>
+        <property name="exchangeRate" column="EXCHANGE_RATE"/>
+        <property name="execAmount" column="EXEC_AMOUNT"/>
+        <property name="execAmountFc" column="EXEC_AMOUNT_FC"/>
+        <property name="actionFeeType" column="ACTION_FEE_TYPE"/>
+        <extend isAggregation="true" class="ssp.lib.docEntity.entity.FlowDoc"/>
+        <join name="laLegalDocs" joinKey="id-docId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaLegalDocs"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseStage" tableName="LA_CASE_STAGE">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="stage" column="STAGE"/>
+        <property name="stageName" column="STAGE_NAME"/>
+        <property name="stageType" column="STAGE_TYPE"/>
+        <property name="times" column="TIMES"/>
+        <property name="lastStage" column="LAST_STAGE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" />
+        <property name="creationDate" column="CREATION_DATE"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP" />
+        <property name="version" column="VERSION"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaseArchived" tableName="LA_CASE_ARCHIVED">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="caseParties" column="CASE_PARTIES"/>
+        <property name="caseAgent" column="CASE_AGENT"/>
+        <lookup name="caseAgentName" lookupKey="caseAgent-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="filingDate" column="FILING_DATE"/>
+        <property name="closeDate" column="CLOSE_DATE"/>
+        <property name="archiveUid" column="ARCHIVE_UID"/>
+        <lookup name="archiveUName" lookupKey="caseAgent-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+        <property name="archiveDate" column="ARCHIVE_DATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY"/>
+        <property name="creationDate" column="CREATION_DATE"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP"/>
+        <property name="version" column="VERSION" select="true"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <property name="caseSubject" column="CASE_SUBJECT"/>
+        <property name="caseMatter" column="CASE_MATTER"/>
+        <property name="caseBrief" column="CASE_BRIEF"/>
+        <property name="decidsionDetail" column="DECIDSION_DETAIL"/>
+        <property name="execDetail" column="EXEC_DETAIL"/>
+        <join name="laLegalDocs" joinKey="id-docId" joinType="oneToMany" isAggregation="false" class="avicit.la.domain.laCase.entity.LaLegalDocs"></join>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaCaOrg" tableName="LA_CA_ORG">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caName" column="CA_NAME"/>
+        <property name="caType" column="CA_TYPE"/>
+        <property name="city" column="CITY"/>
+        <property name="address" column="ADDRESS"/>
+        <property name="tel" column="TEL"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY" select="false"/>
+        <property name="creationDate" column="CREATION_DATE" select="false"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY" select="false"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP"/>
+        <property name="version" column="VERSION"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+    </vo>
+
+    <vo class="avicit.la.domain.laCase.entity.LaLegalDocs" tableName="LA_LEGAL_DOCS">
+        <property name="id" column="ID" isPrimaryKey="true"/>
+        <property name="caseId" column="CASE_ID"/>
+        <property name="docId" column="DOC_ID"/>
+        <property name="categoryId" column="CATEGORY_ID"/>
+        <property name="title" column="TITLE"/>
+        <property name="docAbstract" column="ABSTRACT"/>
+        <property name="fileNo" column="FILE_NO"/>
+        <property name="secretLevel" column="SECRET_LEVEL"/>
+        <property name="userId" column="USER_ID"/>
+        <property name="isOnlineDoc" column="IS_ONLINE_DOC"/>
+        <property name="isSigned" column="IS_SIGNED"/>
+        <property name="signDate" column="SIGN_DATE"/>
+        <property name="signerName" column="SIGNER_NAME"/>
+        <property name="state" column="STATE"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="createdBy" column="CREATED_BY"/>
+        <property name="creationDate" column="CREATION_DATE"/>
+        <property name="lastUpdatedBy" column="LAST_UPDATED_BY"/>
+        <property name="lastUpdateDate" column="LAST_UPDATE_DATE"/>
+        <property name="lastUpdateIp" column="LAST_UPDATE_IP"/>
+        <property name="version" column="VERSION" select="true"/>
+        <property name="recRemove" column="REC_REMOVE"/>
+        <lookup name="userName" lookupKey="userId-userId" lookupType="manyToOne"
+                paramType="none"
+                returnType="value" returnKey="userName"
+                bean="sysUserDomainServiceImpl" method="getUserNameById"/>
+    </vo>
+</vobjs>
