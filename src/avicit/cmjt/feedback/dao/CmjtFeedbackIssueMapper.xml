@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.cmjt.feedback.dao.CmjtFeedbackIssueDAO">
+
+    <resultMap id="CmjtFeedbackIssueDTOMap" type="avicit.cmjt.feedback.dto.CmjtFeedbackIssueDTO">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="title" column="TITLE" jdbcType="VARCHAR"/>
+        <result property="questionContent" column="QUESTION_CONTENT" jdbcType="VARCHAR"/>
+        <result property="status" column="STATUS" jdbcType="VARCHAR"/>
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+        <result property="adminReply" column="ADMIN_REPLY" jdbcType="VARCHAR"/>
+        <result property="replyAdminId" column="REPLY_ADMIN_ID" jdbcType="VARCHAR"/>
+        <result property="replyAdminName" column="REPLY_ADMIN_NAME" jdbcType="VARCHAR"/>
+        <result property="replyTime" column="REPLY_TIME" jdbcType="TIMESTAMP"/>
+        <result property="closeBy" column="CLOSE_BY" jdbcType="VARCHAR"/>
+        <result property="closeByName" column="CLOSE_BY_NAME" jdbcType="VARCHAR"/>
+        <result property="closeTime" column="CLOSE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="commonColumns">
+        t.ID, t.TITLE, t.QUESTION_CONTENT, t.STATUS, t.USER_ID, t.USER_NAME,
+        t.ADMIN_REPLY, t.REPLY_ADMIN_ID, t.REPLY_ADMIN_NAME, t.REPLY_TIME,
+        t.CLOSE_BY, t.CLOSE_BY_NAME, t.CLOSE_TIME, t.CREATED_BY, t.CREATION_DATE,
+        t.LAST_UPDATED_BY, t.LAST_UPDATE_DATE, t.ORG_IDENTITY
+    </sql>
+
+    <select id="searchFeedbackIssue" resultMap="CmjtFeedbackIssueDTOMap">
+        select <include refid="commonColumns"/>
+        from CMJT_FEEDBACK_ISSUE t
+        where 1 = 1
+        <if test="bean.id != null and bean.id != ''">
+            and t.ID = #{bean.id}
+        </if>
+        <if test="bean.userId != null and bean.userId != ''">
+            and t.USER_ID = #{bean.userId}
+        </if>
+        <if test="bean.status != null and bean.status != ''">
+            and t.STATUS = #{bean.status}
+        </if>
+        <if test="bean.title != null and bean.title != ''">
+            and t.TITLE like concat(concat('%',#{bean.title}),'%')
+        </if>
+        <if test="bean.orgIdentity != null and bean.orgIdentity != ''">
+            and t.ORG_IDENTITY = #{bean.orgIdentity}
+        </if>
+        order by t.CREATION_DATE desc
+    </select>
+
+    <select id="findFeedbackIssueById" resultMap="CmjtFeedbackIssueDTOMap" parameterType="java.lang.String">
+        select <include refid="commonColumns"/>
+        from CMJT_FEEDBACK_ISSUE t
+        where t.ID = #{id}
+    </select>
+
+    <insert id="insertFeedbackIssue" parameterType="avicit.cmjt.feedback.dto.CmjtFeedbackIssueDTO">
+        insert into CMJT_FEEDBACK_ISSUE (
+            ID, TITLE, QUESTION_CONTENT, STATUS, USER_ID, USER_NAME,
+            CREATED_BY, CREATION_DATE, LAST_UPDATED_BY, LAST_UPDATE_DATE,
+            ORG_IDENTITY
+        ) values (
+            #{id}, #{title}, #{questionContent}, #{status}, #{userId}, #{userName},
+            #{createdBy}, #{creationDate}, #{lastUpdatedBy}, #{lastUpdateDate},
+            #{orgIdentity}
+        )
+    </insert>
+
+    <update id="updateFeedbackIssueReply" parameterType="avicit.cmjt.feedback.dto.CmjtFeedbackIssueDTO">
+        update CMJT_FEEDBACK_ISSUE
+        set ADMIN_REPLY = #{adminReply},
+            REPLY_ADMIN_ID = #{replyAdminId},
+            REPLY_ADMIN_NAME = #{replyAdminName},
+            REPLY_TIME = #{replyTime},
+            STATUS = #{status},
+            LAST_UPDATED_BY = #{lastUpdatedBy},
+            LAST_UPDATE_DATE = #{lastUpdateDate}
+        where ID = #{id}
+    </update>
+
+    <update id="updateFeedbackIssueClose" parameterType="avicit.cmjt.feedback.dto.CmjtFeedbackIssueDTO">
+        update CMJT_FEEDBACK_ISSUE
+        set STATUS = #{status},
+            CLOSE_BY = #{closeBy},
+            CLOSE_BY_NAME = #{closeByName},
+            CLOSE_TIME = #{closeTime},
+            LAST_UPDATED_BY = #{lastUpdatedBy},
+            LAST_UPDATE_DATE = #{lastUpdateDate}
+        where ID = #{id}
+    </update>
+
+</mapper>
